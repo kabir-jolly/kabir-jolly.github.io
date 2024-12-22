@@ -91,7 +91,7 @@ const Portfolio = () => {
       date: "11/24 - Present",
       description:
         "Building internal tools to help our investment team and portfolio companies.",
-      image: "/public/assets/img/pear/pear_logo.png",
+      image: "/assets/img/pear/pear_logo.png",
       skills: ["React", "TypeScript", "Airtable", "Python"],
     },
     {
@@ -100,7 +100,7 @@ const Portfolio = () => {
       date: "2024",
       description:
         "Built full-stack tooling for Fieldguide's newest platform offering - financial audits.",
-      image: "/public/assets/img/fieldguide/fieldguide.png",
+      image: "/assets/img/fieldguide/fieldguide.png",
       skills: ["GraphQL", "TypeScript", "React", "PostgreSQL"],
     },
     {
@@ -109,7 +109,7 @@ const Portfolio = () => {
       date: "2023-2024",
       description:
         "Led all development and product efforts for DRF's investment team and portfolio.",
-      image: "/public/assets/img/dormroomfund/drf.png",
+      image: "/assets/img/dormroomfund/drf.png",
       skills: ["TypeScript", "React", "Airtable", "Product Management"],
     },
     {
@@ -118,7 +118,7 @@ const Portfolio = () => {
       date: "2023",
       description:
         "Built invitations and chatbot for a activity-based relationship building social app",
-      image: "/public/assets/img/zeal/zeal.jpg",
+      image: "/assets/img/zeal/zeal.jpg",
       skills: [
         "TypeScript",
         "HTML/CSS/JS",
@@ -133,7 +133,7 @@ const Portfolio = () => {
       date: "2022",
       description:
         "Built tumor segmentation, classification, and data ingestion pipelines for oncologists",
-      image: "/public/assets/img/valar/valarlabs.jpeg",
+      image: "/assets/img/valar/valarlabs.jpeg",
       skills: ["PyTorch", "Tensorflow", "Labelbox"],
       slug: "valar",
     },
@@ -145,7 +145,7 @@ const Portfolio = () => {
       date: "2024",
       description:
         "Mac app that generates statistical and AI-driven insights on your iMessage data. 100+ users.",
-      image: "/public/assets/img/receipts/receipts.png",
+      image: "/assets/img/receipts/receipts.png",
       skills: ["Electron React", "TypeScript", "AWS", "LLM APIs", "MySQL"],
       slug: "receipts",
     },
@@ -154,7 +154,7 @@ const Portfolio = () => {
       date: "Stanford CS 224N • 2023",
       description:
         "Researching ways to improve multi-task performance of MinBERT.",
-      image: "/public/assets/img/224n/224n.jpeg",
+      image: "/assets/img/224n/224n.jpeg",
       skills: ["PyTorch", "NLP", "Tranformers"],
       slug: "224n",
     },
@@ -163,7 +163,7 @@ const Portfolio = () => {
       date: "Stanford Medical Center • 2020-2023",
       description:
         "Built interpretable AI models to aid clinicians in targeting preventative interventions for patients during wildfire season.",
-      image: "/public/assets/img/aqi/stanford_med.png",
+      image: "/assets/img/aqi/stanford_med.png",
       skills: ["PyTorch", "NLP", "Attention Networks", "AWS", "Parquet"],
       slug: "stanford-medical-center",
     },
@@ -172,7 +172,7 @@ const Portfolio = () => {
       date: "Stanford CS 231N • 2022",
       description:
         "Improving object mesh reconstruction using depth-aware inputs.",
-      image: "/public/assets/img/231n/231n.jpeg",
+      image: "/assets/img/231n/231n.jpeg",
       skills: ["PyTorch", "Computer Vision", "Segmentation Models"],
       slug: "231n",
     },
@@ -181,7 +181,7 @@ const Portfolio = () => {
       date: "Stanford Wehab Lab • 2020-2023",
       description:
         "Built and programmed a digital health embedded system for palatal artery blood flow analysis.",
-      image: "/public/assets/img/wehab/wehab.png",
+      image: "/assets/img/wehab/wehab.png",
       skills: ["Arduino", "Signal Analysis"],
       slug: "wehab",
     },
@@ -190,7 +190,7 @@ const Portfolio = () => {
       date: "2017-2019",
       description:
         "Built an app to connect grocery stores and restaurants with composting facilities. Hauled a bunch of pineapple peels and spoiled lettuce with my friend Michael.",
-      image: "/public/assets/img/scrapps/scrapps.png",
+      image: "/assets/img/scrapps/scrapps.png",
       skills: ["Waste Management!", "Swift", "Firebase"],
       slug: "scrapps",
     },
@@ -198,10 +198,7 @@ const Portfolio = () => {
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === "resume") {
-      window.open(
-        "/public/assets/files/kabirjolly_resume_1-2-25.pdf",
-        "_blank"
-      );
+      window.open("/assets/files/kabirjolly_resume_1-2-25.pdf", "_blank");
       return;
     }
 
@@ -316,7 +313,7 @@ const Portfolio = () => {
           <div className="w-full max-w-5xl mx-auto px-4 py-12 relative z-10">
             <div className="flex flex-col md:flex-row items-start gap-8 mb-8">
               <img
-                src="/public/assets/img/prof_pic.jpg"
+                src="/assets/img/prof_pic.jpg"
                 alt="Kabir Jolly"
                 className="w-48 h-48 rounded-full object-cover shadow-lg"
               />
