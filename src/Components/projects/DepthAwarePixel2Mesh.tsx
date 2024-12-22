@@ -35,7 +35,7 @@ const DepthAwarePixel2Mesh = () => {
         on with Julian Quevedo and Rohin Manvi. If you would like to read the
         original paper, you can find it{" "}
         <a
-          href="/src/assets/pdf/231N_Final_Paper.pdf"
+          href="/assets/pdf/231N_Final_Paper.pdf"
           className="text-blue-600 hover:text-blue-800"
         >
           here
@@ -55,7 +55,7 @@ const DepthAwarePixel2Mesh = () => {
       </ul>
 
       <img
-        src="/src/assets/img/231n/231n1.png"
+        src="/assets/img/231n/231n1.png"
         alt="Overview"
         className="w-full rounded-lg mb-6"
       />
@@ -81,12 +81,12 @@ const DepthAwarePixel2Mesh = () => {
 
       <div className="space-y-4 mb-6">
         <img
-          src="/src/assets/img/231n/231n2.png"
+          src="/assets/img/231n/231n2.png"
           alt="Current Methods"
           className="w-full rounded-lg"
         />
         <img
-          src="/src/assets/img/231n/231n3.png"
+          src="/assets/img/231n/231n3.png"
           alt="Depth"
           className="w-full rounded-lg"
         />
@@ -146,7 +146,7 @@ const DepthAwarePixel2Mesh = () => {
       </p>
 
       <img
-        src="/src/assets/img/231n/231n4.png"
+        src="/assets/img/231n/231n4.png"
         alt="Meshes"
         className="w-full rounded-lg mb-6"
       />
@@ -162,7 +162,7 @@ const DepthAwarePixel2Mesh = () => {
       </p>
 
       <img
-        src="/src/assets/img/231n/231n5.png"
+        src="/assets/img/231n/231n5.png"
         alt="Architecture"
         className="w-full rounded-lg mb-6"
       />
@@ -174,7 +174,7 @@ const DepthAwarePixel2Mesh = () => {
       </p>
 
       <img
-        src="/src/assets/img/231n/231n6.png"
+        src="/assets/img/231n/231n6.png"
         alt="Losses"
         className="w-full rounded-lg mb-6"
       />
@@ -188,7 +188,7 @@ const DepthAwarePixel2Mesh = () => {
       </p>
 
       <img
-        src="/src/assets/img/231n/231n7.png"
+        src="/assets/img/231n/231n7.png"
         alt="ShapeNet"
         className="w-full rounded-lg mb-6"
       />
@@ -206,7 +206,7 @@ const DepthAwarePixel2Mesh = () => {
       </p>
 
       <img
-        src="/src/assets/img/231n/231n8.png"
+        src="/assets/img/231n/231n8.png"
         alt="Results Table"
         className="w-full rounded-lg mb-6"
       />

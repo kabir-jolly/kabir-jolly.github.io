@@ -34,7 +34,7 @@ const ModifyingMinBERT = () => {
         conducted by Govind Chada and myself. If you would prefer to read the
         whole paper, you can find it{" "}
         <a
-          href="/src/assets/pdf/224N_final_report.pdf"
+          href="/assets/pdf/224N_final_report.pdf"
           className="text-blue-600 hover:text-blue-800"
         >
           here
@@ -57,7 +57,7 @@ const ModifyingMinBERT = () => {
       </ul>
 
       <img
-        src="/src/assets/img/224n/224n1.png"
+        src="/assets/img/224n/224n1.png"
         alt="Overview"
         className="w-full rounded-lg mb-6"
       />
@@ -145,7 +145,7 @@ const ModifyingMinBERT = () => {
       </ol>
 
       <img
-        src="/src/assets/img/224n/224n2.png"
+        src="/assets/img/224n/224n2.png"
         alt="Phase 1 Architecture"
         className="w-full rounded-lg mb-6"
       />
@@ -166,12 +166,12 @@ const ModifyingMinBERT = () => {
 
       <div className="space-y-4 mb-6">
         <img
-          src="/src/assets/img/224n/224n3.png"
+          src="/assets/img/224n/224n3.png"
           alt="Phase 2 Training"
           className="w-full rounded-lg"
         />
         <img
-          src="/src/assets/img/224n/224n4.png"
+          src="/assets/img/224n/224n4.png"
           alt="Results"
           className="w-full rounded-lg"
         />

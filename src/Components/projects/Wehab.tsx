@@ -65,7 +65,7 @@ const Wehab = () => {
       </p>
 
       <img
-        src="/src/assets/img/wehab/wehab1.png"
+        src="/assets/img/wehab/wehab1.png"
         alt="Nasal Cycle"
         className="w-full rounded-lg mb-6"
       />
@@ -85,7 +85,7 @@ const Wehab = () => {
       </p>
 
       <img
-        src="/src/assets/img/wehab/wehab2.png"
+        src="/assets/img/wehab/wehab2.png"
         alt="Current Methods"
         className="w-full rounded-lg mb-6"
       />
@@ -109,7 +109,7 @@ const Wehab = () => {
       </ul>
 
       <img
-        src="/src/assets/img/wehab/wehab3.png"
+        src="/assets/img/wehab/wehab3.png"
         alt="Placement Diagram"
         className="w-1/2 rounded-lg mb-6 mx-auto"
       />
@@ -135,12 +135,12 @@ const Wehab = () => {
 
       <div className="space-y-4 mb-6">
         <img
-          src="/src/assets/img/wehab/wehab4.png"
+          src="/assets/img/wehab/wehab4.png"
           alt="Prototypes"
           className="w-full rounded-lg"
         />
         <img
-          src="/src/assets/img/wehab/wehab5.png"
+          src="/assets/img/wehab/wehab5.png"
           alt="PPG Data"
           className="w-full rounded-lg"
         />
@@ -150,7 +150,7 @@ const Wehab = () => {
         Phase 2: Nostril Dominance Detection with Microphone
       </h3>
       <img
-        src="/src/assets/img/wehab/wehab6.png"
+        src="/assets/img/wehab/wehab6.png"
         alt="Demo"
         className="w-full rounded-lg mb-6"
       />
@@ -175,12 +175,12 @@ const Wehab = () => {
 
       <div className="space-y-4 mb-6">
         <img
-          src="/src/assets/img/wehab/wehab7.png"
+          src="/assets/img/wehab/wehab7.png"
           alt="Microphone Readings"
           className="w-full rounded-lg"
         />
         <img
-          src="/src/assets/img/wehab/wehab8.png"
+          src="/assets/img/wehab/wehab8.png"
           alt="Pipeline"
           className="w-full rounded-lg"
         />
@@ -269,7 +269,7 @@ const Wehab = () => {
 
       {/* Final Poster */}
       <img
-        src="/src/assets/img/wehab/curis_poster.png"
+        src="/assets/img/wehab/curis_poster.png"
         alt="CURIS Poster"
         className="w-full rounded-lg mb-2"
       />

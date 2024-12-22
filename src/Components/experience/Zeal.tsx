@@ -57,17 +57,17 @@ const Zeal = () => {
       {/* Image Gallery */}
       <div className="grid grid-cols-3 gap-4 mb-6">
         <img
-          src="/src/assets/img/zeal/zeal1.jpeg"
+          src="/assets/img/zeal/zeal1.jpeg"
           alt="Zeal App Screenshot 1"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/zeal/zeal2.jpeg"
+          src="/assets/img/zeal/zeal2.jpeg"
           alt="Zeal App Screenshot 2"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/zeal/zeal3.jpeg"
+          src="/assets/img/zeal/zeal3.jpeg"
           alt="Zeal App Screenshot 3"
           className="rounded-lg"
         />

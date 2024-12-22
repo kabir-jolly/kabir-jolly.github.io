@@ -15,7 +15,7 @@ const Valar = () => {
       {/* Overview */}
       <div className="mb-8">
         <img
-          src="/src/assets/img/valar/valar1.png"
+          src="/assets/img/valar/valar1.png"
           alt="Valar Labs Overview"
           className="w-full rounded-lg mb-6"
         />
@@ -56,7 +56,7 @@ const Valar = () => {
       <div className="mb-6">
         <div className="mb-8">
           <img
-            src="/src/assets/img/valar/valar2.png"
+            src="/assets/img/valar/valar2.png"
             alt="Tissue WSI"
             className="w-full rounded-lg mb-6"
           />

@@ -34,7 +34,7 @@ const Card = ({
   slug,
 }: CardProps) => {
   const navigate = (path: string) => {
-    window.location.href = path;
+    window.location.href = `/#/${type}/${slug}`;
   };
 
   return (

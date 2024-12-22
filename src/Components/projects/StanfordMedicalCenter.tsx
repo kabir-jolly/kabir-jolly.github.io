@@ -27,12 +27,12 @@ const StanfordMedicalCenter = () => {
       {/* First Image Row */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <img
-          src="/src/assets/img/aqi/aqi1.png"
+          src="/assets/img/aqi/aqi1.png"
           alt="Data Analysis 1"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/aqi/aqi2.png"
+          src="/assets/img/aqi/aqi2.png"
           alt="Data Analysis 2"
           className="rounded-lg"
         />
@@ -59,12 +59,12 @@ const StanfordMedicalCenter = () => {
       {/* Second Image Row */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <img
-          src="/src/assets/img/aqi/aqi4.png"
+          src="/assets/img/aqi/aqi4.png"
           alt="Baseline"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/aqi/aqi3.png"
+          src="/assets/img/aqi/aqi3.png"
           alt="Longitudinal"
           className="rounded-lg"
         />
@@ -82,7 +82,7 @@ const StanfordMedicalCenter = () => {
         We never reached the stage for a final publication despite promising
         results, but here is an{" "}
         <a
-          href="/src/assets/pdf/aqi_report.pdf"
+          href="/assets/pdf/aqi_report.pdf"
           className="text-blue-600 hover:text-blue-800"
         >
           early manuscript

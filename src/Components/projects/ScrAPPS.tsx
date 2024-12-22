@@ -41,17 +41,17 @@ const ScrAPPS = () => {
       {/* First Image Row */}
       <div className="grid grid-cols-3 gap-4 mb-2">
         <img
-          src="/src/assets/img/scrapps/scrapps1.jpeg"
+          src="/assets/img/scrapps/scrapps1.jpeg"
           alt="Whiteboard 1"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/scrapps/scrapps2.jpeg"
+          src="/assets/img/scrapps/scrapps2.jpeg"
           alt="Whiteboard 2"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/scrapps/scrapps3.jpeg"
+          src="/assets/img/scrapps/scrapps3.jpeg"
           alt="Whiteboard 3"
           className="rounded-lg"
         />
@@ -70,12 +70,12 @@ const ScrAPPS = () => {
       {/* Single Images */}
       <div className="space-y-4 mb-6">
         <img
-          src="/src/assets/img/scrapps/scrapps4.png"
+          src="/assets/img/scrapps/scrapps4.png"
           alt="ScrAPPS App"
           className="rounded-lg w-full"
         />
         <img
-          src="/src/assets/img/scrapps/scrapps5.png"
+          src="/assets/img/scrapps/scrapps5.png"
           alt="ScrAPPS Flow"
           className="rounded-lg w-full"
         />
@@ -102,12 +102,12 @@ const ScrAPPS = () => {
       {/* Final Image Row */}
       <div className="grid grid-cols-2 gap-4 mb-2">
         <img
-          src="/src/assets/img/scrapps/scrapps6.jpeg"
+          src="/assets/img/scrapps/scrapps6.jpeg"
           alt="First Haul"
           className="rounded-lg"
         />
         <img
-          src="/src/assets/img/scrapps/scrapps7.jpeg"
+          src="/assets/img/scrapps/scrapps7.jpeg"
           alt="First Haul 2"
           className="rounded-lg"
         />
