@@ -324,8 +324,8 @@ const Portfolio = () => {
                 <p className="text-base text-gray-700 mb-6">
                   Hey! I'm Kabir, a Master's student at Stanford studying
                   Artificial Intelligence and Human-Computer Interaction. I care
-                  deeply about building tech that is cutting-edge and designing
-                  experiences that are magical to use🪄.
+                  deeply about building cutting-edge tech and designing magical
+                  user experiences🪄.
                 </p>
                 <p className="text-base text-gray-700 mb-6">
                   I love playing tennis and pickleball🎾, hiking around the Bay
