@@ -1,23 +1,39 @@
-import SeniorDeveloper from "./experience/SeniorDeveloper";
-import SoftwareEngineer from "./experience/SoftwareEngineer";
-import EcommercePlatform from "./projects/EcommercePlatform";
-import AIImageGenerator from "./projects/AIImageGenerator";
+import Zeal from "./experience/Zeal";
+import Valar from "./experience/Valar";
+import Receipts from "./projects/Receipts";
+import ModifyingMinBERT from "./projects/ModifyingMinBERT";
+import StanfordMedicalCenter from "./projects/StanfordMedicalCenter";
+import DepthAwarePixel2Mesh from "./projects/DepthAwarePixel2Mesh";
+import ScrAPPS from "./projects/ScrAPPS";
+import Wehab from "./projects/Wehab";
 import { ContentRegistryType } from "../types";
 
 export const experienceContent: ContentRegistryType = {
-  "senior-developer-company": {
-    component: SeniorDeveloper,
+  zeal: {
+    component: Zeal,
   },
-  "software-engineer-techcorp": {
-    component: SoftwareEngineer,
+  valar: {
+    component: Valar,
   },
 };
 
 export const projectContent: ContentRegistryType = {
-  "ecommerce-platform": {
-    component: EcommercePlatform,
+  receipts: {
+    component: Receipts,
   },
-  "ai-image-generator": {
-    component: AIImageGenerator,
+  "224n": {
+    component: ModifyingMinBERT,
+  },
+  "stanford-medical-center": {
+    component: StanfordMedicalCenter,
+  },
+  "231n": {
+    component: DepthAwarePixel2Mesh,
+  },
+  wehab: {
+    component: Wehab,
+  },
+  scrapps: {
+    component: ScrAPPS,
   },
 };

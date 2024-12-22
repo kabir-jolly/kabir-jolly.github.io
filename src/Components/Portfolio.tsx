@@ -7,6 +7,7 @@ import {
   Twitter,
   Instagram,
   ChevronRight,
+  Link,
 } from "lucide-react";
 import {
   SkillTagProps,
@@ -17,7 +18,7 @@ import {
 
 // Skill tag component
 const SkillTag = ({ skill }: SkillTagProps) => (
-  <span className="inline-block px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-600 mr-2 mb-2">
+  <span className="inline-block px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-600 mr-1.5 mb-1.5">
     {skill}
   </span>
 );
@@ -38,30 +39,37 @@ const Card = ({
 
   return (
     <div
-      onClick={() => navigate(`/${type}/${slug}`)}
-      className="group cursor-pointer bg-gray-50 rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:bg-gray-100 hover:shadow-xl shadow-md flex flex-col md:flex-row w-full"
+      onClick={slug ? () => navigate(`/${type}/${slug}`) : undefined}
+      className={`group bg-gray-50 rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:bg-gray-100 hover:shadow-lg shadow-sm flex flex-col md:flex-row w-full ${
+        slug ? "cursor-pointer" : "cursor-default"
+      }`}
     >
       {/* Image container */}
-      <div className="relative w-full md:w-72 h-48 md:h-auto flex-shrink-0">
+      <div className="relative w-full md:w-56 h-36 md:h-auto flex-shrink-0 bg-white p-4 flex items-center justify-center">
         <img
           src={image || "/api/placeholder/300/300"}
           alt={title}
-          className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+          className="max-w-[50%] max-h-[80%] object-contain group-hover:opacity-90 transition-opacity duration-300"
         />
       </div>
 
       {/* Content */}
-      <div className="flex-grow p-6 flex flex-col justify-between">
-        <div>
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-600">{subtitle}</p>
+      <div className="flex-grow p-4 flex flex-col justify-between relative">
+        {slug && (
+          <div className="absolute top-4 right-4">
+            <Link className="w-4 h-4 text-gray-400" />
           </div>
-          <p className="text-gray-600 mb-4">{description}</p>
+        )}
+        <div>
+          <div className="mb-2">
+            <h3 className="text-base font-semibold mb-1">{title}</h3>
+            <p className="text-sm text-gray-600">{subtitle}</p>
+          </div>
+          <p className="text-sm text-gray-600 mb-3">{description}</p>
         </div>
 
         {/* Skills */}
-        <div className="flex flex-wrap mt-auto pt-4 border-t">
+        <div className="flex flex-wrap mt-auto pt-2 border-t">
           {skills.map((skill, index) => (
             <SkillTag key={index} skill={skill} />
           ))}
@@ -74,80 +82,123 @@ const Card = ({
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("about");
   const [showMoreAbout, setShowMoreAbout] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Sample data
   const experiences: ExperienceType[] = [
     {
-      title: "Senior Developer",
-      subtitle: "Company Name",
-      date: "2020 - Present",
+      title: "Software Engineering Fellow",
+      subtitle: "Pear VC",
+      date: "11/24 - Present",
       description:
-        "Led development of key features and mentored junior developers. Implemented modern web technologies and best practices.",
-      image: "/api/placeholder/300/300",
-      skills: ["React", "TypeScript", "Node.js", "AWS"],
-      slug: "senior-developer-company",
+        "Building internal tools to help our investment team and portfolio companies.",
+      image: "/src/assets/img/pear/pear_logo.png",
+      skills: ["React", "TypeScript", "Airtable", "Python"],
     },
     {
-      title: "Software Engineer",
-      subtitle: "Tech Corp",
-      date: "2018 - 2020",
+      title: "Software Engineering Intern",
+      subtitle: "Fieldguide (backed by YC, Bessemer, 8VC)",
+      date: "2024",
       description:
-        "Developed scalable solutions for enterprise clients. Optimized application performance and implemented new features.",
-      image: "/api/placeholder/300/300",
-      skills: ["Python", "Django", "PostgreSQL", "Docker"],
-      slug: "software-engineer-techcorp",
+        "Built full-stack tooling for Fieldguide's newest platform offering - financial audits.",
+      image: "/src/assets/img/fieldguide/fieldguide.png",
+      skills: ["GraphQL", "TypeScript", "React", "PostgreSQL"],
     },
     {
-      title: "Junior Developer",
-      subtitle: "Startup Inc",
-      date: "2016 - 2018",
+      title: "Head of Product and Engineering",
+      subtitle: "Dorm Room Fund",
+      date: "2023-2024",
       description:
-        "Built and maintained web applications. Collaborated with design team to implement user interfaces and improve user experience.",
-      image: "/api/placeholder/300/300",
-      skills: ["JavaScript", "React", "MongoDB", "Express"],
-      slug: "junior-developer-startup",
+        "Led all development and product efforts for DRF's investment team and portfolio.",
+      image: "/src/assets/img/dormroomfund/drf.png",
+      skills: ["TypeScript", "React", "Airtable", "Product Management"],
+    },
+    {
+      title: "Full-Stack Engineering Intern",
+      subtitle: "Zeal AI (Stealth)",
+      date: "2023",
+      description:
+        "Built invitations and chatbot for a activity-based relationship building social app",
+      image: "/src/assets/img/zeal/zeal.jpg",
+      skills: [
+        "TypeScript",
+        "HTML/CSS/JS",
+        "ReactNative",
+        "Chatbot Development",
+      ],
+      slug: "zeal",
+    },
+    {
+      title: "Machine Learning Engineering Intern",
+      subtitle: "Valar Labs (backed by a16z, Pear)",
+      date: "2022",
+      description:
+        "Built tumor segmentation, classification, and data ingestion pipelines for oncologists",
+      image: "/src/assets/img/valar/valarlabs.jpeg",
+      skills: ["PyTorch", "Tensorflow", "Labelbox"],
+      slug: "valar",
     },
   ];
 
   const projects: ProjectType[] = [
     {
-      title: "E-commerce Platform",
-      subtitle: "Full Stack Application",
+      title: "Receipts",
+      date: "2024",
       description:
-        "Built a modern e-commerce platform with real-time inventory management and payment processing.",
-      image: "/api/placeholder/300/300",
-      skills: ["React", "Firebase", "Stripe", "Tailwind CSS"],
-      demo: "https://demo.com",
-      github: "https://github.com",
-      slug: "ecommerce-platform",
+        "Mac app that generates statistical and AI-driven insights on your iMessage data. 100+ users.",
+      image: "/src/assets/img/receipts/receipts.png",
+      skills: ["Electron React", "TypeScript", "AWS", "LLM APIs", "MySQL"],
+      slug: "receipts",
     },
     {
-      title: "AI Image Generator",
-      subtitle: "Machine Learning Project",
+      title: "Modifying MinBERT",
+      date: "Stanford CS 224N • 2023",
       description:
-        "Developed an AI-powered image generation tool using deep learning models and modern web technologies.",
-      image: "/api/placeholder/300/300",
-      skills: ["Python", "TensorFlow", "FastAPI", "React"],
-      demo: "https://demo.com",
-      github: "https://github.com",
-      slug: "ai-image-generator",
+        "Researching ways to improve multi-task performance of MinBERT.",
+      image: "/src/assets/img/224n/224n.jpeg",
+      skills: ["PyTorch", "NLP", "Tranformers"],
+      slug: "224n",
     },
     {
-      title: "Social Media Dashboard",
-      subtitle: "Analytics Tool",
+      title: "Predicting Chronic Disease Exacerbation During Wildfires",
+      date: "Stanford Medical Center • 2020-2023",
       description:
-        "Created a comprehensive dashboard for social media analytics with real-time data visualization.",
-      image: "/api/placeholder/300/300",
-      skills: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
-      demo: "https://demo.com",
-      github: "https://github.com",
-      slug: "social-dashboard",
+        "Built interpretable AI models to aid clinicians in targeting preventative interventions for patients during wildfire season.",
+      image: "/src/assets/img/aqi/stanford_med.png",
+      skills: ["PyTorch", "NLP", "Attention Networks", "AWS", "Parquet"],
+      slug: "stanford-medical-center",
+    },
+    {
+      title: "Depth Aware Pixel2Mesh",
+      date: "Stanford CS 231N • 2022",
+      description:
+        "Improving object mesh reconstruction using depth-aware inputs.",
+      image: "/src/assets/img/231n/231n.jpeg",
+      skills: ["PyTorch", "Computer Vision", "Segmentation Models"],
+      slug: "231n",
+    },
+    {
+      title: "Nasal Cycle Detection",
+      date: "Stanford Wehab Lab • 2020-2023",
+      description:
+        "Built and programmed a digital health embedded system for palatal artery blood flow analysis.",
+      image: "/src/assets/img/wehab/wehab.png",
+      skills: ["Arduino", "Signal Analysis"],
+      slug: "wehab",
+    },
+    {
+      title: "ScrAPPS",
+      date: "2017-2019",
+      description:
+        "Built an app to connect grocery stores and restaurants with composting facilities. Hauled a bunch of pineapple peels and spoiled lettuce with my friend Michael.",
+      image: "/src/assets/img/scrapps/scrapps.png",
+      skills: ["Waste Management!", "Swift", "Firebase"],
+      slug: "scrapps",
     },
   ];
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === "resume") {
-      window.open("/path/to/resume.pdf", "_blank");
+      window.open("/src/assets/files/kabirjolly_resume_1-2-25.pdf", "_blank");
       return;
     }
 
@@ -184,18 +235,20 @@ const Portfolio = () => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <span className="text-xl font-semibold">Kabir Jolly</span>
-            <div className="flex items-center space-x-8">
+          <div className="flex items-center justify-between h-14">
+            <span className="text-lg font-semibold">Kabir Jolly</span>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-6">
               {["about", "experience", "projects", "resume"].map((section) => (
                 <>
                   {section === "resume" && (
-                    <div className="h-6 w-px bg-gray-200" />
+                    <div className="h-5 w-px bg-gray-200" />
                   )}
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`capitalize ${
+                    className={`capitalize text-sm ${
                       activeSection === section
                         ? "text-blue-600 font-medium"
                         : "text-gray-600 hover:text-blue-600"
@@ -206,144 +259,193 @@ const Portfolio = () => {
                 </>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-gray-600 hover:text-blue-600"
+              >
+                <ChevronDown
+                  className={`w-5 h-5 transition-transform duration-200 ${
+                    mobileMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu Dropdown */}
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-200 ${
+              mobileMenuOpen ? "max-h-48" : "max-h-0"
+            }`}
+          >
+            <div className="py-2 space-y-2">
+              {["about", "experience", "projects", "resume"].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    scrollToSection(section);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-2 py-1.5 capitalize text-sm ${
+                    activeSection === section
+                      ? "text-blue-600 font-medium"
+                      : "text-gray-600 hover:text-blue-600"
+                  }`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16 max-w-6xl mx-auto">
+      <main className="pt-14 max-w-6xl mx-auto">
         {/* About Section */}
         <section
           id="about"
           className="min-h-screen flex items-center justify-center relative overflow-hidden"
         >
-          <div className="w-full px-4 py-16 relative z-10">
-            <h1 className="text-4xl font-bold mb-6 text-gray-900">About Me</h1>
-            <p className="text-lg text-gray-700 mb-8">
-              Hey! I'm Kabir, a Master's student at Stanford studying Artificial
-              Intelligence and Human-Computer Interaction. I care deeply about
-              building tech that is cutting-edge and designing experiences that
-              are magical to use🪄.
-            </p>
-            <p className="text-lg text-gray-700 mb-8">
-              I love playing tennis and pickleball🎾, hiking around the Bay
-              Area🌁, and (sometimes regrettably) watching tons of movies that
-              come out in theaters🎥.
-            </p>
+          <div className="w-full max-w-5xl mx-auto px-4 py-12 relative z-10">
+            <div className="flex flex-col md:flex-row items-start gap-8 mb-8">
+              <img
+                src="/src/assets/img/prof_pic.jpg"
+                alt="Kabir Jolly"
+                className="w-48 h-48 rounded-full object-cover shadow-lg"
+              />
+              <div className="flex-1">
+                <h1 className="text-3xl font-bold mb-4 text-gray-900">
+                  About Me
+                </h1>
+                <p className="text-base text-gray-700 mb-6">
+                  Hey! I'm Kabir, a Master's student at Stanford studying
+                  Artificial Intelligence and Human-Computer Interaction. I care
+                  deeply about building tech that is cutting-edge and designing
+                  experiences that are magical to use🪄.
+                </p>
+                <p className="text-base text-gray-700 mb-6">
+                  I love playing tennis and pickleball🎾, hiking around the Bay
+                  Area🌁, and (sometimes regrettably) watching tons of movies
+                  that come out in theaters🎥.
+                </p>
 
-            <div
-              className={`transition-all duration-300 overflow-hidden ${
-                showMoreAbout
-                  ? "max-h-[500px] opacity-100"
-                  : "max-h-0 opacity-0"
-              }`}
-            >
-              <p className="text-lg text-gray-700 mb-8">
-                Alongside school, I'm currently building internal tools at{" "}
-                <a
-                  href="https://www.pear.vc"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {!showMoreAbout && (
+                  <button
+                    onClick={() => setShowMoreAbout(true)}
+                    className="bg-white shadow-md active:shadow-sm active:opacity-90 transition-all duration-200 px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-700 font-medium mb-6 flex items-center gap-1.5 text-sm"
+                  >
+                    More About Me
+                    <ChevronRight className="w-3 h-3" />
+                  </button>
+                )}
+
+                <div
+                  className={`transition-all duration-300 overflow-hidden ${
+                    showMoreAbout
+                      ? "max-h-[500px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
                 >
-                  Pear VC
-                </a>{" "}
-                and am a Course Assistant for Stanford's CS Senior Capstone
-                Project class. Previously, I was Head of Product and Engineering
-                at the{" "}
-                <a
-                  href="https://www.dormroomfund.com"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Dorm Room Fund
-                </a>
-                , built software at{" "}
-                <a
-                  href="https://www.fieldguide.io"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Fieldguide
-                </a>
-                ,{" "}
-                <a
-                  href="https://www.getzeal.co"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Zeal
-                </a>
-                , and{" "}
-                <a
-                  href="https://www.valarlabs.com"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Valar Labs
-                </a>
-                , and worked on interpretable AI research at the Stanford
-                Medical Center.
-              </p>
-              <p className="text-lg text-gray-700 mb-8">
-                I am also an{" "}
-                <a
-                  href="https://stvp.stanford.edu/alp/"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Accel Leadership Fellow
-                </a>
-                ,{" "}
-                <a
-                  href="https://neo.com/scholars"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Neo Scholar
-                </a>
-                ,{" "}
-                <a
-                  href="https://www.8vc.com/fellows/kabir-jolly"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  8VC Engineering Fellow
-                </a>
-                , and{" "}
-                <a
-                  href="https://www.pear.vc/garage"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Pear Garage Fellow
-                </a>
-                .
-              </p>
+                  <p className="text-base text-gray-700 mb-6">
+                    Alongside school, I'm currently building internal tools at{" "}
+                    <a
+                      href="https://www.pear.vc"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Pear VC
+                    </a>{" "}
+                    and am a Course Assistant for Stanford's CS Senior Capstone
+                    Project class. Previously, I was Head of Product and
+                    Engineering at the{" "}
+                    <a
+                      href="https://www.dormroomfund.com"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Dorm Room Fund
+                    </a>
+                    , built software at{" "}
+                    <a
+                      href="https://www.fieldguide.io"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Fieldguide
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://www.getzeal.co"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Zeal
+                    </a>
+                    , and{" "}
+                    <a
+                      href="https://www.valarlabs.com"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Valar Labs
+                    </a>
+                    , and worked on interpretable AI research at the Stanford
+                    Medical Center.
+                  </p>
+                  <p className="text-base text-gray-700 mb-6">
+                    I am also an{" "}
+                    <a
+                      href="https://stvp.stanford.edu/alp/"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Accel Leadership Fellow
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://neo.com/scholars"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Neo Scholar
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://www.8vc.com/fellows/kabir-jolly"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      8VC Engineering Fellow
+                    </a>
+                    , and{" "}
+                    <a
+                      href="https://www.pear.vc/garage"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Pear Garage Fellow
+                    </a>
+                    .
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <button
-              onClick={() => setShowMoreAbout(!showMoreAbout)}
-              className="text-blue-600 hover:text-blue-700 font-medium mb-8 flex items-center gap-2"
-            >
-              {showMoreAbout ? "Show Less" : "More About Me"}
-              <ChevronRight
-                className={`w-4 h-4 transform transition-transform ${
-                  showMoreAbout ? "-rotate-90" : ""
-                }`}
-              />
-            </button>
-
             <ChevronDown
-              className="w-8 h-8 text-gray-600/80 animate-bounce mx-auto cursor-pointer hover:text-gray-900"
+              className="w-6 h-6 text-gray-600/80 animate-bounce mx-auto cursor-pointer hover:text-gray-900"
               onClick={() => scrollToSection("experience")}
             />
           </div>
@@ -354,9 +456,9 @@ const Portfolio = () => {
           id="experience"
           className="min-h-screen flex items-center justify-center"
         >
-          <div className="w-full max-w-5xl mx-auto px-4 py-16">
-            <h2 className="text-3xl font-bold mb-8">Experience</h2>
-            <div className="flex flex-col space-y-6 w-full">
+          <div className="w-full max-w-5xl mx-auto px-4 py-12">
+            <h2 className="text-2xl font-bold mb-6">Experience</h2>
+            <div className="flex flex-col space-y-4 w-full">
               {experiences.map((experience, index) => (
                 <Card
                   key={index}
@@ -378,15 +480,15 @@ const Portfolio = () => {
           id="projects"
           className="min-h-screen flex items-center justify-center"
         >
-          <div className="w-full max-w-5xl mx-auto px-4 py-16">
-            <h2 className="text-3xl font-bold mb-8">Projects</h2>
-            <div className="flex flex-col space-y-6 w-full">
+          <div className="w-full max-w-5xl mx-auto px-4 py-12">
+            <h2 className="text-2xl font-bold mb-6">Projects</h2>
+            <div className="flex flex-col space-y-4 w-full">
               {projects.map((project, index) => (
                 <Card
                   key={index}
                   type="project"
                   title={project.title}
-                  subtitle={project.subtitle}
+                  subtitle={project.date}
                   description={project.description}
                   image={project.image}
                   skills={project.skills}
@@ -398,15 +500,15 @@ const Portfolio = () => {
         </section>
 
         {/* Footer */}
-        <footer className="bg-white py-8">
+        <footer className="bg-white py-6">
           <div className="max-w-4xl mx-auto px-4">
-            <div className="flex justify-center space-x-8">
+            <div className="flex justify-center space-x-6">
               <a
                 href="mailto:kjolly@stanford.edu"
                 className="text-gray-600 hover:text-blue-600"
                 aria-label="Email"
               >
-                <Mail size={24} />
+                <Mail size={20} />
               </a>
               <a
                 href="https://github.com/kabir-jolly"
@@ -415,7 +517,7 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github size={24} />
+                <Github size={20} />
               </a>
               <a
                 href="https://linkedin.com/in/kabirjolly"
@@ -424,7 +526,7 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin size={24} />
+                <Linkedin size={20} />
               </a>
               <a
                 href="https://twitter.com/kabirjolly_"
@@ -433,7 +535,7 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter size={24} />
+                <Twitter size={20} />
               </a>
               <a
                 href="https://instagram.com/kabirjolly"
@@ -442,7 +544,7 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Instagram size={24} />
+                <Instagram size={20} />
               </a>
             </div>
           </div>

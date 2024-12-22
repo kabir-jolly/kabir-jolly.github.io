@@ -5,11 +5,11 @@ export interface SkillTagProps {
 export interface CardProps {
   type: "experience" | "project";
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
   image: string;
   skills: string[];
-  slug: string;
+  slug?: string;
 }
 
 export interface ExperienceType {
@@ -19,17 +19,15 @@ export interface ExperienceType {
   description: string;
   image: string;
   skills: string[];
-  slug: string;
+  slug?: string;
 }
 
 export interface ProjectType {
   title: string;
-  subtitle: string;
+  date: string;
   description: string;
   image: string;
   skills: string[];
-  demo?: string;
-  github?: string;
   slug: string;
 }
 
