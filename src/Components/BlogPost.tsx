@@ -11,18 +11,12 @@ const BlogPost = () => {
   }>();
   const navigate = useNavigate();
 
-  // Store scroll position before leaving the page
   useEffect(() => {
-    const scrollPosition = sessionStorage.getItem("scrollPosition");
-    if (scrollPosition) {
-      window.scrollTo(0, parseInt(scrollPosition));
-      sessionStorage.removeItem("scrollPosition");
-    }
+    // Scroll to top when blog post component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   const handleBack = () => {
-    // Store current scroll position for the main page
-    // sessionStorage.setItem("scrollPosition", window.scrollY.toString());
     navigate("/");
   };
 
