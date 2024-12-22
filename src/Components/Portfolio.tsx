@@ -402,16 +402,7 @@ const Portfolio = () => {
                     Medical Center.
                   </p>
                   <p className="text-base text-gray-700 mb-6">
-                    I am also an{" "}
-                    <a
-                      href="https://stvp.stanford.edu/alp/"
-                      className="text-blue-600 hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Accel Leadership Fellow
-                    </a>
-                    ,{" "}
+                    I am also a{" "}
                     <a
                       href="https://neo.com/scholars"
                       className="text-blue-600 hover:underline"
@@ -419,6 +410,15 @@ const Portfolio = () => {
                       rel="noopener noreferrer"
                     >
                       Neo Scholar
+                    </a>{" "}
+                    and a Fellow at{" "}
+                    <a
+                      href="https://stvp.stanford.edu/alp/"
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Accel
                     </a>
                     ,{" "}
                     <a
@@ -427,7 +427,7 @@ const Portfolio = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      8VC Engineering Fellow
+                      8VC
                     </a>
                     , and{" "}
                     <a
@@ -436,7 +436,7 @@ const Portfolio = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Pear Garage Fellow
+                      Pear
                     </a>
                     .
                   </p>
