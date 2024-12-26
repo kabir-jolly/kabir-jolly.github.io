@@ -204,7 +204,15 @@ const Portfolio = () => {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const headerOffset = 10; // Adjust this value as needed (accounts for fixed header + padding)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
       setActiveSection(sectionId);
     }
   };
@@ -231,7 +239,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen light">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
         <div className="max-w-5xl mx-auto px-4">
