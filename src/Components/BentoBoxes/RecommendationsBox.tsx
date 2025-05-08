@@ -1,6 +1,6 @@
 import React from "react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
-import { Book, Flower, Music, Droplets } from "lucide-react";
+import { Book, Flower, Music, Droplets, Sparkles } from "lucide-react";
 
 interface RecommendationsBoxProps {
   borderColorName?: ColorName;
@@ -64,9 +64,12 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
 
       {/* Random Recommendations */}
       <div>
-        <h2 className="text-lg font-bold mb-3" style={{ color: colors.navy }}>
-          Random Recs
-        </h2>
+        <div className="flex items-center gap-2 mb-3">
+          <Sparkles size={18} style={{ color: colors.navy }} />
+          <h2 className="text-lg font-bold" style={{ color: colors.navy }}>
+            Random Recs
+          </h2>
+        </div>
         <ul className="space-y-2">
           <li className="flex items-center gap-2">
             <Droplets size={16} style={{ color: colors.slate }} />

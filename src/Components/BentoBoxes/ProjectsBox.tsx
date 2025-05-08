@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
 import SkillTag from "./SkillTag";
 import { ProjectType } from "../../types";

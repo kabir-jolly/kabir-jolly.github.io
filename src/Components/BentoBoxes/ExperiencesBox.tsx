@@ -96,7 +96,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
             </div>
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-1">
-                <div className="flex flex-row justify-between items-center w-full">
+                <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center w-full">
                   <h3
                     className="text-base font-semibold"
                     style={{ color: colors.navy }}
@@ -104,8 +104,8 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     {experience.title}
                   </h3>
                   <span
-                    className="text-base font-medium"
-                    style={{ color: colors.slate }}
+                    className="text-base font-medium px-3 py-1 rounded-lg text-white mt-1 md:mt-0"
+                    style={{ backgroundColor: "#94b4c1" }}
                   >
                     {experience.company}
                   </span>

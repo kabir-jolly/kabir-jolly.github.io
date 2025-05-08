@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Mail,
-  Github,
-  Linkedin,
-  Twitter,
-  Instagram,
-  FileText,
-} from "lucide-react";
+import { Github, Linkedin, Twitter, FileText } from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
 
 interface ProfileBoxProps {
