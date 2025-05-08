@@ -20,6 +20,7 @@ export interface ExperienceType {
   image: string;
   skills: string[];
   slug?: string;
+  company: string;
 }
 
 export interface ProjectType {

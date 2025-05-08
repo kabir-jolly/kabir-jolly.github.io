@@ -31,7 +31,7 @@ const BlogPost = () => {
   if (!content) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold">Content not found</h1>
+        <h1 className="text-3xl font-bold">Coming soon!</h1>
       </div>
     );
   }
