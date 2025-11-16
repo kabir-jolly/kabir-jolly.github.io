@@ -30,8 +30,12 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               >
                 Kabir Jolly
               </h1>
+              <p className="text-md" style={{ color: colors.navy }}>
+                Forward Deployed Engineer at Palantir
+              </p>
               <p className="text-sm" style={{ color: colors.navy }}>
-                Master's student at Stanford studying AI and HCI
+                M.S. Management Science and Engineering | B.S Computer Science,
+                Stanford University
               </p>
             </div>
             <div className="flex space-x-3">
@@ -81,10 +85,12 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
 
         <div className="flex flex-col gap-3">
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            I'm currently thinking about how best to design interfaces for AI.
+            I'm currently building applied software and decision support systems
+            for hospitals at Palantir.
           </p>
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            Alongside school, I'm currently building internal tools at{" "}
+            Before joining Palantir, outside of coursework at Stanford I built
+            internal tools at{" "}
             <a
               href="https://www.pear.vc"
               className="underline hover:no-underline"
@@ -94,7 +100,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             >
               Pear VC
             </a>{" "}
-            and am a Course Assistant for Stanford's{" "}
+            was a Course Assistant for Stanford's{" "}
             <a
               href="https://web.stanford.edu/class/cs194/"
               className="underline hover:no-underline"
@@ -104,7 +110,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             >
               CS Senior Capstone Project
             </a>{" "}
-            class. Previously, I was Head of Product and Engineering at the{" "}
+            class, was the Head of Product and Engineering at{" "}
             <a
               href="https://www.dormroomfund.com"
               className="underline hover:no-underline"

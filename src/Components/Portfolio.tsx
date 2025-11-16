@@ -12,9 +12,18 @@ import {
 const Portfolio = () => {
   const experiences: ExperienceType[] = [
     {
+      title: "Forward Deployed Engineer",
+      subtitle: "Palantir",
+      date: "8/25 - Present",
+      description: "Building at Palantir for hospitals.",
+      image: "/assets/img/palantir/palantir.jpg",
+      skills: ["Typescript", "Pyspark", "Foundry"],
+      company: "Palantir",
+    },
+    {
       title: "Software Engineering Fellow",
       subtitle: "Pear VC",
-      date: "11/24 - Present",
+      date: "11/24 - 6/25",
       description:
         "Building internal tools to help our investment team and portfolio companies.",
       image: "/assets/img/pear/pear_logo.png",

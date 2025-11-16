@@ -18,13 +18,14 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Format time to HH:MM:SS
+  // Format time to HH:MM:SS in NYC timezone
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString("en-US", {
       hour12: false,
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
+      timeZone: "America/New_York",
     });
   };
 
@@ -48,7 +49,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
             {formatTime(currentTime)}
           </p>
           <p className="text-sm" style={{ color: colors.periwinkle }}>
-            📍 San Francisco, CA
+            📍 New York, NY
           </p>
         </div>
       </div>
