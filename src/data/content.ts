@@ -138,24 +138,3 @@ export const projects: ProjectType[] = [
     slug: "scrapps",
   },
 ];
-
-// Helper to extract year from date string for sorting
-function extractYear(dateStr: string): number {
-  // Match patterns like "2025", "2024", "2023-2024", "8/25 - Present", etc.
-  const matches = dateStr.match(/\b(20\d{2})\b/g);
-  if (matches && matches.length > 0) {
-    // Return the most recent year mentioned
-    return Math.max(...matches.map(Number));
-  }
-  // Handle "8/25" format (month/year shorthand)
-  const shortMatch = dateStr.match(/(\d{1,2})\/(\d{2})/);
-  if (shortMatch) {
-    return 2000 + parseInt(shortMatch[2]);
-  }
-  // If "Present" is mentioned, return current year
-  if (dateStr.toLowerCase().includes("present")) {
-    return new Date().getFullYear();
-  }
-  return 0;
-}
-
