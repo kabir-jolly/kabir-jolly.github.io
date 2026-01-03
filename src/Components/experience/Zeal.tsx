@@ -1,17 +1,6 @@
 const Zeal = () => {
   return (
     <article className="prose prose-lg max-w-none">
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">Full-Stack Developer at Zeal</h1>
-      <div className="h-px bg-gray-200 w-full mb-8"></div>
-
-      {/* Introduction */}
-      <p className="text-gray-600 mb-8">
-        Summer 2023 • Full-stack development for consumer social startup
-      </p>
-
-      {/* Role Overview */}
-      <h2 className="text-2xl font-semibold mb-4">Role Overview</h2>
       <p className="mb-6">
         At{" "}
         <a

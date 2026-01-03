@@ -57,7 +57,7 @@ const Globe = () => {
       glowColor: [1, 1, 1] as [number, number, number],
       markers: [
         {
-          location: [37.7749, -122.4194], // San Francisco coordinates
+          location: [40.7128, -74.006], // New York City coordinates
           size: 0.1,
         },
       ],

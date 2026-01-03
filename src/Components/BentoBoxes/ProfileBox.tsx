@@ -33,10 +33,6 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               <p className="text-md" style={{ color: colors.navy }}>
                 Forward Deployed Engineer at Palantir
               </p>
-              <p className="text-sm" style={{ color: colors.navy }}>
-                M.S. Management Science and Engineering | B.S Computer Science,
-                Stanford University
-              </p>
             </div>
             <div className="flex space-x-3">
               <a
@@ -85,12 +81,13 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
 
         <div className="flex flex-col gap-3">
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            I'm currently building applied software and decision support systems
+            I'm currently building agentic software and decision support systems
             for hospitals at Palantir.
           </p>
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            Before joining Palantir, outside of coursework at Stanford I built
-            internal tools at{" "}
+            Before joining Palantir, I received my B.S. in Computer Science and
+            M.S. in Management Science and Engineering from Stanford University.
+            Outside of coursework, I built internal tools at{" "}
             <a
               href="https://www.pear.vc"
               className="underline hover:no-underline"
@@ -98,7 +95,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pear VC
+              Pear VC,
             </a>{" "}
             was a Course Assistant for Stanford's{" "}
             <a

@@ -1,16 +1,6 @@
 const StanfordMedicalCenter = () => {
   return (
     <article className="prose prose-lg max-w-none">
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">Stanford Medical Center</h1>
-      <div className="h-px bg-gray-200 w-full mb-8"></div>
-
-      {/* Introduction */}
-      <p className="text-gray-600 mb-8">
-        Deep learning for hospital readmission prediction during wildfires
-      </p>
-
-      {/* Overview */}
       <p className="mb-6">
         My most involved long-term project (worked on it for 2+ years) was deep
         learning research I did at the Stanford Medical Center. This was a group

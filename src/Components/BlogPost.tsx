@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { experienceContent, projectContent } from "./blog-content";
 import { ContentRegistryType } from "../types";
+import { colors } from "./BentoBoxes/BentoBox";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
@@ -17,7 +18,8 @@ const BlogPost = () => {
   }, []);
 
   const handleBack = () => {
-    navigate("/");
+    // Use browser history to go back to where you came from
+    navigate(-1);
   };
 
   // Get the appropriate content based on type and slug
@@ -40,16 +42,28 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Fixed position back button */}
-      <button
-        onClick={handleBack}
-        className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 text-gray-600 bg-white rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-200"
-      >
-        <ChevronLeft size={20} />
-        <span>Back</span>
-      </button>
+      {/* Back button - inline, not fixed */}
+      <div className="max-w-4xl mx-auto px-4 pt-6">
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-70"
+          style={{ color: colors.slate }}
+        >
+          <ChevronLeft size={18} />
+          <span>Back</span>
+        </button>
+      </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        {/* Title and Date from registry */}
+        <h1 className="text-4xl font-bold mb-2" style={{ color: colors.navy }}>
+          {content.postTitle}
+        </h1>
+        <p className="text-sm mb-6" style={{ color: colors.slate }}>
+          {content.date}
+        </p>
+        <div className="h-px bg-gray-200 w-full mb-8"></div>
+        
         <ContentComponent />
       </div>
     </div>

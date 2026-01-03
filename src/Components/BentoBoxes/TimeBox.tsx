@@ -31,7 +31,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
 
   return (
     <BentoBox
-      className="relative overflow-hidden"
+      className="relative overflow-hidden h-full"
       borderColorName={borderColorName}
     >
       <h2 className="text-lg font-bold mb-0" style={{ color: colors.navy }}>

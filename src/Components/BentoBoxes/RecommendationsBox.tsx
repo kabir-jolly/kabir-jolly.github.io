@@ -1,6 +1,6 @@
 import React from "react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
-import { Book, Flower, Music, Droplets, Sparkles } from "lucide-react";
+import { Book, Flower, Music, Droplets, Sparkles, Bell } from "lucide-react";
 
 interface RecommendationsBoxProps {
   borderColorName?: ColorName;
@@ -88,6 +88,18 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
             <span className="text-sm" style={{ color: colors.slate }}>
               AI-generated Spotify playlists
             </span>
+          </li>
+          <li className="flex items-center gap-2">
+            <Bell size={16} style={{ color: colors.slate }} />
+            <a
+              href="https://blog.superhuman.com/inbox-zero-method/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm"
+              style={{ color: colors.slate, textDecoration: "underline" }}
+            >
+              Inbox Zero
+            </a>
           </li>
         </ul>
       </div>

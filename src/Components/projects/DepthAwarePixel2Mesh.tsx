@@ -1,13 +1,6 @@
 const DepthAwarePixel2Mesh = () => {
   return (
     <article className="prose prose-lg max-w-none">
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">Depth-Aware Pixel2Mesh</h1>
-      <div className="h-px bg-gray-200 w-full mb-8"></div>
-
-      {/* Introduction */}
-      <p className="text-gray-600 mb-8">CS 231N Final Project</p>
-
       <p className="mb-6">
         <a
           href="http://cs231n.stanford.edu/"

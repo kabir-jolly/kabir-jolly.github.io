@@ -29,11 +29,14 @@ export interface ProjectType {
   description: string;
   image: string;
   skills: string[];
-  slug: string;
+  slug?: string;
+  externalUrl?: string;
 }
 
 export type ContentRegistryType = {
   [key: string]: {
     component: React.ComponentType;
+    postTitle: string;
+    date: string;
   };
 };

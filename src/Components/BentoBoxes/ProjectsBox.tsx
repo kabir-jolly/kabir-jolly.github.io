@@ -9,25 +9,13 @@ interface ProjectsBoxProps {
   borderColorName?: ColorName;
 }
 
-interface TooltipState {
-  visible: boolean;
-  x: number;
-  y: number;
-  text: string;
-}
-
 const ProjectsBox: React.FC<ProjectsBoxProps> = ({
   projects,
   borderColorName,
 }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef<number | null>(null);
-  const [tooltip, setTooltip] = useState<TooltipState>({
-    visible: false,
-    x: 0,
-    y: 0,
-    text: "Click for More!",
-  });
 
   const AUTO_CYCLE_DELAY = 5000;
 
@@ -66,71 +54,57 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
     resetAutoCycle();
   }, [currentProjectIndex]);
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (projects[currentProjectIndex]?.slug) {
-      setTooltip({
-        visible: true,
-        x: event.clientX + 10, // Offset slightly from cursor
-        y: event.clientY + 10,
-        text: "Click for More!",
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setTooltip((prev) => ({ ...prev, visible: false }));
-  };
+  const currentProject = projects[currentProjectIndex];
+  const isClickable = !!(currentProject?.slug || currentProject?.externalUrl);
 
   return (
     <BentoBox
-      className="md:col-span-1 relative h-[300px]"
+      className="md:col-span-1 relative h-[360px]"
       id="projects"
       borderColorName={borderColorName}
     >
-      {tooltip.visible && (
-        <div
-          style={{
-            position: "fixed",
-            top: tooltip.y,
-            left: tooltip.x,
-            backgroundColor: colors.navy,
-            color: "white",
-            padding: "4px 8px",
-            borderRadius: "4px",
-            fontSize: "12px",
-            zIndex: 1000,
-            pointerEvents: "none",
-          }}
-        >
-          {tooltip.text}
-        </div>
-      )}
-      <h2 className="text-xl font-bold mb-2" style={{ color: colors.navy }}>
-        Projects
-      </h2>
+      {/* Header row with "View More" badge */}
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="text-xl font-bold" style={{ color: colors.navy }}>
+          Projects
+        </h2>
+        {/* "View More" badge - appears on hover for clickable items */}
+        {isClickable && isHovered && (
+          <div
+            className="text-xs font-medium px-2 py-1 rounded-md text-white"
+            style={{ backgroundColor: colors.navy }}
+          >
+            View More →
+          </div>
+        )}
+      </div>
 
       {/* Current Project Display */}
       <div
-        className="cursor-pointer h-[180px] flex flex-col"
+        className={`h-[240px] flex flex-col ${
+          isClickable ? "cursor-pointer" : ""
+        }`}
         onClick={() => {
-          if (projects[currentProjectIndex].slug) {
-            window.location.href = `/#/project/${projects[currentProjectIndex].slug}`;
+          if (currentProject.externalUrl) {
+            window.open(
+              currentProject.externalUrl,
+              "_blank",
+              "noopener,noreferrer"
+            );
+          } else if (currentProject.slug) {
+            window.location.href = `/#/project/${currentProject.slug}`;
           }
         }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => isClickable && setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Top Row: Logo and Title/Date Column */}
         <div className="flex flex-row gap-3 items-start mb-2">
-          {" "}
-          {/* Use items-start, add margin bottom */}
           {/* Logo */}
           <div className="bg-white p-2 rounded-lg shadow-sm w-16 h-16 flex items-center justify-center flex-shrink-0">
-            {" "}
-            {/* Adjusted size again */}
             <img
-              src={projects[currentProjectIndex].image}
-              alt={projects[currentProjectIndex].title}
+              src={currentProject.image}
+              alt={currentProject.title}
               className="max-w-full max-h-full object-contain"
             />
           </div>
@@ -140,22 +114,22 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
               className="text-base font-semibold break-words"
               style={{ color: colors.navy }}
             >
-              {projects[currentProjectIndex].title}
+              {currentProject.title}
             </h3>
             <p className="text-xs" style={{ color: colors.slate }}>
-              {projects[currentProjectIndex].date}
+              {currentProject.date}
             </p>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-xs text-gray-600 mb-2 flex-grow">
-          {projects[currentProjectIndex].description}
+        <p className="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+          {currentProject.description}
         </p>
 
         {/* Skills */}
         <div className="flex flex-wrap gap-1">
-          {projects[currentProjectIndex].skills.map((skill, index_skill) => (
+          {currentProject.skills.map((skill, index_skill) => (
             <SkillTag key={index_skill} skill={skill} />
           ))}
         </div>

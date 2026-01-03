@@ -1,13 +1,6 @@
 const ModifyingMinBERT = () => {
   return (
     <article className="prose prose-lg max-w-none">
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">Modifying MinBERT</h1>
-      <div className="h-px bg-gray-200 w-full mb-8"></div>
-
-      {/* Introduction */}
-      <p className="text-gray-600 mb-8">CS 224N Final Project</p>
-
       <p className="mb-6">
         <a
           href="https://web.stanford.edu/class/cs224n/"

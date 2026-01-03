@@ -1,16 +1,6 @@
 const Wehab = () => {
   return (
     <article className="prose prose-lg max-w-none">
-      {/* Title */}
-      <h1 className="text-4xl font-bold mb-4">Stanford Wehab Lab</h1>
-      <div className="h-px bg-gray-200 w-full mb-8"></div>
-
-      {/* Introduction */}
-      <p className="text-gray-600 mb-8">
-        Building and evaluating a device for nasal cycle detection
-      </p>
-
-      {/* Overview */}
       <p className="mb-6">
         I spent the summer after my freshman year working at the Stanford
         Psychophysiology Lab (
