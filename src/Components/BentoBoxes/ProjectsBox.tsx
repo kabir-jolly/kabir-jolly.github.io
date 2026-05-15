@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
 import SkillTag from "./SkillTag";
 import { ProjectType } from "../../types";
@@ -9,173 +14,235 @@ interface ProjectsBoxProps {
   borderColorName?: ColorName;
 }
 
+const AUTO_CYCLE_DELAY = 5000;
+const TRANSITION_MS = 220;
+
 const ProjectsBox: React.FC<ProjectsBoxProps> = ({
   projects,
   borderColorName,
 }) => {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [transitioning, setTransitioning] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef<number | null>(null);
 
-  const AUTO_CYCLE_DELAY = 5000;
-
-  const goToNextProject = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  const goTo = (next: number, dir: "left" | "right") => {
+    if (next === index || transitioning) return;
+    setDirection(dir);
+    setTransitioning(true);
+    window.setTimeout(() => {
+      setIndex(next);
+      setDisplayIndex(next);
+      setTransitioning(false);
+    }, TRANSITION_MS);
   };
 
-  const goToPrevProject = () => {
-    setCurrentProjectIndex(
-      (prev) => (prev - 1 + projects.length) % projects.length
-    );
-  };
-
-  const selectProject = (index: number) => {
-    setCurrentProjectIndex(index);
-  };
-
-  const resetAutoCycle = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    intervalRef.current = window.setInterval(goToNextProject, AUTO_CYCLE_DELAY);
-  };
+  const goNext = () => goTo((index + 1) % projects.length, "right");
+  const goPrev = () =>
+    goTo((index - 1 + projects.length) % projects.length, "left");
+  const selectProject = (i: number) =>
+    goTo(i, i > index ? "right" : "left");
 
   useEffect(() => {
-    resetAutoCycle();
-
+    if (isHovered) return;
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = window.setInterval(() => {
+      setDirection("right");
+      setTransitioning(true);
+      window.setTimeout(() => {
+        setIndex((prev) => {
+          const next = (prev + 1) % projects.length;
+          setDisplayIndex(next);
+          return next;
+        });
+        setTransitioning(false);
+      }, TRANSITION_MS);
+    }, AUTO_CYCLE_DELAY);
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [projects]);
+  }, [isHovered, projects.length]);
 
-  useEffect(() => {
-    resetAutoCycle();
-  }, [currentProjectIndex]);
+  const project = projects[displayIndex];
+  const isExternal = !!project?.externalUrl;
+  const isClickable = !!(project?.slug || project?.externalUrl);
 
-  const currentProject = projects[currentProjectIndex];
-  const isClickable = !!(currentProject?.slug || currentProject?.externalUrl);
+  const handleClick = () => {
+    if (!project) return;
+    if (project.externalUrl) {
+      window.open(project.externalUrl, "_blank", "noopener,noreferrer");
+    } else if (project.slug) {
+      window.location.href = `/#/project/${project.slug}`;
+    }
+  };
+
+  const slideTransform = transitioning
+    ? direction === "right"
+      ? "translateX(-8px)"
+      : "translateX(8px)"
+    : "translateX(0)";
 
   return (
     <BentoBox
-      className="md:col-span-1 relative h-[360px]"
+      className="relative h-full flex flex-col"
       id="projects"
       borderColorName={borderColorName}
     >
-      {/* Header row with "View More" badge */}
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex justify-between items-baseline mb-3">
         <h2 className="text-xl font-bold" style={{ color: colors.navy }}>
           Projects
         </h2>
-        {/* "View More" badge - appears on hover for clickable items */}
-        {isClickable && isHovered && (
-          <div
-            className="text-xs font-medium px-2 py-1 rounded-md text-white"
-            style={{ backgroundColor: colors.navy }}
-          >
-            View More →
-          </div>
-        )}
+        <span className="text-xs tabular-nums" style={{ color: colors.slate }}>
+          {String(displayIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+        </span>
       </div>
 
-      {/* Current Project Display */}
       <div
-        className={`h-[240px] flex flex-col ${
+        className={`flex-1 flex flex-col justify-center group min-h-0 ${
           isClickable ? "cursor-pointer" : ""
         }`}
-        onClick={() => {
-          if (currentProject.externalUrl) {
-            window.open(
-              currentProject.externalUrl,
-              "_blank",
-              "noopener,noreferrer"
-            );
-          } else if (currentProject.slug) {
-            window.location.href = `/#/project/${currentProject.slug}`;
-          }
-        }}
-        onMouseEnter={() => isClickable && setIsHovered(true)}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={{
+          opacity: transitioning ? 0 : 1,
+          transform: slideTransform,
+          transition: `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`,
+        }}
       >
-        {/* Top Row: Logo and Title/Date Column */}
-        <div className="flex flex-row gap-3 items-start mb-2">
-          {/* Logo */}
-          <div className="bg-white p-2 rounded-lg shadow-sm w-16 h-16 flex items-center justify-center flex-shrink-0">
+        <div className="flex flex-col items-center text-center gap-2 mb-3">
+          <div
+            className="bg-white p-2.5 rounded-xl shadow-sm w-20 h-20 flex items-center justify-center flex-shrink-0 border"
+            style={{ borderColor: colors.lavender }}
+          >
             <img
-              src={currentProject.image}
-              alt={currentProject.title}
+              src={project.image}
+              alt={project.title}
               className="max-w-full max-h-full object-contain"
             />
           </div>
-          {/* Title and Date Column */}
-          <div className="flex-1 min-w-0 pt-1">
-            <h3
-              className="text-base font-semibold break-words"
-              style={{ color: colors.navy }}
-            >
-              {currentProject.title}
-            </h3>
+          <div className="flex flex-col items-center gap-0.5">
+            <div className="flex items-center gap-1.5">
+              <h3
+                className="text-base font-semibold leading-tight"
+                style={{ color: colors.navy }}
+              >
+                {project.title}
+              </h3>
+              {isClickable && (
+                <span
+                  className="inline-flex items-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  style={{ color: colors.periwinkle }}
+                  aria-hidden
+                >
+                  {isExternal ? (
+                    <ArrowUpRight size={14} />
+                  ) : (
+                    <ArrowRight size={14} />
+                  )}
+                </span>
+              )}
+            </div>
             <p className="text-xs" style={{ color: colors.slate }}>
-              {currentProject.date}
+              {project.date}
             </p>
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
-          {currentProject.description}
+        <p
+          className="text-xs sm:text-sm text-center mb-3 line-clamp-3"
+          style={{ color: colors.slate }}
+        >
+          {project.description}
         </p>
 
-        {/* Skills */}
-        <div className="flex flex-wrap gap-1">
-          {currentProject.skills.map((skill, index_skill) => (
-            <SkillTag key={index_skill} skill={skill} />
+        <div className="flex flex-wrap gap-1 justify-center">
+          {project.skills.map((skill, i) => (
+            <SkillTag key={i} skill={skill} />
           ))}
         </div>
       </div>
 
-      {/* Navigation: Arrows and Dots */}
-      <div className="flex justify-center items-center mt-3 gap-3 pb-4">
+      {/* Navigation: arrows + dot indicators */}
+      <div className="flex items-center justify-center gap-3 mt-3">
         <button
-          onClick={() => {
-            goToPrevProject();
+          onClick={(e) => {
+            e.stopPropagation();
+            goPrev();
           }}
-          className="text-sm flex items-center justify-center transition-all p-0.5"
+          className="carousel-nav-btn"
+          aria-label="Previous project"
+          style={{
+            padding: 4,
+            margin: 0,
+            border: "none",
+            background: "transparent",
+            color: colors.navy,
+            opacity: 0.55,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "opacity 150ms ease",
+          }}
         >
-          <ChevronLeft size={18} style={{ color: colors.navy }} />
+          <ChevronLeft size={16} />
         </button>
 
-        <div className="flex items-center gap-1">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                selectProject(index);
-              }}
-              className={`rounded-full border-2 transition-all p-0 ${
-                index === currentProjectIndex ? "w-2 h-2" : "w-2 h-2"
-              }`}
-              style={{
-                backgroundColor:
-                  index === currentProjectIndex ? colors.navy : "transparent",
-                borderColor:
-                  index === currentProjectIndex
-                    ? colors.navy
-                    : colors.periwinkle,
-              }}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
+        <div className="flex items-center gap-1.5">
+          {projects.map((_, i) => {
+            const isActive = i === index;
+            return (
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  selectProject(i);
+                }}
+                aria-label={`Go to project ${i + 1}`}
+                aria-current={isActive ? "true" : undefined}
+                style={{
+                  width: isActive ? 18 : 6,
+                  height: 6,
+                  padding: 0,
+                  margin: 0,
+                  border: "none",
+                  borderRadius: 9999,
+                  backgroundColor: isActive ? colors.navy : colors.lavender,
+                  cursor: "pointer",
+                  transition: "width 200ms ease, background-color 200ms ease",
+                  display: "inline-block",
+                  flexShrink: 0,
+                }}
+              />
+            );
+          })}
         </div>
 
         <button
-          onClick={() => {
-            goToNextProject();
+          onClick={(e) => {
+            e.stopPropagation();
+            goNext();
           }}
-          className="text-sm flex items-center justify-center transition-all p-0.5"
+          className="carousel-nav-btn"
+          aria-label="Next project"
+          style={{
+            padding: 4,
+            margin: 0,
+            border: "none",
+            background: "transparent",
+            color: colors.navy,
+            opacity: 0.55,
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "opacity 150ms ease",
+          }}
         >
-          <ChevronRight size={18} style={{ color: colors.navy }} />
+          <ChevronRight size={16} />
         </button>
       </div>
     </BentoBox>
