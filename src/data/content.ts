@@ -2,9 +2,17 @@ import { ExperienceType, ProjectType } from "../types";
 
 export const experiences: ExperienceType[] = [
   {
+    title: "Member of Technical Staff",
+    subtitle: "OpenEvidence",
+    date: "4/2026 – Now",
+    description: "Building the world's leading medical information platform.",
+    image: "/assets/img/openevidence/openevidence.png",
+    company: "OpenEvidence",
+  },
+  {
     title: "Forward Deployed Engineer",
     subtitle: "Palantir",
-    date: "8/2025 – Now",
+    date: "8/2025 – 4/2026",
     description: "Building at Palantir for hospitals.",
     image: "/assets/img/palantir/palantir.jpg",
     skills: ["Typescript", "Pyspark", "Foundry"],

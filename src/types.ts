@@ -18,7 +18,7 @@ export interface ExperienceType {
   date: string;
   description: string;
   image: string;
-  skills: string[];
+  skills?: string[];
   slug?: string;
   company: string;
 }

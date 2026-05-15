@@ -129,11 +129,13 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                   </p>
 
                   {/* Skills */}
-                  <div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
-                    {experience.skills.map((skill, skillIndex) => (
-                      <SkillTag key={skillIndex} skill={skill} />
-                    ))}
-                  </div>
+                  {experience.skills && experience.skills.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
+                      {experience.skills.map((skill, skillIndex) => (
+                        <SkillTag key={skillIndex} skill={skill} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

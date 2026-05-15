@@ -31,7 +31,16 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 Kabir Jolly
               </h1>
               <p className="text-md" style={{ color: colors.navy }}>
-                Forward Deployed Engineer at Palantir
+                Member of Technical Staff at{" "}
+                <a
+                  href="https://www.openevidence.com"
+                  className="underline hover:no-underline"
+                  style={{ color: colors.navy, fontWeight: 600 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  OpenEvidence
+                </a>
               </p>
             </div>
             <div className="flex space-x-3">
@@ -81,13 +90,15 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
 
         <div className="flex flex-col gap-3">
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            I'm currently building agentic software and decision support systems
-            for hospitals at Palantir.
+            At OpenEvidence, we are working on building the world's leading
+            medical information platform.
           </p>
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            Before joining Palantir, I received my B.S. in Computer Science and
-            M.S. in Management Science and Engineering from Stanford University.
-            Outside of coursework, I built internal tools at{" "}
+            I was formerly on the healthcare team at Palantir, where I built
+            agentic software and decision support systems for hospitals. Before
+            that, I received my B.S. in Computer Science and M.S. in Management
+            Science and Engineering from Stanford University. Outside of
+            coursework, I built internal tools at{" "}
             <a
               href="https://www.pear.vc"
               className="underline hover:no-underline"

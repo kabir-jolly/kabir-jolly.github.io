@@ -25,7 +25,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-      timeZone: "America/New_York",
+      timeZone: "America/Los_Angeles",
     });
   };
 
@@ -49,7 +49,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
             {formatTime(currentTime)}
           </p>
           <p className="text-sm" style={{ color: colors.periwinkle }}>
-            📍 New York, NY
+            📍 San Francisco, CA
           </p>
         </div>
       </div>
