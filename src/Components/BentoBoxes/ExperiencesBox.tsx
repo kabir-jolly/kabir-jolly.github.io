@@ -3,6 +3,9 @@ import BentoBox, { colors, ColorName } from "./BentoBox";
 import SkillTag from "./SkillTag";
 import { ExperienceType } from "../../types";
 
+// Toggle to re-enable skill chips under each experience entry.
+const SHOW_EXPERIENCE_SKILLS = false;
+
 interface ExperiencesBoxProps {
   experiences: ExperienceType[];
   borderColorName?: ColorName;
@@ -73,13 +76,11 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     window.location.href = `/#/experience/${experience.slug}`;
                   }
                 }}
-                onMouseEnter={() => isClickable && setHoveredIndex(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className={`relative p-2 sm:p-3 rounded-lg transition-all ${
-                    isClickable ? "hover:bg-gray-50 hover:shadow-sm" : ""
-                  }`}
+                  className="relative p-2 sm:p-3 rounded-lg transition-all hover:bg-gray-50 hover:shadow-sm"
                   style={{ marginTop: "-8px" }}
                 >
                   {/* "View" badge - appears on hover for clickable items */}
@@ -107,7 +108,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     <div className="flex flex-col justify-center min-w-0 overflow-hidden">
                       <span
                         className="text-xs sm:text-sm font-semibold truncate"
-                        style={{ color: "#94b4c1" }}
+                        style={{ color: colors.lightBlue }}
                       >
                         {experience.company}
                       </span>
@@ -129,13 +130,15 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                   </p>
 
                   {/* Skills */}
-                  {experience.skills && experience.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
-                      {experience.skills.map((skill, skillIndex) => (
-                        <SkillTag key={skillIndex} skill={skill} />
-                      ))}
-                    </div>
-                  )}
+                  {SHOW_EXPERIENCE_SKILLS &&
+                    experience.skills &&
+                    experience.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
+                        {experience.skills.map((skill, skillIndex) => (
+                          <SkillTag key={skillIndex} skill={skill} />
+                        ))}
+                      </div>
+                    )}
                 </div>
               </div>
             </div>
