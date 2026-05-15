@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useSpring } from "@react-spring/web";
 import cobe from "cobe";
-import { colors } from "./BentoBox";
+import { getActivePalette, subscribePalette } from "../../theme";
 
 const color = (() => {
   const convert = (v: number) => {
@@ -30,6 +30,11 @@ const Globe = () => {
   const ref = useRef<HTMLCanvasElement | null>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef<number>(0);
+  const palette = useSyncExternalStore(
+    subscribePalette,
+    getActivePalette,
+    getActivePalette
+  );
   const [{ r }, api] = useSpring(() => ({
     r: 0,
     config: { mass: 1, tension: 280, friction: 20, precision: 0.001 },
@@ -52,8 +57,8 @@ const Globe = () => {
       diffuse: 2,
       mapSamples: 8000,
       mapBrightness: 3,
-      baseColor: color(colors.periwinkle),
-      markerColor: color(colors.cream),
+      baseColor: color(palette.periwinkle),
+      markerColor: color(palette.cream),
       glowColor: [1, 1, 1] as [number, number, number],
       markers: [
         {
@@ -73,7 +78,7 @@ const Globe = () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [palette]);
 
   return (
     <div className="relative flex items-center justify-center w-full h-full">

@@ -3,7 +3,13 @@ import { colors } from "./BentoBoxes/BentoBox";
 
 const NavBar = () => {
   return (
-    <nav className="sticky top-0 z-50 bg-[#faf9f6]/80 backdrop-blur-md border-b" style={{ borderColor: colors.lavender }}>
+    <nav
+      className="sticky top-0 z-50 backdrop-blur-md border-b"
+      style={{
+        backgroundColor: "color-mix(in srgb, var(--color-bg) 80%, transparent)",
+        borderColor: colors.lavender,
+      }}
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           <NavLink 

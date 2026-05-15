@@ -1,15 +1,17 @@
 import React from "react";
 
-// Define the colors once and export them for reuse
+// Colors resolve at runtime via CSS variables. The active palette is set in src/theme.ts
+// and applied to document.documentElement; switching the palette restyles the whole UI
+// because consumers pass these strings through `style={{ color: ... }}` etc.
 export const colors = {
-  lightPurple: "#F4EEFF",
-  lavender: "#DCD6F7",
-  periwinkle: "#A6B1E1",
-  navy: "#424874",
-  darkBlue: "#213448",
-  slate: "#547792",
-  lightBlue: "#94B4C1",
-  cream: "#ECEFCA",
+  lightPurple: "var(--color-lightPurple)",
+  lavender: "var(--color-lavender)",
+  periwinkle: "var(--color-periwinkle)",
+  navy: "var(--color-navy)",
+  darkBlue: "var(--color-darkBlue)",
+  slate: "var(--color-slate)",
+  lightBlue: "var(--color-lightBlue)",
+  cream: "var(--color-cream)",
 };
 
 // Define a type for the color keys
