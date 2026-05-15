@@ -197,6 +197,42 @@ button:focus-visible {
   background: #424874; /* Navy */
 }
 
+/* Page enter / list stagger animations */
+@keyframes page-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.list-stagger > * {
+  opacity: 0;
+  animation: page-fade-up 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.list-stagger > *:nth-child(1)  { animation-delay: 40ms; }
+.list-stagger > *:nth-child(2)  { animation-delay: 90ms; }
+.list-stagger > *:nth-child(3)  { animation-delay: 140ms; }
+.list-stagger > *:nth-child(4)  { animation-delay: 190ms; }
+.list-stagger > *:nth-child(5)  { animation-delay: 240ms; }
+.list-stagger > *:nth-child(6)  { animation-delay: 290ms; }
+.list-stagger > *:nth-child(7)  { animation-delay: 340ms; }
+.list-stagger > *:nth-child(8)  { animation-delay: 390ms; }
+.list-stagger > *:nth-child(9)  { animation-delay: 440ms; }
+.list-stagger > *:nth-child(10) { animation-delay: 490ms; }
+
+.carousel-nav-btn:hover {
+  opacity: 1 !important;
+}
+
 /* New Swirling Gradient Animation for Button */
 @keyframes gradient-swirl {
   0% {

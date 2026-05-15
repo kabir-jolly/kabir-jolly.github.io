@@ -32,7 +32,7 @@ const BlogPost = () => {
 
   if (!content) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-16 page-enter">
         <h1 className="text-3xl font-bold">Coming soon!</h1>
       </div>
     );
@@ -41,7 +41,7 @@ const BlogPost = () => {
   const ContentComponent = content.component;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white page-enter">
       {/* Back button - inline, not fixed */}
       <div className="max-w-4xl mx-auto px-4 pt-6">
         <button

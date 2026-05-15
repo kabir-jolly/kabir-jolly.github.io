@@ -46,7 +46,10 @@ const Posts = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#faf9f6] font-sans">
+    <div
+      className="min-h-screen font-sans page-enter"
+      style={{ backgroundColor: "var(--color-bg)" }}
+    >
       <main className="pt-12 max-w-2xl mx-auto px-4 pb-16">
         <h1
           className="text-3xl font-bold mb-10"
@@ -55,7 +58,7 @@ const Posts = () => {
           Posts
         </h1>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col list-stagger">
           {posts.map((post, index) => {
             const href = `/${post.type}/${post.slug}`;
 
@@ -89,8 +92,11 @@ const Posts = () => {
 
       {/* Footer */}
       <footer
-        className="bg-[#faf9f6] py-6 border-t"
-        style={{ borderColor: colors.lightPurple }}
+        className="py-6 border-t"
+        style={{
+          backgroundColor: "var(--color-bg)",
+          borderColor: colors.lightPurple,
+        }}
       >
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-xs" style={{ color: colors.slate }}>
