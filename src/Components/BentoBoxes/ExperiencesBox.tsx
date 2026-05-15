@@ -37,9 +37,9 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
           return (
             <div key={index} className="relative flex">
               {/* Left side: Date */}
-              <div className="w-14 sm:w-20 md:w-28 flex-shrink-0 pr-2 sm:pr-3 md:pr-4 text-right">
+              <div className="w-20 sm:w-28 md:w-36 flex-shrink-0 pr-2 sm:pr-3 md:pr-4 text-right">
                 <div
-                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1"
+                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 whitespace-nowrap"
                   style={{ color: colors.slate }}
                 >
                   {experience.date}
