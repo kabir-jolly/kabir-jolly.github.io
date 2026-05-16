@@ -39,7 +39,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
               {/* Left side: Date */}
               <div className="w-20 sm:w-28 md:w-36 flex-shrink-0 pr-2 sm:pr-3 md:pr-4 text-right">
                 <div
-                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 whitespace-nowrap"
+                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 sm:whitespace-nowrap"
                   style={{ color: colors.slate }}
                 >
                   {experience.date}
@@ -105,15 +105,15 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     </div>
 
                     {/* Company + Title stacked */}
-                    <div className="flex flex-col justify-center min-w-0 overflow-hidden">
+                    <div className="flex flex-col justify-center min-w-0">
                       <span
-                        className="text-xs sm:text-sm font-semibold truncate"
+                        className="text-xs sm:text-sm font-semibold"
                         style={{ color: colors.lightBlue }}
                       >
                         {experience.company}
                       </span>
                       <h3
-                        className="text-sm sm:text-base font-semibold truncate"
+                        className="text-sm sm:text-base font-semibold"
                         style={{ color: colors.navy }}
                       >
                         {experience.title}
