@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import { experienceContent, projectContent } from "./blog-content";
+import {
+  experienceContent,
+  projectContent,
+  writingContent,
+} from "./blog-content";
 import { ContentRegistryType } from "../types";
 import { colors } from "./BentoBoxes/BentoBox";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
-    type: "experience" | "project";
+    type: "experience" | "project" | "writing";
     slug: string;
   }>();
   const navigate = useNavigate();
@@ -27,6 +31,8 @@ const BlogPost = () => {
     type && slug
       ? type === "experience"
         ? experienceContent[slug]
+        : type === "writing"
+        ? writingContent[slug]
         : projectContent[slug]
       : undefined;
 
@@ -59,6 +65,14 @@ const BlogPost = () => {
         <h1 className="text-4xl font-bold mb-2" style={{ color: colors.navy }}>
           {content.postTitle}
         </h1>
+        {content.subtitle && (
+          <p
+            className="text-xl font-medium mb-3"
+            style={{ color: colors.slate }}
+          >
+            {content.subtitle}
+          </p>
+        )}
         <p className="text-sm mb-6" style={{ color: colors.slate }}>
           {content.date}
         </p>

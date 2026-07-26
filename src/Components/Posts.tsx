@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { colors } from "./BentoBoxes/BentoBox";
-import { experienceContent, projectContent } from "./blog-content";
+import {
+  experienceContent,
+  projectContent,
+  writingContent,
+} from "./blog-content";
 
 interface PostEntry {
   title: string;
   date: string;
-  type: "project" | "experience";
+  type: "project" | "experience" | "writing";
   slug: string;
   sortYear: number;
 }
@@ -41,7 +45,17 @@ const Posts = () => {
     })
   );
 
-  const posts = [...projectPosts, ...experiencePosts].sort(
+  const writingPosts: PostEntry[] = Object.entries(writingContent).map(
+    ([slug, content]) => ({
+      title: content.postTitle,
+      date: content.date,
+      type: "writing" as const,
+      slug,
+      sortYear: extractYear(content.date),
+    })
+  );
+
+  const posts = [...writingPosts, ...projectPosts, ...experiencePosts].sort(
     (a, b) => b.sortYear - a.sortYear
   );
 

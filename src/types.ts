@@ -37,6 +37,7 @@ export type ContentRegistryType = {
   [key: string]: {
     component: React.ComponentType;
     postTitle: string;
+    subtitle?: string;
     date: string;
   };
 };
