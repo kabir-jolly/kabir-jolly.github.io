@@ -14,6 +14,7 @@ export const writingContent: ContentRegistryType = {
     postTitle: "The FDE Manual",
     subtitle: "What is it? How does it Create Value?",
     date: "2026",
+    ogImage: "/assets/img/fde/building-bridges.png",
   },
 };
 
