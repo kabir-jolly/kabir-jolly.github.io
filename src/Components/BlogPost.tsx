@@ -8,6 +8,7 @@ import {
 } from "./blog-content";
 import { ContentRegistryType } from "../types";
 import { colors } from "./BentoBoxes/BentoBox";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
@@ -35,6 +36,14 @@ const BlogPost = () => {
         ? writingContent[slug]
         : projectContent[slug]
       : undefined;
+
+  // Called before the early return below to keep hook order stable.
+  usePageMeta({
+    title: content?.postTitle,
+    description: content?.subtitle,
+    image: content?.ogImage,
+    type: "article",
+  });
 
   if (!content) {
     return (

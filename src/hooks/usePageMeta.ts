@@ -26,6 +26,10 @@ function upsertMeta(attr: "property" | "name", key: string, content: string) {
   el.setAttribute("content", content);
 }
 
+function removeMeta(attr: "property" | "name", key: string) {
+  document.head.querySelector(`meta[${attr}="${key}"]`)?.remove();
+}
+
 function applyMeta({ title, description, image, type }: Required<PageMeta>) {
   document.title = title;
 
@@ -42,6 +46,10 @@ function applyMeta({ title, description, image, type }: Required<PageMeta>) {
     const absolute = image.startsWith("http") ? image : `${SITE_URL}${image}`;
     upsertMeta("property", "og:image", absolute);
     upsertMeta("name", "twitter:image", absolute);
+  } else {
+    // Clear rather than leave behind, or the previous page's image follows us.
+    removeMeta("property", "og:image");
+    removeMeta("name", "twitter:image");
   }
 }
 
