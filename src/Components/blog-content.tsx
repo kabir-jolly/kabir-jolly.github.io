@@ -5,7 +5,17 @@ import StanfordMedicalCenter from "./projects/StanfordMedicalCenter";
 import DepthAwarePixel2Mesh from "./projects/DepthAwarePixel2Mesh";
 import ScrAPPS from "./projects/ScrAPPS";
 import Wehab from "./projects/Wehab";
+import FDEManual from "./writing/FDEManual";
 import { ContentRegistryType } from "../types";
+
+export const writingContent: ContentRegistryType = {
+  "fde-manual": {
+    component: FDEManual,
+    postTitle: "The FDE Manual",
+    subtitle: "What is it? How does it Create Value?",
+    date: "2026",
+  },
+};
 
 export const experienceContent: ContentRegistryType = {
   zeal: {
