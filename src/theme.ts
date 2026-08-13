@@ -75,7 +75,7 @@ export const palettes: Record<PaletteName, { label: string; palette: Palette }> 
   },
 };
 
-const DEFAULT_PALETTE: PaletteName = "periwinkle";
+const DEFAULT_PALETTE: PaletteName = "dustyPlum";
 
 let activeName: PaletteName = DEFAULT_PALETTE;
 let activePalette: Palette = palettes[DEFAULT_PALETTE].palette;
@@ -108,7 +108,5 @@ export const subscribePalette = (fn: () => void) => {
 
 export const initPalette = () => {
   if (typeof window === "undefined") return;
-  const names = Object.keys(palettes) as PaletteName[];
-  const random = names[Math.floor(Math.random() * names.length)];
-  setActivePalette(random);
+  setActivePalette(DEFAULT_PALETTE);
 };
