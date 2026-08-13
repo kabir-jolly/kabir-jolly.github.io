@@ -103,21 +103,6 @@ const Posts = () => {
           })}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer
-        className="py-6 border-t"
-        style={{
-          backgroundColor: "var(--color-bg)",
-          borderColor: colors.lightPurple,
-        }}
-      >
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs" style={{ color: colors.slate }}>
-            © {new Date().getFullYear()} Kabir Jolly
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

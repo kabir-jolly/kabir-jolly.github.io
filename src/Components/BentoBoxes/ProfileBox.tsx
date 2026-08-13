@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Linkedin, Twitter, FileText } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
 
 interface ProfileBoxProps {
@@ -55,16 +55,6 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 <Github size={18} />
               </a>
               <a
-                href="https://linkedin.com/in/kabirjolly"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
-                style={{ color: colors.slate }}
-                aria-label="LinkedIn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
                 href="https://twitter.com/kabirjolly_"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
                 style={{ color: colors.slate }}
@@ -75,14 +65,14 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 <Twitter size={18} />
               </a>
               <a
-                href="/assets/files/kabirjolly_resume_1-2-25.pdf"
+                href="https://linkedin.com/in/kabirjolly"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
                 style={{ color: colors.slate }}
-                aria-label="Resume"
+                aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FileText size={18} />
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
@@ -90,8 +80,8 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
 
         <div className="flex flex-col gap-3">
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
-            At OpenEvidence, we are working on building the world's leading
-            medical information platform.
+            I am currently building at the intersection of AI and healthcare at
+            OpenEvidence, the world's leading medical information platform.
           </p>
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
             I was formerly on the healthcare team at Palantir, where I built

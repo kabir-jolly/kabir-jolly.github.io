@@ -22,50 +22,43 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
   borderColorName,
 }) => {
   const [index, setIndex] = useState(0);
-  const [displayIndex, setDisplayIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
-  const [transitioning, setTransitioning] = useState(false);
+  const [phase, setPhase] = useState<"idle" | "exit">("idle");
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef<number | null>(null);
+  const indexRef = useRef(0);
+  const phaseRef = useRef<"idle" | "exit">("idle");
 
   const goTo = (next: number, dir: "left" | "right") => {
-    if (next === index || transitioning) return;
+    if (next === indexRef.current || phaseRef.current !== "idle") return;
     setDirection(dir);
-    setTransitioning(true);
+    phaseRef.current = "exit";
+    setPhase("exit");
     window.setTimeout(() => {
+      indexRef.current = next;
       setIndex(next);
-      setDisplayIndex(next);
-      setTransitioning(false);
+      phaseRef.current = "idle";
+      setPhase("idle");
     }, TRANSITION_MS);
   };
 
-  const goNext = () => goTo((index + 1) % projects.length, "right");
+  const goNext = () => goTo((indexRef.current + 1) % projects.length, "right");
   const goPrev = () =>
-    goTo((index - 1 + projects.length) % projects.length, "left");
+    goTo((indexRef.current - 1 + projects.length) % projects.length, "left");
   const selectProject = (i: number) =>
-    goTo(i, i > index ? "right" : "left");
+    goTo(i, i > indexRef.current ? "right" : "left");
 
   useEffect(() => {
     if (isHovered) return;
     if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = window.setInterval(() => {
-      setDirection("right");
-      setTransitioning(true);
-      window.setTimeout(() => {
-        setIndex((prev) => {
-          const next = (prev + 1) % projects.length;
-          setDisplayIndex(next);
-          return next;
-        });
-        setTransitioning(false);
-      }, TRANSITION_MS);
-    }, AUTO_CYCLE_DELAY);
+    intervalRef.current = window.setInterval(goNext, AUTO_CYCLE_DELAY);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered, projects.length]);
 
-  const project = projects[displayIndex];
+  const project = projects[index];
   const isExternal = !!project?.externalUrl;
   const isClickable = !!(project?.slug || project?.externalUrl);
 
@@ -78,11 +71,14 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
     }
   };
 
-  const slideTransform = transitioning
-    ? direction === "right"
-      ? "translateX(-8px)"
-      : "translateX(8px)"
-    : "translateX(0)";
+  // exit: old card slides toward the opposite side of travel; the new card
+  // then enters from the side of travel via a CSS animation (keyed remount)
+  const slideTransform =
+    phase === "exit"
+      ? direction === "right"
+        ? "translateX(-8px)"
+        : "translateX(8px)"
+      : "translateX(0)";
 
   return (
     <BentoBox
@@ -95,11 +91,12 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
           Projects
         </h2>
         <span className="text-xs tabular-nums" style={{ color: colors.slate }}>
-          {String(displayIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+          {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
         </span>
       </div>
 
       <div
+        key={index}
         className={`flex-1 flex flex-col justify-center group min-h-0 ${
           isClickable ? "cursor-pointer" : ""
         }`}
@@ -107,9 +104,13 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
-          opacity: transitioning ? 0 : 1,
+          opacity: phase === "idle" ? 1 : 0,
           transform: slideTransform,
           transition: `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`,
+          animation:
+            phase === "idle"
+              ? `carousel-enter-from-${direction} ${TRANSITION_MS}ms ease`
+              : undefined,
         }}
       >
         <div className="flex flex-col items-center text-center gap-2 mb-3">

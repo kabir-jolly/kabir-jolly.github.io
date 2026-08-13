@@ -5,16 +5,16 @@ const FDEManual = () => {
       <p className="mb-6">
         First, a byproduct of deeply devoting myself to my work has been the
         constant influx of learning, especially as a young professional. This is
-        meant to be a living document targeted at documenting what has worked
-        well for me so far and a system of record for what voices with
-        highly-educated opinions have to say on the central topic. What has
+        meant to document what has worked well for me so far and act as a
+        system of record for what voices with highly-educated opinions have to
+        say on the central topic. What has
         worked for me is first codifying seemingly disparate insights, then
         using that synthesis to operationalize what I've learned.
       </p>
       <p className="mb-6">
         Second, I hope others—whether trying to get a better grasp of this
-        fairly new idea, see how it is valuable to them, or finding themselves
-        in my position—can benefit from the ideas presented. It should be a
+        fairly new concept, seeing how it is valuable to them, or finding
+        themselves in my position—can benefit from the ideas presented. It should be a
         guide for getting started, how it can be done well, and why it is
         important in the business sense.
       </p>
@@ -106,7 +106,7 @@ const FDEManual = () => {
         firsthand the pace at which we are able to <em>stun</em> our solution's
         users. This is a large part of our company's secret sauce—there's a
         seemingly unbounded capacity for on-the-fly development, even in
-        response to requests that are ambitious, underscoped, and technically
+        response to requests that are ambitious, under-scoped, and technically
         challenging. The norm is while you are onsite with a customer, the group
         breaks at the usual 5pm, and by the time the client wakes up the next
         morning, they get a fully-functional prototype from the previous day's

@@ -23,6 +23,29 @@ a {
   transition: all 0.2s ease;
 }
 
+/* Projects carousel: new card enters from the side of travel */
+@keyframes carousel-enter-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-enter-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 body {
   margin: 0;
   min-width: 320px;
