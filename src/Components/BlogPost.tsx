@@ -1,11 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ChevronLeft, Linkedin } from "lucide-react";
-import {
-  experienceContent,
-  projectContent,
-  writingContent,
-} from "./blog-content";
-import { ContentRegistryType } from "../types";
+import { getPost } from "../data/posts";
 import { usePageMeta } from "../hooks/usePageMeta";
 import PillButton from "./PillButton";
 import XLogo from "./XLogo";
@@ -15,15 +10,7 @@ const BlogPost = () => {
     type: "experience" | "project" | "writing";
     slug: string;
   }>();
-  // Get the appropriate content based on type and slug
-  const content: ContentRegistryType[string] | undefined =
-    type && slug
-      ? type === "experience"
-        ? experienceContent[slug]
-        : type === "writing"
-        ? writingContent[slug]
-        : projectContent[slug]
-      : undefined;
+  const content = getPost(type, slug);
 
   // Called before the early return below to keep hook order stable.
   usePageMeta({
