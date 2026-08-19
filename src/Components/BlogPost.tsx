@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Linkedin } from "lucide-react";
 import {
   experienceContent,
   projectContent,
@@ -9,6 +9,7 @@ import {
 import { ContentRegistryType } from "../types";
 import { usePageMeta } from "../hooks/usePageMeta";
 import PillButton from "./PillButton";
+import XLogo from "./XLogo";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
@@ -83,6 +84,30 @@ const BlogPost = () => {
         <main className="post-content">
           <ContentComponent />
         </main>
+
+        {content.links && content.links.length > 0 && (
+          <footer className="post-external-footer">
+            <span className="post-external-label">
+              You can also view this post on other platforms:
+            </span>
+            <div className="post-external-links">
+              {content.links.map((link) => (
+                <a
+                  key={link.type}
+                  href={link.url}
+                  className="post-external-link"
+                  aria-label={
+                    link.type === "x" ? "View post on X" : "View post on LinkedIn"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.type === "x" ? <XLogo size={14} /> : <Linkedin size={15} />}
+                </a>
+              ))}
+            </div>
+          </footer>
+        )}
       </div>
     </div>
   );

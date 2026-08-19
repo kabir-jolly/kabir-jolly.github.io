@@ -15,6 +15,16 @@ export const writingContent: ContentRegistryType = {
     subtitle: "What is it? How does it Create Value?",
     date: "2026",
     featured: true,
+    links: [
+      {
+        type: "x",
+        url: "https://x.com/kabirjolly_/status/2087956147588210884?s=20",
+      },
+      {
+        type: "linkedin",
+        url: "https://www.linkedin.com/posts/kabirjolly_finally-got-around-to-consolidating-my-reflections-ugcPost-7493715296680108033-hfL4/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACTDphMBVDVi4NqhaG1mk5GcTos0QCHZces",
+      },
+    ],
     ogImage: "/assets/img/fde/building-bridges.png",
   },
 };

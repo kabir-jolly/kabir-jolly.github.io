@@ -382,6 +382,45 @@ button:focus-visible {
   margin-top: 0.8rem;
 }
 
+.post-external-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-lightPurple);
+}
+
+.post-external-label {
+  color: var(--color-slate);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.post-external-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.post-external-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-slate);
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.post-external-link:hover {
+  color: var(--color-navy);
+  opacity: 1;
+}
+
 .post-header-rule {
   height: 1px;
   width: 2.5rem;

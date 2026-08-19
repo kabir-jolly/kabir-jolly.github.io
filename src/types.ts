@@ -33,6 +33,11 @@ export interface ProjectType {
   externalUrl?: string;
 }
 
+export interface ContentExternalLink {
+  type: "x" | "linkedin";
+  url: string;
+}
+
 export type ContentRegistryType = {
   [key: string]: {
     component: React.ComponentType;
@@ -40,6 +45,7 @@ export type ContentRegistryType = {
     subtitle?: string;
     date: string;
     featured?: boolean;
+    links?: ContentExternalLink[];
     /** Site-relative path to the image used for link previews. */
     ogImage?: string;
   };
