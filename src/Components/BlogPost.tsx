@@ -7,8 +7,8 @@ import {
   writingContent,
 } from "./blog-content";
 import { ContentRegistryType } from "../types";
-import { colors } from "./BentoBoxes/BentoBox";
 import { usePageMeta } from "../hooks/usePageMeta";
+import PillButton from "./PillButton";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
@@ -56,38 +56,29 @@ const BlogPost = () => {
   const ContentComponent = content.component;
 
   return (
-    <div className="min-h-screen bg-white page-enter">
-      {/* Back button - inline, not fixed */}
-      <div className="max-w-4xl mx-auto px-4 pt-6">
-        <button
+    <div
+      className="min-h-screen page-enter"
+      style={{ backgroundColor: "var(--color-bg)" }}
+    >
+      <div className="post-shell">
+        <PillButton
           onClick={handleBack}
-          className="flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-70"
-          style={{ color: colors.slate }}
+          className="post-back"
+          leadingIcon={<ChevronLeft size={14} />}
         >
-          <ChevronLeft size={18} />
-          <span>Back</span>
-        </button>
-      </div>
+          Posts
+        </PillButton>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Title and Date from registry */}
-        <h1 className="text-4xl font-bold mb-2" style={{ color: colors.navy }}>
-          {content.postTitle}
-        </h1>
-        {content.subtitle && (
-          <p
-            className="text-xl font-medium mb-3"
-            style={{ color: colors.slate }}
-          >
-            {content.subtitle}
-          </p>
-        )}
-        <p className="text-sm mb-6" style={{ color: colors.slate }}>
-          {content.date}
-        </p>
-        <div className="h-px bg-gray-200 w-full mb-8"></div>
-        
-        <ContentComponent />
+        <header className="post-header">
+          <h1>{content.postTitle}</h1>
+          {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
+          <p className="post-date">{content.date}</p>
+          <div className="post-header-rule" />
+        </header>
+
+        <main className="post-content">
+          <ContentComponent />
+        </main>
       </div>
     </div>
   );
