@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { colors } from "./BentoBoxes/BentoBox";
+import { colors } from "../theme";
 
 const NavBar = () => {
   return (
@@ -58,4 +58,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

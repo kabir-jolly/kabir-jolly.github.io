@@ -1,5 +1,5 @@
 import React from "react";
-import { colors } from "./BentoBox";
+import { colors } from "../../theme";
 
 export interface SkillTagProps {
   skill: string;

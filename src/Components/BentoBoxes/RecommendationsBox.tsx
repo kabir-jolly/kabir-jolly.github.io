@@ -1,6 +1,8 @@
 import React from "react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
+import BentoBox from "./BentoBox";
 import { Book, Flower, Music, Droplets, Sparkles, Bell } from "lucide-react";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 interface RecommendationsBoxProps {
   borderColorName?: ColorName;

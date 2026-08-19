@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
+import BentoBox from "./BentoBox";
 import SkillTag from "./SkillTag";
 import PillButton from "../PillButton";
 import { ExperienceType } from "../../types";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 // Toggle to re-enable skill chips under each experience entry.
 const SHOW_EXPERIENCE_SKILLS = false;

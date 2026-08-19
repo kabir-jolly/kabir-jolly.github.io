@@ -1,7 +1,9 @@
 import React from "react";
 import { Github, Linkedin } from "lucide-react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
+import BentoBox from "./BentoBox";
 import XLogo from "../XLogo";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 interface ProfileBoxProps {
   borderColorName?: ColorName;

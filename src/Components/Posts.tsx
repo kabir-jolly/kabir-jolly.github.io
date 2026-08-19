@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-import { colors } from "./BentoBoxes/BentoBox";
+import { colors } from "../theme";
 import {
   experienceContent,
   projectContent,
