@@ -42,12 +42,12 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
             </div>
           </li>
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
-            <span>Do Androids Dream of Electric Sheep?</span>
+            <span>The Stormlight Archive Series</span>
             <div
               className="ml-5 mt-0.5 text-xs"
               style={{ color: colors.periwinkle }}
             >
-              Philip K. Dick
+              Brandon Sanderson
             </div>
           </li>
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
