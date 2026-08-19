@@ -3,6 +3,13 @@ import { useSpring } from "@react-spring/web";
 import cobe from "cobe";
 import { getActivePalette, subscribePalette } from "../../theme";
 
+type GlobeRenderState = {
+  phi: number;
+  width: number;
+  height: number;
+  [key: string]: number;
+};
+
 const color = (() => {
   const convert = (v: number) => {
     if (typeof v !== "number") throw new Error("color convert error");
@@ -66,11 +73,12 @@ const Globe = () => {
           size: 0.1,
         },
       ],
-      onRender: (state: any) => {
+      onRender: (state) => {
+        const renderState = state as unknown as GlobeRenderState;
         if (!pointerInteracting.current) phi += 0.005;
-        state.phi = phi + r.get();
-        state.width = width * 2;
-        state.height = width * 2;
+        renderState.phi = phi + r.get();
+        renderState.width = width * 2;
+        renderState.height = width * 2;
       },
     });
     setTimeout(() => (ref.current!.style.opacity = "1"));
