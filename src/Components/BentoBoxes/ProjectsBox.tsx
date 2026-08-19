@@ -187,7 +187,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
             e.stopPropagation();
             goPrev();
           }}
-          className="carousel-nav-btn"
+          className="carousel-nav-btn carousel-nav-btn-prev"
           aria-label="Previous project"
           style={{
             padding: 4,
@@ -200,7 +200,6 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            transition: "opacity 150ms ease",
           }}
         >
           <ChevronLeft size={16} />
@@ -241,7 +240,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
             e.stopPropagation();
             goNextManually();
           }}
-          className="carousel-nav-btn"
+          className="carousel-nav-btn carousel-nav-btn-next"
           aria-label="Next project"
           style={{
             padding: 4,
@@ -254,7 +253,6 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            transition: "opacity 150ms ease",
           }}
         >
           <ChevronRight size={16} />
