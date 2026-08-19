@@ -101,7 +101,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
       borderColorName={borderColorName}
     >
       <div className="flex justify-between items-baseline mb-3">
-        <h2 className="text-xl font-bold" style={{ color: colors.navy }}>
+        <h2 className="font-bold" style={{ color: colors.navy }}>
           Projects
         </h2>
         <span className="text-xs tabular-nums" style={{ color: colors.slate }}>

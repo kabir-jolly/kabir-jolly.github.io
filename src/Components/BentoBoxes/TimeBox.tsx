@@ -36,7 +36,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
       className="relative overflow-hidden h-full"
       borderColorName={borderColorName}
     >
-      <h2 className="text-lg font-bold mb-0" style={{ color: colors.navy }}>
+      <h2 className="font-bold mb-0" style={{ color: colors.navy }}>
         My Time
       </h2>
       <div className="flex flex-col items-center gap-1">
