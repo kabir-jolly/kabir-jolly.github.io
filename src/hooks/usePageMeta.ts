@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export const SITE_URL = "https://kabir-jolly.github.io";
-const DEFAULT_TITLE = "Kabir Jolly";
+const DEFAULT_TITLE = "kabir jolly";
 const DEFAULT_DESCRIPTION =
   "Personal site of Kabir Jolly — projects, experience, and writing.";
 

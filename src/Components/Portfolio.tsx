@@ -10,7 +10,7 @@ import { experiences, projects } from "../data/content";
 const Portfolio = () => {
   return (
     <div
-      className="min-h-screen font-sans page-enter"
+      className="home-page min-h-screen font-sans page-enter"
       style={{ backgroundColor: "var(--color-bg)" }}
     >
       <main className="pt-8 max-w-6xl mx-auto px-4 pb-12">

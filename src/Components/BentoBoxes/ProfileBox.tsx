@@ -33,7 +33,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               >
                 Kabir Jolly
               </h1>
-              <p className="text-md" style={{ color: colors.navy }}>
+              <p className="text-md profile-role" style={{ color: colors.navy }}>
                 Member of Technical Staff at{" "}
                 <a
                   href="https://www.openevidence.com"
