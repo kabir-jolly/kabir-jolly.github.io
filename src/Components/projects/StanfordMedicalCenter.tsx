@@ -16,7 +16,6 @@ const StanfordMedicalCenter = () => {
         the state of California.
       </p>
 
-      {/* First Image Row */}
       <PostImageGrid
         images={[
           { src: "/assets/img/aqi/aqi1.png", alt: "Data Analysis 1" },
@@ -42,7 +41,6 @@ const StanfordMedicalCenter = () => {
         nuanced models such as LSTMs and hierarchical attention networks.
       </p>
 
-      {/* Second Image Row */}
       <PostImageGrid
         images={[
           { src: "/assets/img/aqi/aqi4.png", alt: "Baseline" },

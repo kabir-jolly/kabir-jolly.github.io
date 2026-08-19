@@ -55,7 +55,7 @@ const Posts = () => {
             );
 
             return (
-              <Link key={index} to={href} className="no-underline">
+              <Link key={`${post.type}-${post.slug}`} to={href} className="no-underline">
                 {content}
               </Link>
             );

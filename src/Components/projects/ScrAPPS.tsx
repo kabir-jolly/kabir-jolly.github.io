@@ -32,7 +32,6 @@ const ScrAPPS = () => {
         lettuce ends up, we decided to start building out the platform.
       </p>
 
-      {/* First Image Row */}
       <PostImageGrid
         columns={3}
         images={[
@@ -50,7 +49,6 @@ const ScrAPPS = () => {
         a ton of sense on paper.
       </p>
 
-      {/* Single Images */}
       <PostImageGrid
         stacked
         images={[
@@ -77,7 +75,6 @@ const ScrAPPS = () => {
         end.
       </p>
 
-      {/* Final Image Row */}
       <PostImageGrid
         images={[
           { src: "/assets/img/scrapps/scrapps6.jpeg", alt: "First Haul" },
