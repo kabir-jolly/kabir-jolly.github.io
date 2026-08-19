@@ -1,6 +1,7 @@
 import React from "react";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
+import XLogo from "../XLogo";
 
 interface ProfileBoxProps {
   borderColorName?: ColorName;
@@ -55,14 +56,14 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 <Github size={18} />
               </a>
               <a
-                href="https://twitter.com/kabirjolly_"
+                href="https://x.com/kabirjolly_"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
                 style={{ color: colors.slate }}
-                aria-label="Twitter"
+                aria-label="X"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter size={18} />
+                <XLogo />
               </a>
               <a
                 href="https://linkedin.com/in/kabirjolly"
