@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import BentoBox, { colors, ColorName } from "./BentoBox";
 import SkillTag from "./SkillTag";
+import PillButton from "../PillButton";
 import { ExperienceType } from "../../types";
 
 // Toggle to re-enable skill chips under each experience entry.
@@ -85,12 +87,13 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 >
                   {/* "View" badge - appears on hover for clickable items */}
                   {isClickable && isHovered && (
-                    <div
-                      className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-md text-white transition-opacity"
-                      style={{ backgroundColor: colors.navy }}
+                    <PillButton
+                      className="absolute top-2 right-2"
+                      trailingIcon={<ArrowRight size={14} />}
+                      mode="presentational"
                     >
-                      View More →
-                    </div>
+                      View More
+                    </PillButton>
                   )}
 
                   {/* Icon + Company/Title */}
