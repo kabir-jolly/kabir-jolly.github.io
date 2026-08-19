@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { colors } from "../theme";
 import { postEntries } from "../data/posts";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const Posts = () => {
+  usePageMeta({ title: "Posts" });
+
   return (
     <div
       className="min-h-screen font-sans page-enter"
