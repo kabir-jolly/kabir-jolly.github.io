@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kabir-jolly.github.io/sitemap.xml
