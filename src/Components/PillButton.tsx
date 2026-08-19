@@ -43,17 +43,27 @@ const PillButton = (props: PillButtonProps) => {
   ]
     .filter(Boolean)
     .join(" ");
+  const isPresentational =
+    "mode" in props && props.mode === "presentational";
 
   const content = (
     <>
       {leadingIcon && (
-        <span className="inline-flex shrink-0" aria-hidden="true">
+        <span
+          className="pill-button-icon pill-button-icon-leading inline-flex shrink-0"
+          aria-hidden="true"
+        >
           {leadingIcon}
         </span>
       )}
       <span>{children}</span>
       {trailingIcon && (
-        <span className="inline-flex shrink-0" aria-hidden="true">
+        <span
+          className={`pill-button-icon pill-button-icon-trailing inline-flex shrink-0 ${
+            isPresentational ? "pill-button-icon-mount" : ""
+          }`}
+          aria-hidden="true"
+        >
           {trailingIcon}
         </span>
       )}

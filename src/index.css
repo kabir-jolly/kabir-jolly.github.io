@@ -194,8 +194,23 @@ button:focus-visible {
 .list-stagger > *:nth-child(9)  { animation-delay: 440ms; }
 .list-stagger > *:nth-child(10) { animation-delay: 490ms; }
 
-.carousel-nav-btn:hover {
+.carousel-nav-btn {
+  transition: opacity 150ms ease, transform 200ms ease;
+}
+
+.carousel-nav-btn:hover,
+.carousel-nav-btn:focus-visible {
   opacity: 1 !important;
+}
+
+.carousel-nav-btn-prev:hover,
+.carousel-nav-btn-prev:focus-visible {
+  transform: translateX(-2px);
+}
+
+.carousel-nav-btn-next:hover,
+.carousel-nav-btn-next:focus-visible {
+  transform: translateX(2px);
 }
 
 /* Shared pill buttons */
@@ -217,6 +232,46 @@ button:focus-visible {
   background: var(--color-lavender);
   color: var(--color-navy);
   opacity: 1;
+}
+
+.pill-button-icon {
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+
+.pill-button:hover .pill-button-icon-leading,
+.pill-button:focus-visible .pill-button-icon-leading {
+  transform: translateX(-2px);
+}
+
+.pill-button:hover .pill-button-icon-trailing,
+.pill-button:focus-visible .pill-button-icon-trailing {
+  transform: translateX(2px);
+}
+
+@keyframes pill-button-icon-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pill-button-icon-mount {
+  animation: pill-button-icon-slide-in 220ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-nav-btn,
+  .pill-button-icon,
+  .pill-button-icon-mount {
+    animation: none;
+    transition: none;
+    transform: none !important;
+  }
 }
 
 .pill-button:focus-visible {
@@ -476,6 +531,11 @@ button:focus-visible {
 .home-page h1 {
   font-size: 1.85rem;
   line-height: 1.16;
+}
+
+.home-page h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
 }
 
 .home-page .profile-role {

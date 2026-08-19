@@ -20,7 +20,7 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
       <div>
         <div className="flex items-center gap-2 mb-3">
           <Book size={18} style={{ color: colors.navy }} />
-          <h2 className="text-lg font-bold" style={{ color: colors.navy }}>
+          <h2 className="font-bold" style={{ color: colors.navy }}>
             Reading Recs
           </h2>
         </div>
@@ -68,7 +68,7 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
       <div className="mt-auto pt-6">
         <div className="flex items-center gap-2 mb-3">
           <Sparkles size={18} style={{ color: colors.navy }} />
-          <h2 className="text-lg font-bold" style={{ color: colors.navy }}>
+          <h2 className="font-bold" style={{ color: colors.navy }}>
             Random Recs
           </h2>
         </div>

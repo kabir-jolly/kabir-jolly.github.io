@@ -27,7 +27,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
       id="experience"
       borderColorName={borderColorName}
     >
-      <h2 className="text-xl font-bold mb-6" style={{ color: colors.navy }}>
+      <h2 className="font-bold mb-6" style={{ color: colors.navy }}>
         Experience
       </h2>
 
