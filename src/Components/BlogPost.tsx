@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ChevronLeft, Linkedin } from "lucide-react";
 import {
   experienceContent,
@@ -16,18 +15,6 @@ const BlogPost = () => {
     type: "experience" | "project" | "writing";
     slug: string;
   }>();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Scroll to top when blog post component mounts
-    window.scrollTo(0, 0);
-  }, []);
-
-  const handleBack = () => {
-    // Use browser history to go back to where you came from
-    navigate(-1);
-  };
-
   // Get the appropriate content based on type and slug
   const content: ContentRegistryType[string] | undefined =
     type && slug
@@ -48,8 +35,23 @@ const BlogPost = () => {
 
   if (!content) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16 page-enter">
-        <h1 className="text-3xl font-bold">Coming soon!</h1>
+      <div
+        className="min-h-screen page-enter"
+        style={{ backgroundColor: "var(--color-bg)" }}
+      >
+        <div className="post-shell">
+          <PillButton
+            to="/posts"
+            className="post-back"
+            leadingIcon={<ChevronLeft size={14} />}
+          >
+            Posts
+          </PillButton>
+          <header className="post-header">
+            <h1>Coming soon!</h1>
+            <div className="post-header-rule" />
+          </header>
+        </div>
       </div>
     );
   }
@@ -64,7 +66,7 @@ const BlogPost = () => {
     >
       <div className="post-shell">
         <PillButton
-          onClick={handleBack}
+          to="/posts"
           className="post-back"
           leadingIcon={<ChevronLeft size={14} />}
         >

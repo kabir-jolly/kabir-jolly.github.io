@@ -98,7 +98,6 @@ export const projects: ProjectType[] = [
       "Built analytics tooling for a consulting firm to manage portfolio compensation information management for over 100 top PE firms.",
     image: "/assets/img/peecs/insightory.jpeg",
     skills: ["React", "FastAPI", "GCP"],
-    slug: "peecs",
   },
   {
     title: "Modifying MinBERT",
