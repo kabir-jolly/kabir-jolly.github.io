@@ -39,6 +39,7 @@ export type ContentRegistryType = {
     postTitle: string;
     subtitle?: string;
     date: string;
+    featured?: boolean;
     /** Site-relative path to the image used for link previews. */
     ogImage?: string;
   };

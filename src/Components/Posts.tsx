@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Star } from "lucide-react";
 import { colors } from "./BentoBoxes/BentoBox";
 import {
   experienceContent,
@@ -12,6 +13,7 @@ interface PostEntry {
   type: "project" | "experience" | "writing";
   slug: string;
   sortYear: number;
+  featured?: boolean;
 }
 
 // Helper to extract year from date string for sorting
@@ -32,6 +34,7 @@ const Posts = () => {
       type: "project" as const,
       slug,
       sortYear: extractYear(content.date),
+      featured: content.featured,
     })
   );
 
@@ -42,6 +45,7 @@ const Posts = () => {
       type: "experience" as const,
       slug,
       sortYear: extractYear(content.date),
+      featured: content.featured,
     })
   );
 
@@ -52,6 +56,7 @@ const Posts = () => {
       type: "writing" as const,
       slug,
       sortYear: extractYear(content.date),
+      featured: content.featured,
     })
   );
 
@@ -82,11 +87,22 @@ const Posts = () => {
                 style={{ borderColor: colors.lavender }}
               >
                 <div className="flex flex-col gap-1">
-                  <span
-                    className="text-base font-medium group-hover:underline"
-                    style={{ color: colors.navy }}
-                  >
-                    {post.title}
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className="text-base font-medium group-hover:underline"
+                      style={{ color: colors.navy }}
+                    >
+                      {post.title}
+                    </span>
+                    {post.featured && (
+                      <Star
+                        size={14}
+                        strokeWidth={1.8}
+                        fill={colors.periwinkle}
+                        style={{ color: colors.periwinkle }}
+                        aria-label="Featured post"
+                      />
+                    )}
                   </span>
                   <span className="text-xs" style={{ color: colors.slate }}>
                     {post.date}
@@ -108,4 +124,3 @@ const Posts = () => {
 };
 
 export default Posts;
-

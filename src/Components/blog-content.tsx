@@ -14,6 +14,7 @@ export const writingContent: ContentRegistryType = {
     postTitle: "The FDE Manual",
     subtitle: "What is it? How does it Create Value?",
     date: "2026",
+    featured: true,
     ogImage: "/assets/img/fde/building-bridges.png",
   },
 };
@@ -56,5 +57,6 @@ export const projectContent: ContentRegistryType = {
     component: ScrAPPS,
     postTitle: "Give me your food waste! The story behind my high school venture, ScrAPPS",
     date: "2017–2019",
+    featured: true,
   },
 };
