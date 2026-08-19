@@ -9,11 +9,13 @@ export type PostType = "project" | "experience" | "writing";
 
 export interface PostEntry {
   title: string;
+  subtitle?: string;
   date: string;
   type: PostType;
   slug: string;
   sortYear: number;
   featured?: boolean;
+  ogImage?: string;
 }
 
 const postRegistries: Record<PostType, ContentRegistryType> = {
@@ -45,11 +47,13 @@ export const postEntries: PostEntry[] = Object.entries(postRegistries)
   .flatMap(([type, registry]) =>
     Object.entries(registry).map(([slug, content]) => ({
       title: content.postTitle,
+      subtitle: content.subtitle,
       date: content.date,
       type: type as PostType,
       slug,
       sortYear: extractYear(content.date),
       featured: content.featured,
+      ogImage: content.ogImage,
     }))
   )
   .sort((a, b) => b.sortYear - a.sortYear);

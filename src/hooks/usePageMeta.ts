@@ -73,8 +73,9 @@ function applyMeta({ title, description, image, type }: Required<PageMeta>) {
  * Sets the document title and Open Graph tags for the current route.
  *
  * Only affects scrapers that execute JavaScript — iMessage does, which is what
- * this is for. LinkedIn, Slack, and X read the static HTML and will still see
- * the defaults from index.html; fixing those needs prerendered per-route HTML.
+ * this is for. LinkedIn, Slack, and X receive route-specific metadata from the
+ * prerendered HTML generated during the build; unknown routes use the static
+ * fallback metadata from index.html.
  */
 export function usePageMeta({
   title,
