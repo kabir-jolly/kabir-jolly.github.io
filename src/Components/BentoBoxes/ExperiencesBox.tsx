@@ -77,7 +77,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 }`}
                 onClick={() => {
                   if (experience.slug) {
-                    window.location.href = `/#/experience/${experience.slug}`;
+                    window.location.href = `/experience/${experience.slug}`;
                   }
                 }}
                 onMouseEnter={() => setHoveredIndex(index)}

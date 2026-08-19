@@ -81,7 +81,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
     if (project.externalUrl) {
       window.open(project.externalUrl, "_blank", "noopener,noreferrer");
     } else if (project.slug) {
-      window.location.href = `/#/project/${project.slug}`;
+      window.location.href = `/project/${project.slug}`;
     }
   };
 

@@ -30,17 +30,33 @@ function removeMeta(attr: "property" | "name", key: string) {
   document.head.querySelector(`meta[${attr}="${key}"]`)?.remove();
 }
 
+function upsertCanonical(url: string) {
+  let link = document.head.querySelector<HTMLLinkElement>(
+    'link[rel="canonical"]'
+  );
+
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+
+  link.setAttribute("href", url);
+}
+
 function applyMeta({ title, description, image, type }: Required<PageMeta>) {
   document.title = title;
+  const canonicalUrl = `${SITE_URL}${window.location.pathname}${window.location.search}`;
 
   upsertMeta("name", "description", description);
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
   upsertMeta("property", "og:type", type);
-  upsertMeta("property", "og:url", window.location.href);
+  upsertMeta("property", "og:url", canonicalUrl);
   upsertMeta("name", "twitter:card", "summary_large_image");
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
+  upsertCanonical(canonicalUrl);
 
   if (image) {
     const absolute = image.startsWith("http") ? image : `${SITE_URL}${image}`;
