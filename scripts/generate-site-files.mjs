@@ -197,14 +197,18 @@ await copyFile("dist/index.html", "dist/404.html");
 const postsHtml = buildPostsHtml(baseHtml);
 await mkdir("dist/posts", { recursive: true });
 await writeFile("dist/posts/index.html", postsHtml);
+await writeFile("dist/posts.html", postsHtml);
 
 for (const post of postEntries) {
   const routeDirectory = `dist/${post.type}/${post.slug}`;
   await mkdir(routeDirectory, { recursive: true });
+  const postHtml = buildPostHtml(baseHtml, post);
   await writeFile(
     `${routeDirectory}/index.html`,
-    buildPostHtml(baseHtml, post)
+    postHtml
   );
+  // Keep both forms so GitHub Pages can serve extensionless routes without a trailing-slash redirect.
+  await writeFile(`dist/${post.type}/${post.slug}.html`, postHtml);
 }
 
 const escapeXml = (value) =>
