@@ -332,6 +332,20 @@ button:focus-visible {
   margin-bottom: 1.65rem;
 }
 
+.post-type-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--color-lightPurple);
+  color: var(--color-slate);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  padding: 0.18rem 0.4rem;
+  text-transform: lowercase;
+}
+
 .post-header h1 {
   margin: 0;
   color: var(--color-navy);
@@ -353,13 +367,19 @@ button:focus-visible {
 
 .post-date {
   margin: 0;
-  margin-top: 0.8rem;
   color: var(--color-slate);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
 }
 
 .post-header-rule {

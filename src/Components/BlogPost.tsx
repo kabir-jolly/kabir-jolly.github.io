@@ -54,6 +54,7 @@ const BlogPost = () => {
   }
 
   const ContentComponent = content.component;
+  const postType = type ?? "project";
 
   return (
     <div
@@ -72,7 +73,10 @@ const BlogPost = () => {
         <header className="post-header">
           <h1>{content.postTitle}</h1>
           {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
-          <p className="post-date">{content.date}</p>
+          <div className="post-meta">
+            <p className="post-date">{content.date}</p>
+            <span className="post-type-tag">{postType}</span>
+          </div>
           <div className="post-header-rule" />
         </header>
 

@@ -104,8 +104,11 @@ const Posts = () => {
                       />
                     )}
                   </span>
-                  <span className="text-xs" style={{ color: colors.slate }}>
-                    {post.date}
+                  <span className="flex items-center gap-2">
+                    <span className="text-xs" style={{ color: colors.slate }}>
+                      {post.date}
+                    </span>
+                    <span className="post-type-tag">{post.type}</span>
                   </span>
                 </div>
               </div>
