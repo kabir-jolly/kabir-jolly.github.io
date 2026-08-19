@@ -18,7 +18,7 @@ const Posts = () => {
         </h1>
 
         <div className="flex flex-col list-stagger">
-          {postEntries.map((post, index) => {
+          {postEntries.map((post) => {
             const href = `/${post.type}/${post.slug}`;
 
             const content = (
