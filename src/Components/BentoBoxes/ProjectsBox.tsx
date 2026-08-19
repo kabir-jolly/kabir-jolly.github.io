@@ -6,7 +6,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import BentoBox from "./BentoBox";
-import SkillTag from "./SkillTag";
+import SkillTag from "../SkillTag";
 import { ProjectType } from "../../types";
 import { colors } from "../../theme";
 import type { ColorName } from "../../theme";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import BentoBox from "./BentoBox";
-import SkillTag from "./SkillTag";
+import SkillTag from "../SkillTag";
 import PillButton from "../PillButton";
 import { ExperienceType } from "../../types";
 import { colors } from "../../theme";
