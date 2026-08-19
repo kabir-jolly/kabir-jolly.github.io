@@ -1,64 +1,9 @@
 import { Link } from "react-router-dom";
-import { colors } from "./BentoBoxes/BentoBox";
-import {
-  experienceContent,
-  projectContent,
-  writingContent,
-} from "./blog-content";
-
-interface PostEntry {
-  title: string;
-  date: string;
-  type: "project" | "experience" | "writing";
-  slug: string;
-  sortYear: number;
-}
-
-// Helper to extract year from date string for sorting
-function extractYear(dateStr: string): number {
-  const matches = dateStr.match(/\b(20\d{2})\b/g);
-  if (matches && matches.length > 0) {
-    return Math.max(...matches.map(Number));
-  }
-  return 0;
-}
+import { Star } from "lucide-react";
+import { colors } from "../theme";
+import { postEntries } from "../data/posts";
 
 const Posts = () => {
-  // Build posts from blog-content registry (shared titles)
-  const projectPosts: PostEntry[] = Object.entries(projectContent).map(
-    ([slug, content]) => ({
-      title: content.postTitle,
-      date: content.date,
-      type: "project" as const,
-      slug,
-      sortYear: extractYear(content.date),
-    })
-  );
-
-  const experiencePosts: PostEntry[] = Object.entries(experienceContent).map(
-    ([slug, content]) => ({
-      title: content.postTitle,
-      date: content.date,
-      type: "experience" as const,
-      slug,
-      sortYear: extractYear(content.date),
-    })
-  );
-
-  const writingPosts: PostEntry[] = Object.entries(writingContent).map(
-    ([slug, content]) => ({
-      title: content.postTitle,
-      date: content.date,
-      type: "writing" as const,
-      slug,
-      sortYear: extractYear(content.date),
-    })
-  );
-
-  const posts = [...writingPosts, ...projectPosts, ...experiencePosts].sort(
-    (a, b) => b.sortYear - a.sortYear
-  );
-
   return (
     <div
       className="min-h-screen font-sans page-enter"
@@ -73,7 +18,7 @@ const Posts = () => {
         </h1>
 
         <div className="flex flex-col list-stagger">
-          {posts.map((post, index) => {
+          {postEntries.map((post) => {
             const href = `/${post.type}/${post.slug}`;
 
             const content = (
@@ -82,21 +27,35 @@ const Posts = () => {
                 style={{ borderColor: colors.lavender }}
               >
                 <div className="flex flex-col gap-1">
-                  <span
-                    className="text-base font-medium group-hover:underline"
-                    style={{ color: colors.navy }}
-                  >
-                    {post.title}
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className="text-base font-medium group-hover:underline"
+                      style={{ color: colors.navy }}
+                    >
+                      {post.title}
+                    </span>
+                    {post.featured && (
+                      <Star
+                        size={14}
+                        strokeWidth={1.8}
+                        fill={colors.periwinkle}
+                        style={{ color: colors.periwinkle }}
+                        aria-label="Featured post"
+                      />
+                    )}
                   </span>
-                  <span className="text-xs" style={{ color: colors.slate }}>
-                    {post.date}
+                  <span className="flex items-center gap-2">
+                    <span className="text-xs" style={{ color: colors.slate }}>
+                      {post.date}
+                    </span>
+                    <span className="post-type-tag">{post.type}</span>
                   </span>
                 </div>
               </div>
             );
 
             return (
-              <Link key={index} to={href} className="no-underline">
+              <Link key={`${post.type}-${post.slug}`} to={href} className="no-underline">
                 {content}
               </Link>
             );
@@ -108,4 +67,3 @@ const Posts = () => {
 };
 
 export default Posts;
-

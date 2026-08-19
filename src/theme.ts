@@ -16,6 +16,19 @@ export type PaletteName =
   | "coastalMist"
   | "dustyPlum";
 
+export const colors = {
+  lightPurple: "var(--color-lightPurple)",
+  lavender: "var(--color-lavender)",
+  periwinkle: "var(--color-periwinkle)",
+  navy: "var(--color-navy)",
+  darkBlue: "var(--color-darkBlue)",
+  slate: "var(--color-slate)",
+  lightBlue: "var(--color-lightBlue)",
+  cream: "var(--color-cream)",
+};
+
+export type ColorName = keyof typeof colors;
+
 export const palettes: Record<PaletteName, { label: string; palette: Palette }> = {
   periwinkle: {
     label: "Periwinkle",

@@ -1,7 +1,9 @@
+import PostImageGrid from "../PostImageGrid";
+
 const StanfordMedicalCenter = () => {
   return (
-    <article className="prose prose-lg max-w-none">
-      <p className="mb-6">
+    <article>
+      <p>
         My most involved long-term project (worked on it for 2+ years) was deep
         learning research I did at the Stanford Medical Center. This was a group
         effort by myself, Govind Chada, and Ekin Tiu under the mentorship of Dr.
@@ -14,29 +16,22 @@ const StanfordMedicalCenter = () => {
         the state of California.
       </p>
 
-      {/* First Image Row */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <img
-          src="/assets/img/aqi/aqi1.png"
-          alt="Data Analysis 1"
-          className="rounded-lg"
-        />
-        <img
-          src="/assets/img/aqi/aqi2.png"
-          alt="Data Analysis 2"
-          className="rounded-lg"
-        />
-      </div>
+      <PostImageGrid
+        images={[
+          { src: "/assets/img/aqi/aqi1.png", alt: "Data Analysis 1" },
+          { src: "/assets/img/aqi/aqi2.png", alt: "Data Analysis 2" },
+        ]}
+      />
 
-      <p className="mb-6">The project can be split into three main stages.</p>
+      <p>The project can be split into three main stages.</p>
 
-      <ol className="mb-6">
+      <ol>
         <li>Research study motivation and replication of existing work</li>
         <li>Dataset construction</li>
         <li>Model development and evaluation</li>
       </ol>
 
-      <p className="mb-6">
+      <p>
         For the first year or so, I predominantly worked on the first stage,
         leading exploratory data analyses to validate increased hospital
         admissions due to asthma and COPD with spikes in particulate matter (PM
@@ -46,21 +41,14 @@ const StanfordMedicalCenter = () => {
         nuanced models such as LSTMs and hierarchical attention networks.
       </p>
 
-      {/* Second Image Row */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <img
-          src="/assets/img/aqi/aqi4.png"
-          alt="Baseline"
-          className="rounded-lg"
-        />
-        <img
-          src="/assets/img/aqi/aqi3.png"
-          alt="Longitudinal"
-          className="rounded-lg"
-        />
-      </div>
+      <PostImageGrid
+        images={[
+          { src: "/assets/img/aqi/aqi4.png", alt: "Baseline" },
+          { src: "/assets/img/aqi/aqi3.png", alt: "Longitudinal" },
+        ]}
+      />
 
-      <p className="mb-6">
+      <p>
         Given the clinical nature of this work, one of our main goals was
         interpretability, and HANs were a big step in this direction. Our goal
         was to outperform existing research which utilized statistical inference
@@ -68,12 +56,11 @@ const StanfordMedicalCenter = () => {
         XGBoost.
       </p>
 
-      <p className="mb-6">
+      <p>
         We never reached the stage for a final publication despite promising
         results, but here is an{" "}
         <a
           href="/assets/pdf/aqi_report.pdf"
-          className="text-blue-600 hover:text-blue-800"
         >
           early manuscript
         </a>{" "}

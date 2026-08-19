@@ -1,6 +1,9 @@
 import React from "react";
-import { Github, Linkedin, Twitter } from "lucide-react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
+import { Github, Linkedin } from "lucide-react";
+import BentoBox from "./BentoBox";
+import XLogo from "../XLogo";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 interface ProfileBoxProps {
   borderColorName?: ColorName;
@@ -30,7 +33,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               >
                 Kabir Jolly
               </h1>
-              <p className="text-md" style={{ color: colors.navy }}>
+              <p className="text-md profile-role" style={{ color: colors.navy }}>
                 Member of Technical Staff at{" "}
                 <a
                   href="https://www.openevidence.com"
@@ -55,14 +58,14 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 <Github size={18} />
               </a>
               <a
-                href="https://twitter.com/kabirjolly_"
+                href="https://x.com/kabirjolly_"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
                 style={{ color: colors.slate }}
-                aria-label="Twitter"
+                aria-label="X"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter size={18} />
+                <XLogo />
               </a>
               <a
                 href="https://linkedin.com/in/kabirjolly"

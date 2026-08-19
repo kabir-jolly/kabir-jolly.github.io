@@ -1,41 +1,16 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
-import {
-  experienceContent,
-  projectContent,
-  writingContent,
-} from "./blog-content";
-import { ContentRegistryType } from "../types";
-import { colors } from "./BentoBoxes/BentoBox";
+import { useParams } from "react-router-dom";
+import { ChevronLeft, Linkedin } from "lucide-react";
+import { getPost } from "../data/posts";
 import { usePageMeta } from "../hooks/usePageMeta";
+import PillButton from "./PillButton";
+import XLogo from "./XLogo";
 
 const BlogPost = () => {
   const { type, slug } = useParams<{
     type: "experience" | "project" | "writing";
     slug: string;
   }>();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Scroll to top when blog post component mounts
-    window.scrollTo(0, 0);
-  }, []);
-
-  const handleBack = () => {
-    // Use browser history to go back to where you came from
-    navigate(-1);
-  };
-
-  // Get the appropriate content based on type and slug
-  const content: ContentRegistryType[string] | undefined =
-    type && slug
-      ? type === "experience"
-        ? experienceContent[slug]
-        : type === "writing"
-        ? writingContent[slug]
-        : projectContent[slug]
-      : undefined;
+  const content = getPost(type, slug);
 
   // Called before the early return below to keep hook order stable.
   usePageMeta({
@@ -47,47 +22,81 @@ const BlogPost = () => {
 
   if (!content) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16 page-enter">
-        <h1 className="text-3xl font-bold">Coming soon!</h1>
+      <div
+        className="min-h-screen page-enter"
+        style={{ backgroundColor: "var(--color-bg)" }}
+      >
+        <div className="post-shell">
+          <PillButton
+            to="/posts"
+            className="post-back"
+            leadingIcon={<ChevronLeft size={14} />}
+          >
+            Posts
+          </PillButton>
+          <header className="post-header">
+            <h1>Coming soon!</h1>
+            <div className="post-header-rule" />
+          </header>
+        </div>
       </div>
     );
   }
 
   const ContentComponent = content.component;
+  const postType = type ?? "project";
 
   return (
-    <div className="min-h-screen bg-white page-enter">
-      {/* Back button - inline, not fixed */}
-      <div className="max-w-4xl mx-auto px-4 pt-6">
-        <button
-          onClick={handleBack}
-          className="flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-70"
-          style={{ color: colors.slate }}
+    <div
+      className="min-h-screen page-enter"
+      style={{ backgroundColor: "var(--color-bg)" }}
+    >
+      <div className="post-shell">
+        <PillButton
+          to="/posts"
+          className="post-back"
+          leadingIcon={<ChevronLeft size={14} />}
         >
-          <ChevronLeft size={18} />
-          <span>Back</span>
-        </button>
-      </div>
+          Posts
+        </PillButton>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Title and Date from registry */}
-        <h1 className="text-4xl font-bold mb-2" style={{ color: colors.navy }}>
-          {content.postTitle}
-        </h1>
-        {content.subtitle && (
-          <p
-            className="text-xl font-medium mb-3"
-            style={{ color: colors.slate }}
-          >
-            {content.subtitle}
-          </p>
+        <header className="post-header">
+          <h1>{content.postTitle}</h1>
+          {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
+          <div className="post-meta">
+            <p className="post-date">{content.date}</p>
+            <span className="post-type-tag">{postType}</span>
+          </div>
+          <div className="post-header-rule" />
+        </header>
+
+        <main className="post-content">
+          <ContentComponent />
+        </main>
+
+        {content.links && content.links.length > 0 && (
+          <footer className="post-external-footer">
+            <span className="post-external-label">
+              You can also view this post on other platforms:
+            </span>
+            <div className="post-external-links">
+              {content.links.map((link) => (
+                <a
+                  key={link.type}
+                  href={link.url}
+                  className="post-external-link"
+                  aria-label={
+                    link.type === "x" ? "View post on X" : "View post on LinkedIn"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.type === "x" ? <XLogo size={14} /> : <Linkedin size={15} />}
+                </a>
+              ))}
+            </div>
+          </footer>
         )}
-        <p className="text-sm mb-6" style={{ color: colors.slate }}>
-          {content.date}
-        </p>
-        <div className="h-px bg-gray-200 w-full mb-8"></div>
-        
-        <ContentComponent />
       </div>
     </div>
   );

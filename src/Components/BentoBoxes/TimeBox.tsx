@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
+import BentoBox from "./BentoBox";
 import Globe from "./Globe";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 interface TimeBoxProps {
   borderColorName?: ColorName;

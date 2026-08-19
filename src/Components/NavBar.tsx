@@ -1,5 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { colors } from "./BentoBoxes/BentoBox";
+import { colors } from "../theme";
+
+const navLinks = [
+  { label: "Home", to: "/", end: true },
+  { label: "Posts", to: "/posts", end: false },
+] as const;
 
 const NavBar = () => {
   return (
@@ -21,35 +26,24 @@ const NavBar = () => {
           </NavLink>
           
           <div className="flex items-center gap-6">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:opacity-70 ${
-                  isActive ? "border-b-2" : ""
-                }`
-              }
-              style={({ isActive }) => ({
-                color: colors.navy,
-                borderColor: isActive ? colors.periwinkle : "transparent",
-              })}
-              end
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/posts"
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:opacity-70 ${
-                  isActive ? "border-b-2" : ""
-                }`
-              }
-              style={({ isActive }) => ({
-                color: colors.navy,
-                borderColor: isActive ? colors.periwinkle : "transparent",
-              })}
-            >
-              Posts
-            </NavLink>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors hover:opacity-70 ${
+                    isActive ? "border-b-2" : ""
+                  }`
+                }
+                style={({ isActive }) => ({
+                  color: colors.navy,
+                  borderColor: isActive ? colors.periwinkle : "transparent",
+                })}
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </div>
         </div>
       </div>
@@ -58,4 +52,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

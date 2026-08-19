@@ -5,9 +5,11 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
-import SkillTag from "./SkillTag";
+import BentoBox from "./BentoBox";
+import SkillTag from "../SkillTag";
 import { ProjectType } from "../../types";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 interface ProjectsBoxProps {
   projects: ProjectType[];
@@ -25,12 +27,18 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [phase, setPhase] = useState<"idle" | "exit">("idle");
   const [isHovered, setIsHovered] = useState(false);
+  const [autoplayNonce, setAutoplayNonce] = useState(0);
   const intervalRef = useRef<number | null>(null);
   const indexRef = useRef(0);
   const phaseRef = useRef<"idle" | "exit">("idle");
 
-  const goTo = (next: number, dir: "left" | "right") => {
+  const goTo = (
+    next: number,
+    dir: "left" | "right",
+    resetAutoplay = false
+  ) => {
     if (next === indexRef.current || phaseRef.current !== "idle") return;
+    if (resetAutoplay) setAutoplayNonce((nonce) => nonce + 1);
     setDirection(dir);
     phaseRef.current = "exit";
     setPhase("exit");
@@ -44,9 +52,15 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
 
   const goNext = () => goTo((indexRef.current + 1) % projects.length, "right");
   const goPrev = () =>
-    goTo((indexRef.current - 1 + projects.length) % projects.length, "left");
+    goTo(
+      (indexRef.current - 1 + projects.length) % projects.length,
+      "left",
+      true
+    );
+  const goNextManually = () =>
+    goTo((indexRef.current + 1) % projects.length, "right", true);
   const selectProject = (i: number) =>
-    goTo(i, i > indexRef.current ? "right" : "left");
+    goTo(i, i > indexRef.current ? "right" : "left", true);
 
   useEffect(() => {
     if (isHovered) return;
@@ -56,7 +70,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isHovered, projects.length]);
+  }, [isHovered, projects.length, autoplayNonce]);
 
   const project = projects[index];
   const isExternal = !!project?.externalUrl;
@@ -67,7 +81,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
     if (project.externalUrl) {
       window.open(project.externalUrl, "_blank", "noopener,noreferrer");
     } else if (project.slug) {
-      window.location.href = `/#/project/${project.slug}`;
+      window.location.href = `/project/${project.slug}`;
     }
   };
 
@@ -225,7 +239,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            goNext();
+            goNextManually();
           }}
           className="carousel-nav-btn"
           aria-label="Next project"

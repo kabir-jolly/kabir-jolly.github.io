@@ -1,21 +1,6 @@
 import React from "react";
-
-// Colors resolve at runtime via CSS variables. The active palette is set in src/theme.ts
-// and applied to document.documentElement; switching the palette restyles the whole UI
-// because consumers pass these strings through `style={{ color: ... }}` etc.
-export const colors = {
-  lightPurple: "var(--color-lightPurple)",
-  lavender: "var(--color-lavender)",
-  periwinkle: "var(--color-periwinkle)",
-  navy: "var(--color-navy)",
-  darkBlue: "var(--color-darkBlue)",
-  slate: "var(--color-slate)",
-  lightBlue: "var(--color-lightBlue)",
-  cream: "var(--color-cream)",
-};
-
-// Define a type for the color keys
-export type ColorName = keyof typeof colors;
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 export interface BentoBoxProps {
   children: React.ReactNode;

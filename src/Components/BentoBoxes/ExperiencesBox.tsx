@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import BentoBox, { colors, ColorName } from "./BentoBox";
-import SkillTag from "./SkillTag";
+import { ArrowRight } from "lucide-react";
+import BentoBox from "./BentoBox";
+import SkillTag from "../SkillTag";
+import PillButton from "../PillButton";
 import { ExperienceType } from "../../types";
+import { colors } from "../../theme";
+import type { ColorName } from "../../theme";
 
 // Toggle to re-enable skill chips under each experience entry.
 const SHOW_EXPERIENCE_SKILLS = false;
@@ -39,7 +43,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
               {/* Left side: Date */}
               <div className="w-20 sm:w-28 md:w-36 flex-shrink-0 pr-2 sm:pr-3 md:pr-4 text-right">
                 <div
-                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 sm:whitespace-nowrap"
+                  className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 sm:whitespace-nowrap experience-period"
                   style={{ color: colors.slate }}
                 >
                   {experience.date}
@@ -73,7 +77,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 }`}
                 onClick={() => {
                   if (experience.slug) {
-                    window.location.href = `/#/experience/${experience.slug}`;
+                    window.location.href = `/experience/${experience.slug}`;
                   }
                 }}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -85,12 +89,13 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 >
                   {/* "View" badge - appears on hover for clickable items */}
                   {isClickable && isHovered && (
-                    <div
-                      className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-md text-white transition-opacity"
-                      style={{ backgroundColor: colors.navy }}
+                    <PillButton
+                      className="absolute top-2 right-2"
+                      trailingIcon={<ArrowRight size={14} />}
+                      mode="presentational"
                     >
-                      View More →
-                    </div>
+                      View More
+                    </PillButton>
                   )}
 
                   {/* Icon + Company/Title */}
@@ -107,7 +112,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     {/* Company + Title stacked */}
                     <div className="flex flex-col justify-center min-w-0">
                       <span
-                        className="text-xs sm:text-sm font-semibold"
+                        className="text-xs sm:text-sm font-semibold experience-company"
                         style={{ color: colors.lightBlue }}
                       >
                         {experience.company}

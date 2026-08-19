@@ -1,7 +1,9 @@
+import PostImageGrid from "../PostImageGrid";
+
 const ScrAPPS = () => {
   return (
-    <article className="prose prose-lg max-w-none">
-      <p className="mb-6">
+    <article>
+      <p>
         I spent a large part of my high school working on a venture called
         ScrAPPS with my friend and co-founder Michael Gerhard, which was a
         venture focused on tackling the commercial food waste problem. The idea
@@ -9,7 +11,7 @@ const ScrAPPS = () => {
         composting facilities via privately contracted haulers.
       </p>
 
-      <p className="mb-6">
+      <p>
         There is a story behind the idea that inspired ScrAPPS in the first
         place. While at Whole Foods, we were sorting our trash into the
         designated receptacles for landfill, recycling, and compost. We were
@@ -22,7 +24,7 @@ const ScrAPPS = () => {
         was.
       </p>
 
-      <p className="mb-6">
+      <p>
         After drafting up a plan for ScrAPPS, we presented it to just about
         every food waste producing establishment that my mom was willing to
         drive us to (tough scene for two 15-year-olds). Based on a fair bit of
@@ -30,55 +32,37 @@ const ScrAPPS = () => {
         lettuce ends up, we decided to start building out the platform.
       </p>
 
-      {/* First Image Row */}
-      <div className="grid grid-cols-3 gap-4 mb-2">
-        <img
-          src="/assets/img/scrapps/scrapps1.jpeg"
-          alt="Whiteboard 1"
-          className="rounded-lg"
-        />
-        <img
-          src="/assets/img/scrapps/scrapps2.jpeg"
-          alt="Whiteboard 2"
-          className="rounded-lg"
-        />
-        <img
-          src="/assets/img/scrapps/scrapps3.jpeg"
-          alt="Whiteboard 3"
-          className="rounded-lg"
-        />
-      </div>
-      <p className="text-sm text-gray-600 text-center mb-6">
-        Our high-fidelity Starbucks-cake-pop-fueled app wireframes.
-      </p>
+      <PostImageGrid
+        columns={3}
+        images={[
+          { src: "/assets/img/scrapps/scrapps1.jpeg", alt: "Whiteboard 1" },
+          { src: "/assets/img/scrapps/scrapps2.jpeg", alt: "Whiteboard 2" },
+          { src: "/assets/img/scrapps/scrapps3.jpeg", alt: "Whiteboard 3" },
+        ]}
+        caption="Our high-fidelity Starbucks-cake-pop-fueled app wireframes."
+      />
 
-      <p className="mb-6">
+      <p>
         The shameless interrogation of restaurant owners slowly turned into
         partnerships and the expo marker sketches slowly turned into a fairly
         functional smartphone app. The final process was pretty simple and made
         a ton of sense on paper.
       </p>
 
-      {/* Single Images */}
-      <div className="space-y-4 mb-6">
-        <img
-          src="/assets/img/scrapps/scrapps4.png"
-          alt="ScrAPPS App"
-          className="rounded-lg w-full"
-        />
-        <img
-          src="/assets/img/scrapps/scrapps5.png"
-          alt="ScrAPPS Flow"
-          className="rounded-lg w-full"
-        />
-      </div>
+      <PostImageGrid
+        stacked
+        images={[
+          { src: "/assets/img/scrapps/scrapps4.png", alt: "ScrAPPS App" },
+          { src: "/assets/img/scrapps/scrapps5.png", alt: "ScrAPPS Flow" },
+        ]}
+      />
 
-      <p className="mb-6">
+      <p>
         One of my proudest achievements to date is conducting successful hauls
         for places like California Pizza Kitchen and Whole Foods.
       </p>
 
-      <p className="mb-6">
+      <p>
         Reflecting on this experience, I feel like it is so important to note
         how this is before Michael and I knew anything about funding, market
         research, or scaling a product. We were just blindly doing what felt
@@ -91,27 +75,17 @@ const ScrAPPS = () => {
         end.
       </p>
 
-      {/* Final Image Row */}
-      <div className="grid grid-cols-2 gap-4 mb-2">
-        <img
-          src="/assets/img/scrapps/scrapps6.jpeg"
-          alt="First Haul"
-          className="rounded-lg"
-        />
-        <img
-          src="/assets/img/scrapps/scrapps7.jpeg"
-          alt="First Haul 2"
-          className="rounded-lg"
-        />
-      </div>
-      <p className="text-sm text-gray-600 text-center mb-6">
-        Pictures from our very first haul. Why did I wear a white shirt for a
-        composting job?
-      </p>
+      <PostImageGrid
+        images={[
+          { src: "/assets/img/scrapps/scrapps6.jpeg", alt: "First Haul" },
+          { src: "/assets/img/scrapps/scrapps7.jpeg", alt: "First Haul 2" },
+        ]}
+        caption="Pictures from our very first haul. Why did I wear a white shirt for a composting job?"
+      />
 
       {/* Technologies */}
-      <h2 className="text-2xl font-semibold mb-4">Technologies Used</h2>
-      <ul className="mb-6">
+      <h2>Technologies Used</h2>
+      <ul>
         <li>Swift and Objective-C for iOS app development</li>
         <li>Firebase for backend and database</li>
         <li>
