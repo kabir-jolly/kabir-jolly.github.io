@@ -416,7 +416,26 @@ button:focus-visible {
 
 .post-content ul,
 .post-content ol {
+  margin: 0 0 1.35rem;
   padding-left: 1.25rem;
+}
+
+.post-content ul {
+  list-style-type: disc;
+}
+
+.post-content ol {
+  list-style-type: decimal;
+}
+
+.post-content li + li {
+  margin-top: 0.35rem;
+}
+
+.post-content li > ul,
+.post-content li > ol {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
 }
 
 .post-content li::marker {
