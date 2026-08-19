@@ -1,10 +1,12 @@
+import PostFigure from "../PostFigure";
+import PostImageGrid from "../PostImageGrid";
+
 const ModifyingMinBERT = () => {
   return (
-    <article className="prose prose-lg max-w-none">
-      <p className="mb-6">
+    <article>
+      <p>
         <a
           href="https://web.stanford.edu/class/cs224n/"
-          className="text-blue-600 hover:text-blue-800"
         >
           CS 224N (Natural Language Processing with Deep Learning)
         </a>{" "}
@@ -21,14 +23,13 @@ const ModifyingMinBERT = () => {
         reason why this class had over 650 students enrolled.
       </p>
 
-      <p className="mb-6">
+      <p>
         While I cannot share the code for this project given Stanford's Honor
         Code, I would love to share the work that went into the final project
         conducted by Govind Chada and myself. If you would prefer to read the
         whole paper, you can find it{" "}
         <a
           href="/assets/pdf/224N_final_report.pdf"
-          className="text-blue-600 hover:text-blue-800"
         >
           here
         </a>
@@ -36,12 +37,12 @@ const ModifyingMinBERT = () => {
       </p>
 
       {/* Background */}
-      <h2 className="text-2xl font-semibold mb-4">Background</h2>
-      <p className="mb-4">
+      <h2>Background</h2>
+      <p>
         BERT, or Bidirectional Encoder Representations from Transformers, is an
         LLM based on the transformer architecture.
       </p>
-      <ul className="mb-6">
+      <ul>
         <li>Especially powerful when it comes to sequential textual data</li>
         <li>
           Training pipeline consists of pre-training on a large body of text and
@@ -49,13 +50,12 @@ const ModifyingMinBERT = () => {
         </li>
       </ul>
 
-      <img
+      <PostFigure
         src="/assets/img/224n/224n1.png"
         alt="Overview"
-        className="w-full rounded-lg mb-6"
       />
 
-      <p className="mb-6">
+      <p>
         In many domains such as healthcare and education, data collection is
         challenging, and training LLMs to perform well in these fields benefits
         from bootstrapping the performance on a specific task by utilizing
@@ -63,8 +63,8 @@ const ModifyingMinBERT = () => {
       </p>
 
       {/* Problem */}
-      <h2 className="text-2xl font-semibold mb-4">Problem</h2>
-      <p className="mb-6">
+      <h2>Problem</h2>
+      <p>
         BERT has been shown to perform well on a variety of natural language
         tasks. However, these models are optimized during training to perform
         well on a particular task. This inspires the central question that
@@ -72,12 +72,12 @@ const ModifyingMinBERT = () => {
         accuracy?
       </p>
 
-      <p className="mb-4">
+      <p>
         For this project, we adapt BERT to solve 3 main tasks:
       </p>
-      <ol className="mb-6">
+      <ol>
         <li>
-          <span className="font-semibold">Sentiment Analysis</span>
+          <strong>Sentiment Analysis</strong>
           <ul>
             <li>Stanford Sentiment Treebank dataset</li>
             <li>
@@ -87,7 +87,7 @@ const ModifyingMinBERT = () => {
           </ul>
         </li>
         <li>
-          <span className="font-semibold">Paraphrase Detection</span>
+          <strong>Paraphrase Detection</strong>
           <ul>
             <li>Quora dataset</li>
             <li>
@@ -97,7 +97,7 @@ const ModifyingMinBERT = () => {
           </ul>
         </li>
         <li>
-          <span className="font-semibold">Semantic Textual Similarity</span>
+          <strong>Semantic Textual Similarity</strong>
           <ul>
             <li>SemEval STS Benchmark dataset</li>
             <li>
@@ -109,25 +109,25 @@ const ModifyingMinBERT = () => {
       </ol>
 
       {/* Methodology and Results */}
-      <h2 className="text-2xl font-semibold mb-4">Methodology and Results</h2>
+      <h2>Methodology and Results</h2>
 
-      <h3 className="text-xl font-semibold mb-4">
+      <h3>
         Phase 1: Baseline, Gradient Surgery, and Cosine Similarity
       </h3>
-      <p className="mb-4">
+      <p>
         Baseline approach: BERT model with separate head for each task.
         Different loss functions used for each head.
       </p>
-      <ol className="mb-6">
+      <ol>
         <li>Sentiment analysis: Cross Entropy Loss</li>
         <li>Paraphrase detection: Binary Cross Entropy Loss</li>
         <li>Semantic textual similarity: Mean Squared Error</li>
       </ol>
 
-      <p className="mb-4">
+      <p>
         Experimentation to expand upon the baseline included:
       </p>
-      <ol className="mb-6">
+      <ol>
         <li>Naïve gradient surgery (worse performance)</li>
         <li>Cosine similarity (CS) (significant improvement)</li>
         <li>
@@ -137,19 +137,18 @@ const ModifyingMinBERT = () => {
         <li>CS + GS and no dropout (best model during Phase 1)</li>
       </ol>
 
-      <img
+      <PostFigure
         src="/assets/img/224n/224n2.png"
         alt="Phase 1 Architecture"
-        className="w-full rounded-lg mb-6"
       />
 
-      <h3 className="text-xl font-semibold mb-4">
+      <h3>
         Phase 2: Training Pipeline Modifications
       </h3>
-      <p className="mb-4">
+      <p>
         We then modified the approach taken in Phase 1 through a 3-step process:
       </p>
-      <ul className="mb-6">
+      <ul>
         <li>Pre-train using 3 separate BERT models, one for each task</li>
         <li>
           Average outputs to be used as a stronger initialization for multitask
@@ -157,26 +156,21 @@ const ModifyingMinBERT = () => {
         </li>
       </ul>
 
-      <div className="space-y-4 mb-6">
-        <img
-          src="/assets/img/224n/224n3.png"
-          alt="Phase 2 Training"
-          className="w-full rounded-lg"
-        />
-        <img
-          src="/assets/img/224n/224n4.png"
-          alt="Results"
-          className="w-full rounded-lg"
-        />
-      </div>
+      <PostImageGrid
+        stacked
+        images={[
+          { src: "/assets/img/224n/224n3.png", alt: "Phase 2 Training" },
+          { src: "/assets/img/224n/224n4.png", alt: "Results" },
+        ]}
+      />
 
       {/* Analysis */}
-      <h2 className="text-2xl font-semibold mb-4">Analysis</h2>
-      <p className="mb-4">
+      <h2>Analysis</h2>
+      <p>
         We found the best performing model consists of our training method in
         combination with gradient surgery and cosine similarity:
       </p>
-      <ul className="mb-6">
+      <ul>
         <li>
           Naively applying gradient surgery negatively impacts results due to
           strongly conflicting gradients between the tasks
@@ -207,8 +201,8 @@ const ModifyingMinBERT = () => {
       </ul>
 
       {/* Conclusion */}
-      <h2 className="text-2xl font-semibold mb-4">Conclusion</h2>
-      <p className="mb-6">
+      <h2>Conclusion</h2>
+      <p>
         Throughout the course of this project, we were able to empirically
         determine certain modifications to our baseline multitask BERT
         implementation that resulted in stronger task-specific and overall
@@ -218,8 +212,8 @@ const ModifyingMinBERT = () => {
         using the dev datasets, our overall test score was found to be 0.702.
       </p>
 
-      <p className="mb-4">Limitations include:</p>
-      <ul className="mb-6">
+      <p>Limitations include:</p>
+      <ul>
         <li>
           Universally low performance on the sentiment classification task,
           pulling down the overall score greatly
@@ -230,7 +224,7 @@ const ModifyingMinBERT = () => {
         </li>
       </ul>
 
-      <p className="mb-6">
+      <p>
         One future step in involves trying an optimization based meta-learning
         approach such as MAML. We saw having a good initialization point before
         finetuning improved downstream task performance, so with the

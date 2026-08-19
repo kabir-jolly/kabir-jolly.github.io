@@ -1,26 +1,27 @@
+import PostFigure from "../PostFigure";
+import PostImageGrid from "../PostImageGrid";
+
 const Wehab = () => {
   return (
-    <article className="prose prose-lg max-w-none">
-      <p className="mb-6">
+    <article>
+      <p>
         I spent the summer after my freshman year working at the Stanford
         Psychophysiology Lab (
         <a
           href="https://wehab.stanford.edu/"
-          className="text-blue-600 hover:text-blue-800"
         >
           Wehab Lab
         </a>
         ). This was a part of the{" "}
         <a
           href="https://curis.stanford.edu/"
-          className="text-blue-600 hover:text-blue-800"
         >
           CURIS
         </a>{" "}
         (undergraduate research in computer science) fellowship.
       </p>
 
-      <p className="mb-6">
+      <p>
         My work involved using Arduino to construct and evaluate a palatal PPG
         and microphone apparatus for nasal cycle detection. I developed a
         pipeline that was capable of calculating loudness measurements and FFT
@@ -28,19 +29,19 @@ const Wehab = () => {
       </p>
 
       {/* Technologies */}
-      <h2 className="text-2xl font-semibold mb-4">Technologies Used</h2>
-      <ul className="mb-6">
+      <h2>Technologies Used</h2>
+      <ul>
         <li>Arduino</li>
         <li>Python (numpy, scipy, matplotlib, pandas, sklearn)</li>
       </ul>
 
       {/* Background */}
-      <h2 className="text-2xl font-semibold mb-4">Background</h2>
-      <p className="mb-4">
+      <h2>Background</h2>
+      <p>
         The nasal cycle refers to spontaneous congestion and decongestion of
         opposite sides of the nose.
       </p>
-      <ul className="mb-4">
+      <ul>
         <li>Common in mammals, present in ~80% of the human population</li>
         <li>
           Periodic in nature, shifts in the cycle are individual dependent but
@@ -48,19 +49,18 @@ const Wehab = () => {
         </li>
       </ul>
 
-      <p className="mb-6">
+      <p>
         Congestion is controlled by tissue-covered flaps in the nose known as
         turbinates, and turbinate enlargement results in restricted nostril
         airflow.
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/wehab/wehab1.png"
         alt="Nasal Cycle"
-        className="w-full rounded-lg mb-6"
       />
 
-      <p className="mb-6">
+      <p>
         Studies show potential links between the nasal cycle and autonomic
         nervous system functioning, respiratory infection response, and
         mental/emotional disorders, motivating further research into nasal cycle
@@ -68,49 +68,48 @@ const Wehab = () => {
       </p>
 
       {/* Proposed Solution */}
-      <h2 className="text-2xl font-semibold mb-4">Proposed Solution</h2>
-      <p className="mb-6">
+      <h2>Proposed Solution</h2>
+      <p>
         Current methods are invasive, expensive, or constrained by the necessity
         to operate in a lab/clinical setting.
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/wehab/wehab2.png"
         alt="Current Methods"
-        className="w-full rounded-lg mb-6"
       />
 
-      <p className="mb-4">
+      <p>
         We aim to create a self-contained retainer that uses
         photoplethysmography (PPG) sensors to analyze blood flow in the greater
         palatine arteries, which supply blood to the inferior turbinates.
       </p>
 
-      <p className="mb-4">
+      <p>
         Furthermore, we want to verify the existence of the nasal cycle with
         audio-based methods and determine alignment between our two approaches.
       </p>
 
-      <p className="mb-4">Our goals are to create prototypes that are:</p>
-      <ul className="mb-6">
+      <p>Our goals are to create prototypes that are:</p>
+      <ul>
         <li>Portable/practical for long-term data collection</li>
         <li>Cost effective</li>
         <li>Comfortable and non-invasive</li>
       </ul>
 
-      <img
+      <PostFigure
         src="/assets/img/wehab/wehab3.png"
         alt="Placement Diagram"
-        className="w-1/2 rounded-lg mb-6 mx-auto"
+        size="half"
       />
 
       {/* Methodology and Results */}
-      <h2 className="text-2xl font-semibold mb-4">Methodology and Results</h2>
+      <h2>Methodology and Results</h2>
 
-      <h3 className="text-xl font-semibold mb-4">
+      <h3>
         Phase 1: Turbinate Enlargement Detection with PPG Sensors
       </h3>
-      <ul className="mb-6">
+      <ul>
         <li>Placed two PPG sensors on the prototype base</li>
         <li>Tested with dental wax and retainer designs</li>
         <li>
@@ -123,29 +122,23 @@ const Wehab = () => {
         <li>Connected sensors to an Arduino-compatible microcontroller</li>
       </ul>
 
-      <div className="space-y-4 mb-6">
-        <img
-          src="/assets/img/wehab/wehab4.png"
-          alt="Prototypes"
-          className="w-full rounded-lg"
-        />
-        <img
-          src="/assets/img/wehab/wehab5.png"
-          alt="PPG Data"
-          className="w-full rounded-lg"
-        />
-      </div>
-
-      <h3 className="text-xl font-semibold mb-4">
-        Phase 2: Nostril Dominance Detection with Microphone
-      </h3>
-      <img
-        src="/assets/img/wehab/wehab6.png"
-        alt="Demo"
-        className="w-full rounded-lg mb-6"
+      <PostImageGrid
+        stacked
+        images={[
+          { src: "/assets/img/wehab/wehab4.png", alt: "Prototypes" },
+          { src: "/assets/img/wehab/wehab5.png", alt: "PPG Data" },
+        ]}
       />
 
-      <ul className="mb-6">
+      <h3>
+        Phase 2: Nostril Dominance Detection with Microphone
+      </h3>
+      <PostFigure
+        src="/assets/img/wehab/wehab6.png"
+        alt="Demo"
+      />
+
+      <ul>
         <li>
           Attached an omnidirectional lapel microphone to a sleep apnea chin
           strap
@@ -163,28 +156,23 @@ const Wehab = () => {
         </li>
       </ul>
 
-      <div className="space-y-4 mb-6">
-        <img
-          src="/assets/img/wehab/wehab7.png"
-          alt="Microphone Readings"
-          className="w-full rounded-lg"
-        />
-        <img
-          src="/assets/img/wehab/wehab8.png"
-          alt="Pipeline"
-          className="w-full rounded-lg"
-        />
-      </div>
+      <PostImageGrid
+        stacked
+        images={[
+          { src: "/assets/img/wehab/wehab7.png", alt: "Microphone Readings" },
+          { src: "/assets/img/wehab/wehab8.png", alt: "Pipeline" },
+        ]}
+      />
 
       {/* Discussion */}
-      <h2 className="text-2xl font-semibold mb-4">Discussion</h2>
-      <p className="mb-4">
+      <h2>Discussion</h2>
+      <p>
         We conducted experimentation by blocking a nostril or laying sideways,
         thus forcing one nostril to dominate breathing over the other. Trials
         from both PPG-based prototypes were inconclusive.
       </p>
 
-      <ul className="mb-6">
+      <ul>
         <li>
           No replicable or statistically significant relationship between PPG
           readings and nostril airflow
@@ -216,25 +204,25 @@ const Wehab = () => {
       </ul>
 
       {/* Future Work */}
-      <h2 className="text-2xl font-semibold mb-4">Future Work</h2>
-      <p className="mb-4">
+      <h2>Future Work</h2>
+      <p>
         The retainer showed a higher amplitude from the right sensor in every
         trial. This is due to sensor placement (aligning a flat sensor to the
         curved palate) or sensor error.
       </p>
-      <ul className="mb-6">
+      <ul>
         <li>
           We developed a flexible PPG sensor to place on the retainer and are
           awaiting its arrival for testing
         </li>
       </ul>
 
-      <p className="mb-4">
+      <p>
         For the microphone readings, the loudness values are difficult to
         interpret as a standalone metric, and further measures can be taken to
         clean the data. We can:
       </p>
-      <ul className="mb-6">
+      <ul>
         <li>Compare the energy in each audio signal</li>
         <li>
           Utilize a baseline frequency (e.g. a 1 kHz tone) to establish a
@@ -244,8 +232,8 @@ const Wehab = () => {
         <li>Record ambient noise in the room and filter it out</li>
       </ul>
 
-      <p className="mb-4">Further exploration:</p>
-      <ul className="mb-6">
+      <p>Further exploration:</p>
+      <ul>
         <li>
           Compare results with a rhinomanometer which is the academic convention
           for nasal cycle detection
@@ -258,14 +246,11 @@ const Wehab = () => {
       </ul>
 
       {/* Final Poster */}
-      <img
+      <PostFigure
         src="/assets/img/wehab/curis_poster.png"
         alt="CURIS Poster"
-        className="w-full rounded-lg mb-2"
+        caption="Research poster presented at the end of the summer CURIS symposium."
       />
-      <p className="text-sm text-gray-600 text-center mb-6">
-        Research poster presented at the end of the summer CURIS symposium.
-      </p>
     </article>
   );
 };

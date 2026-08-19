@@ -1,8 +1,10 @@
+import PostFigure from "../PostFigure";
+
 const FDEManual = () => {
   return (
-    <article className="prose prose-lg max-w-none">
-      <p className="mb-6">The goal of this manual is twofold.</p>
-      <p className="mb-6">
+    <article>
+      <p>The goal of this manual is twofold.</p>
+      <p>
         First, a byproduct of deeply devoting myself to my work has been the
         constant influx of learning, especially as a young professional. This is
         meant to document what has worked well for me so far and act as a
@@ -11,40 +13,40 @@ const FDEManual = () => {
         worked for me is first codifying seemingly disparate insights, then
         using that synthesis to operationalize what I've learned.
       </p>
-      <p className="mb-6">
+      <p>
         Second, I hope others—whether trying to get a better grasp of this
         fairly new concept, seeing how it is valuable to them, or finding
         themselves in my position—can benefit from the ideas presented. It should be a
         guide for getting started, how it can be done well, and why it is
         important in the business sense.
       </p>
-      <p className="mb-6">
+      <p>
         What I write is rarely public, or even shared, but I hope to push
         through that wall a bit with this endeavor.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">
+      <h2>
         What is Forward Deployed Engineering?
       </h2>
-      <p className="mb-6">
+      <p>
         At its core, the idea is simple: a forward deployed engineer is someone,
         typically with a technical background, who sits at the intersection
         between the company's core product and the pressing customer need.
       </p>
-      <p className="mb-6">
+      <p>
         A forward deployed engineer will show up on the doorstep of a
         prospective customer, usually one who faces a problem that the FDE's
         company has not even really seen before, but with the conviction that
         they can build on top of their core product to quickly deliver value.
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/fde/knock-knock.png"
         alt="Stick figure in a hard hat knocking on a door labeled CEO"
-        className="rounded-lg mx-auto mb-6 w-full max-w-lg"
+        size="medium"
       />
 
-      <p className="mb-6">
+      <p>
         Ted Mabrey, Head of Commercial at Palantir, and Bob McGrew, former
         Director at Palantir and CRO at OpenAI, have both said that if the FDE
         team isn't honed in on one of the top 5 problems for the CEO, then the
@@ -53,12 +55,12 @@ const FDEManual = () => {
         building on the foundation laid during the initial engagement.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">
+      <h2>
         Profile of an Effective FDE
       </h2>
 
-      <h3 className="text-xl font-semibold mb-2 mt-6">Overview</h3>
-      <p className="mb-6">
+      <h3>Overview</h3>
+      <p>
         The table stakes are largely implied by the job title itself. An FDE
         must be technically competent, possessing a deep understanding of their
         company's core product, and best-in-class engineering aptitude to build
@@ -75,7 +77,7 @@ const FDEManual = () => {
         company culture, values, and work styles requires a natural inclination
         towards being comfortable in any situation.
       </p>
-      <p className="mb-6">
+      <p>
         Some of the best FDEs I've seen share a particularly important knack for
         being able to bridge almost any divide in communication. This has been
         crucial at Palantir, especially when working with clients that are known
@@ -91,13 +93,13 @@ const FDEManual = () => {
         themselves up for success when having to explain things to others.
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/fde/fast-prototyper.png"
         alt="Stick figure typing rapidly on a laptop"
-        className="rounded-lg mx-auto mb-6 w-full max-w-lg"
+        size="medium"
       />
 
-      <p className="mb-6">
+      <p>
         Building on these ideas, the next trait I've seen is someone who is just{" "}
         <em>fast.</em> Fast prototyper, extraordinarily decisive, and generally
         quick-to-action. The picture we paint at Palantir is that, after
@@ -114,7 +116,7 @@ const FDEManual = () => {
         the delivery of a technical solution that they thought would easily take
         weeks of roadmapping, discussion, and implementation.
       </p>
-      <p className="mb-6">
+      <p>
         This is not to say that there is a compromise in soundness of the
         technical delivery. At Palantir, in addition to Forward Deployed
         Engineers (Deltas), we also place key importance in Deployment
@@ -128,14 +130,14 @@ const FDEManual = () => {
         tangible business value and engineering rigor up and to the right
         simultaneously.
       </p>
-      <p className="mb-6">
+      <p>
         This all might sound eerily similar to descriptions of extraordinary
         early-stage technical founders. We see this in practice, where many FDEs
         come from former founding backgrounds, and many FDEs also end up as
         successful technical co-founders and powerful assets to early-stage
         ventures as well.
       </p>
-      <p className="mb-6">
+      <p>
         Beyond these core traits, it's unsurprisingly nuanced. Each company
         needs their own flavor of an FDE—one that aligns with their company's
         key business strategy and is uniquely armed with a skillset that gives
@@ -143,8 +145,8 @@ const FDEManual = () => {
         client's core domain.
       </p>
 
-      <h3 className="text-xl font-semibold mb-2 mt-6">A You-Shaped Opening</h3>
-      <p className="mb-6">
+      <h3>A You-Shaped Opening</h3>
+      <p>
         As someone with solely early-stage startup exposure prior to graduating
         college, I sought two main things from my first full-time professional
         opportunity—growth and mentorship. I thought a larger company would
@@ -152,7 +154,7 @@ const FDEManual = () => {
         the FDE-centric culture at Palantir creates a different reality from
         what I imagined.
       </p>
-      <p className="mb-6">
+      <p>
         In the span of a single week, I am asked the same questions several
         times over—"What's your spike" and "What shape of Delta do you see
         yourself being?" This is what leaders in the company care about. The
@@ -164,17 +166,17 @@ const FDEManual = () => {
         rare-earth materials in remote areas, do that!
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/fde/you-shaped-opening.png"
         alt="Stick figure shaped like a puzzle piece fitting into a matching gap in a puzzle"
-        className="rounded-lg mx-auto mb-6 w-full max-w-lg"
+        size="medium"
       />
 
-      <p className="mb-6">
+      <p>
         An effective FDE at Palantir, and beyond, doubles down on what they are
         best at—exploitation over exploration.
       </p>
-      <p className="mb-6">
+      <p>
         The Japanese concept of ikigai details the intersection formed by four
         things: what you love, what you are good at, what the world needs, and
         what you can be paid for. You can adjust this to describe where an FDE
@@ -184,14 +186,14 @@ const FDEManual = () => {
         (solving their most pressing problems).
       </p>
 
-      <img
+      <PostFigure
         src="/assets/img/fde/building-bridges.png"
         alt="Stick figure holding a sign reading SOLUTION, balanced over a chasm between signs reading CUSTOMER and PRODUCT"
-        className="rounded-lg mx-auto mb-6 w-full max-w-lg"
+        size="medium"
       />
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">Building Bridges</h2>
-      <p className="mb-6">
+      <h2>Building Bridges</h2>
+      <p>
         This is where the FDE really shines. If your company is one whose core
         product offering possesses a repeatable motion and it's kind of just
         "one-size-fits-all" then you can stop here. But if, as Bob McGrew puts
@@ -200,10 +202,10 @@ const FDEManual = () => {
         company and the customers.
       </p>
 
-      <h3 className="text-xl font-semibold mb-2 mt-6">
+      <h3>
         Customer &lt;&gt; Solution
       </h3>
-      <p className="mb-6">
+      <p>
         The first bridge an FDE builds is the most immediate: taking a
         customer's painful, often underspecified problem and translating it into
         something that actually works. This is where the deep embedding pays
@@ -213,7 +215,7 @@ const FDEManual = () => {
         solution you architect isn't born from a product spec—it's learned
         through osmosis and birthed from proximity.
       </p>
-      <p className="mb-6">
+      <p>
         This is why the common comparison between an FDE and consultant misses
         the mark. You are not handing over a deliverable and walking away.
         You're building something live, in their environment, with their data.
@@ -227,10 +229,10 @@ const FDEManual = () => {
         repeatable, and scalable.
       </p>
 
-      <h3 className="text-xl font-semibold mb-2 mt-6">
+      <h3>
         Customer &lt;&gt; Product
       </h3>
-      <p className="mb-6">
+      <p>
         The second bridge points back toward your own company. When an FDE shows
         up at the customer's doorstep, they typically have never seen the
         problem before and have to architect solutions on top of the platform to
@@ -242,7 +244,7 @@ const FDEManual = () => {
         core product capability that serves hundreds of more similar scenarios
         down the line.
       </p>
-      <p className="mb-6">
+      <p>
         This is where Palantir's incumbency, consistent product iteration, and
         years of building end-to-end solutions for customers helps future FDE
         engagements shine. You get to stand on the shoulders of giants and
@@ -255,16 +257,16 @@ const FDEManual = () => {
         same underlying pain.
       </p>
 
-      <h3 className="text-xl font-semibold mb-2 mt-6">
+      <h3>
         Customer &lt;&gt; Solution &lt;&gt; Product
       </h3>
-      <p className="mb-6">
+      <p>
         The FDE's last step is to constantly tie it all together. The "solution"
         which falls under the responsibility of the deployment team, is the glue
         between solving the customer's problem in the immediate and informing
         product vision long-term.
       </p>
-      <p className="mb-6">
+      <p>
         This requires a particular kind of awareness. You quickly find yourself
         deep in the weeds solving today's problem, but need to maintain a
         peripheral vision for what should end up being generalizable. Which
@@ -277,8 +279,8 @@ const FDEManual = () => {
         <em>yesterday</em>.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">Enablement</h2>
-      <p className="mb-6">
+      <h2>Enablement</h2>
+      <p>
         Oftentimes the end state of an FDE engagement is to eventually make
         yourself unnecessary. You're not there to become a permanent fixture—you're
         there to break into the hardest problem they have and get them from zero
@@ -292,24 +294,24 @@ const FDEManual = () => {
         what they know best but you also enable them by sharing your knowledge
         back to those you work with.
       </p>
-      <p className="mb-6">
+      <p>
         Enablement is a core tenet of many engagements at Palantir and thus
         baked into the FDE role. Ted Mabrey puts it simply: "when they win, you
         win". While this may feel like it slows down progress at times, the
         long-term benefit has been proven time after time.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">
+      <h2>
         Pitfalls of Adopting the FDE Model
       </h2>
 
-      <img
+      <PostFigure
         src="/assets/img/fde/pitfalls.png"
         alt="Stick figure in a hard hat teetering on the edge of a cliff"
-        className="rounded-lg mx-auto mb-6 w-full max-w-lg"
+        size="medium"
       />
 
-      <p className="mb-6">
+      <p>
         The primary pitfall worth mentioning is losing sight of the product in
         favor of the services being delivered. When you're embedded with a
         customer, the temptation to just build whatever they directly ask for is
@@ -320,7 +322,7 @@ const FDEManual = () => {
         expense of an extensible product that should scale well beyond a
         headcount.
       </p>
-      <p className="mb-6">
+      <p>
         Forward Deployed Engineering was one of the most sought-after roles in
         Silicon Valley this past year. YCombinator's Jared Friedman mentions
         that well over 100 companies were hiring for the role this year, up from
@@ -335,27 +337,25 @@ const FDEManual = () => {
         fall flat.
       </p>
 
-      <figure className="mb-6">
-        <img
-          src="/assets/img/fde/pave-fde-growth.png"
-          alt="Line chart titled 'New Potential Job on the Rise: The Forward Deployed Engineer (FDE)' showing the percentage of companies with an FDE role rising from 0.34% in January 2023 to 1.24% in September 2025"
-          className="rounded-lg mx-auto w-full"
-        />
-        <figcaption className="text-sm italic text-center mt-2 text-gray-600">
-          Image / data courtesy of{" "}
-          <a
-            href="https://www.pave.com/blog-posts/forward-deployed-engineer-on-the-rise"
-            className="text-blue-600 hover:text-blue-800"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pave
-          </a>
-          .
-        </figcaption>
-      </figure>
+      <PostFigure
+        src="/assets/img/fde/pave-fde-growth.png"
+        alt="Line chart titled 'New Potential Job on the Rise: The Forward Deployed Engineer (FDE)' showing the percentage of companies with an FDE role rising from 0.34% in January 2023 to 1.24% in September 2025"
+        caption={
+          <>
+            Image / data courtesy of{" "}
+            <a
+              href="https://www.pave.com/blog-posts/forward-deployed-engineer-on-the-rise"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pave
+            </a>
+            .
+          </>
+        }
+      />
 
-      <p className="mb-6">
+      <p>
         Another common mistake I've seen being mentioned is the lack of a clear
         vision. Are the services being offered treated and seen as a key source
         of revenue for the company? Colin Jarvis from OpenAI talks about how for
@@ -370,14 +370,13 @@ const FDEManual = () => {
         favor of building a long term and lasting product.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4 mt-10">
+      <h2>
         Additional Aside: FD(AI)E and the Role of FDEs in the AI-Age
       </h2>
-      <p className="mb-6">
+      <p>
         This is more important than ever, with a{" "}
         <a
           href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
-          className="text-blue-600 hover:text-blue-800"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -390,7 +389,6 @@ const FDEManual = () => {
         for stealth in a piece titled{" "}
         <a
           href="https://www.linkedin.com/pulse/1-ebitda-jack-soslow-8gmhe/"
-          className="text-blue-600 hover:text-blue-800"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -404,7 +402,7 @@ const FDEManual = () => {
         <em>just $1 in value</em>, a metaphor for the widespread failure and
         inability we see in building AI-native deployments that matter.
       </p>
-      <p className="mb-6">
+      <p>
         I am strongly convinced of AI's capability (at its current, not just
         future state) to solve some of business' most challenging problems and
         drive significant shifts in revenue. Agentic capabilities are increasing
@@ -423,7 +421,7 @@ const FDEManual = () => {
         AI-specialized FDEs, or Forward Deployed AI Engineers, starting to take
         shape as an important position.
       </p>
-      <p className="mb-6">
+      <p>
         Companies that win the AI era won't just be the ones with the best
         models—they'll also be the ones willing to do the work of making those
         models actually run in the real world. That's the FDE's job, and it's
