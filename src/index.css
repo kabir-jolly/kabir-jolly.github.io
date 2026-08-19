@@ -142,11 +142,6 @@ button:focus-visible {
   }
 }
 
-/* Animation utilities */
-.hover\:scale-102:hover {
-  transform: scale(1.02);
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -165,60 +160,6 @@ button:focus-visible {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a6b1e1;
-}
-
-/* Book Flip Animation */
-@keyframes flip-out {
-  from {
-    transform: rotateY(0deg);
-    opacity: 1;
-  }
-  to {
-    transform: rotateY(90deg);
-    opacity: 0;
-  }
-}
-
-@keyframes flip-in {
-  from {
-    transform: rotateY(-90deg);
-    opacity: 0;
-  } /* Start from the other side, turned away */
-  to {
-    transform: rotateY(0deg);
-    opacity: 1;
-  }
-}
-
-.page-content-flipping {
-  transform-style: preserve-3d; /* Apply to the element that will have children transformed or is transformed itself if children need to obey 3D space */
-}
-
-.page-content-flipping.out {
-  animation: flip-out 0.25s forwards;
-}
-
-.page-content-flipping.in {
-  animation: flip-in 0.25s forwards 0.25s; /* Delay matches flip-out duration */
-}
-
-/* Custom Scrollbar for Project Description */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 5px; /* Thinner scrollbar */
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent; /* Make track invisible */
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #a6b1e1; /* Periwinkle */
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #424874; /* Navy */
 }
 
 /* Page enter / list stagger animations */
@@ -257,7 +198,6 @@ button:focus-visible {
   opacity: 1 !important;
 }
 
-/* New Swirling Gradient Animation for Button */
 @keyframes gradient-swirl {
   0% {
     background-position: 0% 0%;
@@ -274,25 +214,6 @@ button:focus-visible {
   100% {
     background-position: 0% 0%;
   }
-}
-
-.animate-gradient-swirl {
-  /* Apply the animation - much slower and with a random start offset */
-  animation: gradient-swirl 45s ease infinite;
-  animation-delay: -10s; /* Start 10s into the animation cycle */
-  /* Define the gradient background */
-  background: linear-gradient(
-    135deg,
-    #213448,
-    #424874,
-    #547792,
-    #94b4c1,
-    #547792,
-    #424874,
-    #213448
-  );
-  /* Make the background larger than the element to allow movement */
-  background-size: 400% 400%;
 }
 
 /* Shared pill buttons */
