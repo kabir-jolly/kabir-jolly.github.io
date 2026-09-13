@@ -110,7 +110,7 @@ const createLife: SimFactory = (cols, rows, pal, out, pointer) => {
 
   let acc = 0;
   let sinceInject = 0;
-  const STEP = 0.13;
+  const STEP = 0.45;
   let aliveCount = 0;
 
   const tick = () => {
@@ -153,7 +153,7 @@ const createLife: SimFactory = (cols, rows, pal, out, pointer) => {
         tick();
         acc -= STEP;
       }
-      if (sinceInject > 7) {
+      if (sinceInject > 12) {
         sinceInject = 0;
         stamp(
           (Math.random() * cols) | 0,
@@ -174,7 +174,7 @@ const createLife: SimFactory = (cols, rows, pal, out, pointer) => {
         const p = i * 4;
         if (cur[i]) {
           fade[i] = 1;
-          const old = Math.min(age[i] / 40, 1);
+          const old = Math.min(age[i] / 60, 1);
           const c: Rgb = [
             Math.round(pal.periwinkle[0] + (pal.slate[0] - pal.periwinkle[0]) * old),
             Math.round(pal.periwinkle[1] + (pal.slate[1] - pal.periwinkle[1]) * old),
@@ -182,7 +182,7 @@ const createLife: SimFactory = (cols, rows, pal, out, pointer) => {
           ];
           setPx(d, p, c, 0.42);
         } else if (fade[i] > 0.05) {
-          fade[i] *= 0.92;
+          fade[i] *= 0.96;
           setPx(d, p, pal.lavender, fade[i] * 0.3);
         }
       }
