@@ -25,20 +25,12 @@ const BentoBox: React.FC<BentoBoxProps> = ({
     <div
       id={id}
       onClick={onClick}
-      className={`bg-white rounded-xl p-5 border-2 
-        transition-all duration-200 ease-out
-        hover:scale-[1.008] hover:-translate-y-0.5
+      className={`bg-white rounded-xl p-5 border-2
         ${className} ${onClick ? "cursor-pointer" : ""}`}
       style={{
         borderColor,
         boxShadow: `0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)`,
         ...style,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = `0 0 0 2px ${borderColor}, 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)`;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = `0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)`;
       }}
     >
       {children}
