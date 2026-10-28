@@ -316,12 +316,36 @@ const pickVariant = (): Variant => {
   return q === "dots" || q === "topo" || q === "none" || q === "ink" ? q : "ink";
 };
 
+// Preview-only picker (dev server only), so options can be compared live.
+const Picker = ({ value, onChange }: { value: Variant; onChange: (v: Variant) => void }) => {
+  const opts: [Variant, string][] = [["ink", "Soft glow"], ["dots", "Dot paper"], ["topo", "Contours"], ["none", "None"]];
+  return (
+    <div style={{ position: "fixed", bottom: 16, right: 16, zIndex: 60, display: "flex", gap: 4, padding: 4, borderRadius: 999, background: "rgba(255,255,255,0.9)", boxShadow: "0 2px 10px rgba(0,0,0,0.12)", fontSize: 13 }}>
+      {opts.map(([v, label]) => (
+        <button key={v} onClick={() => onChange(v)} style={{ padding: "6px 12px", borderRadius: 999, background: v === value ? "var(--color-navy)" : "transparent", color: v === value ? "white" : "var(--color-navy)" }}>
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+};
+
 const Backdrop = () => {
-  const [variant] = useState<Variant>(pickVariant);
-  if (variant === "none") return null;
-  if (variant === "dots") return <DotField />;
-  if (variant === "topo") return <Contours />;
-  return <InkWash />;
+  const [variant, setVariant] = useState<Variant>(pickVariant);
+  const choose = (v: Variant) => {
+    setVariant(v);
+    const u = new URL(window.location.href);
+    u.searchParams.set("bg", v);
+    window.history.replaceState(null, "", u);
+  };
+  const layer =
+    variant === "none" ? null : variant === "dots" ? <DotField key="dots" /> : variant === "topo" ? <Contours key="topo" /> : <InkWash key="ink" />;
+  return (
+    <>
+      {layer}
+      {import.meta.env.DEV && <Picker value={variant} onChange={choose} />}
+    </>
+  );
 };
 
 export default Backdrop;
