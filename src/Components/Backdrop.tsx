@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { palettes, getActivePaletteName, setActivePalette, subscribePalette } from "../theme";
+import type { PaletteName } from "../theme";
 
-// Home-page background. Options are picked with ?bg=ink|dots|topo|none while
+// Home-page background. Options are picked with ?bg=ink|topo|none while
 // Kabir chooses; the winner stays and the rest get deleted.
 
-type Variant = "ink" | "dots" | "topo" | "none";
+type Variant = "ink" | "topo" | "none";
 
 const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -12,11 +14,6 @@ const cssVar = (name: string) =>
   getComputedStyle(document.documentElement)
     .getPropertyValue(`--color-${name}`)
     .trim() || "#DDC7CC";
-
-const hexToRgb = (hex: string): [number, number, number] => {
-  const n = parseInt(hex.replace("#", ""), 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-};
 
 // Shared pointer tracking: page-fixed coords, coalesced per frame.
 const usePointer = () => {
@@ -101,8 +98,8 @@ const InkWash = () => {
         const el = refs[i].current;
         if (el) {
           el.style.transform = `translate3d(${b.x * w}px, ${b.y * h}px, 0) translate(-50%, -50%)`;
-          if (i === 0) el.style.opacity = String(0.7 - 0.2 * scroll);
-          if (i === 1) el.style.opacity = String(0.45 + 0.25 * scroll);
+          if (i === 0) el.style.opacity = String(0.95 - 0.2 * scroll);
+          if (i === 1) el.style.opacity = String(0.65 + 0.25 * scroll);
         }
       });
     },
@@ -155,70 +152,6 @@ const useCanvas = () => {
     return () => window.removeEventListener("resize", resize);
   }, []);
   return { ref, size };
-};
-
-/* 2. Paper-grain dot field: dots part around the cursor and spring back. */
-const DotField = () => {
-  const { ref, size } = useCanvas();
-  const pointer = usePointer();
-  const reduced = prefersReducedMotion();
-  const offs = useRef<Float32Array | null>(null);
-  const draw = (dt: number, t: number) => {
-    const c = ref.current;
-    const ctx = c?.getContext("2d");
-    if (!c || !ctx) return;
-    const { w, h } = size.current;
-    const gap = 22;
-    const cols = Math.ceil(w / gap) + 1;
-    const rows = Math.ceil(h / gap) + 1;
-    if (!offs.current || offs.current.length !== cols * rows * 2) offs.current = new Float32Array(cols * rows * 2);
-    const o = offs.current;
-    const p = pointer.current;
-    const base = hexToRgb(cssVar("lavender"));
-    const hot = hexToRgb(cssVar("periwinkle"));
-    const R = 130;
-    const touch = !window.matchMedia("(hover: hover)").matches;
-    ctx.clearRect(0, 0, w, h);
-    const shift = (window.scrollY * 0.3) % gap;
-    for (let j = 0; j < rows; j++) {
-      for (let i = 0; i < cols; i++) {
-        const k = (j * cols + i) * 2;
-        const x0 = i * gap + gap / 2;
-        const y0 = j * gap + gap / 2 - shift;
-        let tx = 0, ty = 0, heat = 0;
-        if (p.active && !reduced) {
-          const dx = x0 - p.x, dy = y0 - p.y;
-          const d = Math.hypot(dx, dy);
-          if (d < R && d > 0.01) {
-            const f = (1 - d / R) ** 2;
-            tx = (dx / d) * f * 9;
-            ty = (dy / d) * f * 9;
-            heat = f;
-          }
-        }
-        if (touch && !reduced) {
-          // No hover on phones: a slow wave breathes across the grid instead.
-          const s = Math.sin(t * 0.8 - (x0 + y0) * 0.012);
-          heat = Math.max(heat, Math.max(0, s) ** 6 * 0.6);
-        }
-        o[k] += (tx - o[k]) * Math.min(1, dt * 8);
-        o[k + 1] += (ty - o[k + 1]) * Math.min(1, dt * 8);
-        const r = base[0] + (hot[0] - base[0]) * heat;
-        const g = base[1] + (hot[1] - base[1]) * heat;
-        const b = base[2] + (hot[2] - base[2]) * heat;
-        ctx.fillStyle = `rgb(${r | 0},${g | 0},${b | 0})`;
-        const rad = 1.1 + heat * 0.9;
-        ctx.beginPath();
-        ctx.arc(x0 + o[k], y0 + o[k + 1], rad, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-  };
-  useLoop(draw, 30, !reduced);
-  useEffect(() => {
-    if (reduced) draw(0, 0);
-  });
-  return <canvas ref={ref} style={{ ...layerStyle, width: "100vw", height: "100vh" }} aria-hidden />;
 };
 
 /* 3. Topographic contours: slow noise field, the cursor raises a hill. */
@@ -308,24 +241,49 @@ const Contours = () => {
   useEffect(() => {
     if (reduced) draw(0, 0);
   });
-  return <canvas ref={ref} style={{ ...layerStyle, width: "100vw", height: "100vh", opacity: 0.9 }} aria-hidden />;
+  return <canvas ref={ref} style={{ ...layerStyle, width: "100vw", height: "100vh", opacity: 0.9, maskImage: "linear-gradient(to bottom, transparent 56px, black 140px)", WebkitMaskImage: "linear-gradient(to bottom, transparent 56px, black 140px)" }} aria-hidden />;
 };
 
 const pickVariant = (): Variant => {
   const q = new URLSearchParams(window.location.search).get("bg");
-  return q === "dots" || q === "topo" || q === "none" || q === "ink" ? q : "ink";
+  return q === "topo" || q === "none" || q === "ink" ? q : "ink";
 };
 
 // Preview-only picker (dev server only), so options can be compared live.
+const PREVIEW_THEMES: PaletteName[] = ["dustyPlum", "inkPaper", "plumRefined", "sageStone", "nightStudy"];
+
+const setParam = (k: string, v: string) => {
+  const u = new URL(window.location.href);
+  u.searchParams.set(k, v);
+  window.history.replaceState(null, "", u);
+};
+
+const Row = <T extends string>({ label, opts, value, onChange }: { label: string; opts: [T, string][]; value: T; onChange: (v: T) => void }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+    <span style={{ width: 84, paddingLeft: 8, color: "#666", fontSize: 12 }}>{label}</span>
+    {opts.map(([v, l]) => (
+      <button key={v} onClick={() => onChange(v)} style={{ padding: "5px 11px", borderRadius: 999, background: v === value ? "#222" : "transparent", color: v === value ? "#fff" : "#222", whiteSpace: "nowrap" }}>
+        {l}
+      </button>
+    ))}
+  </div>
+);
+
 const Picker = ({ value, onChange }: { value: Variant; onChange: (v: Variant) => void }) => {
-  const opts: [Variant, string][] = [["ink", "Soft glow"], ["dots", "Dot paper"], ["topo", "Contours"], ["none", "None"]];
+  const [theme, setTheme] = useState<PaletteName>(getActivePaletteName());
+  useEffect(() => subscribePalette(() => setTheme(getActivePaletteName())), []);
   return (
-    <div style={{ position: "fixed", bottom: 16, right: 16, zIndex: 60, display: "flex", gap: 4, padding: 4, borderRadius: 999, background: "rgba(255,255,255,0.9)", boxShadow: "0 2px 10px rgba(0,0,0,0.12)", fontSize: 13 }}>
-      {opts.map(([v, label]) => (
-        <button key={v} onClick={() => onChange(v)} style={{ padding: "6px 12px", borderRadius: 999, background: v === value ? "var(--color-navy)" : "transparent", color: v === value ? "white" : "var(--color-navy)" }}>
-          {label}
-        </button>
-      ))}
+    <div style={{ position: "fixed", bottom: 16, right: 16, zIndex: 60, display: "flex", flexDirection: "column", gap: 4, padding: 6, borderRadius: 16, background: "rgba(255,255,255,0.94)", boxShadow: "0 2px 12px rgba(0,0,0,0.18)", fontSize: 13, fontFamily: "Inter, sans-serif" }}>
+      <Row label="Background" opts={[["ink", "Soft glow"], ["topo", "Contours"], ["none", "None"]]} value={value} onChange={onChange} />
+      <Row
+        label="Colours"
+        opts={PREVIEW_THEMES.map((n) => [n, n === "dustyPlum" ? "Today" : palettes[n].label] as [PaletteName, string])}
+        value={theme}
+        onChange={(n) => {
+          setActivePalette(n);
+          setParam("theme", n);
+        }}
+      />
     </div>
   );
 };
@@ -334,12 +292,10 @@ const Backdrop = () => {
   const [variant, setVariant] = useState<Variant>(pickVariant);
   const choose = (v: Variant) => {
     setVariant(v);
-    const u = new URL(window.location.href);
-    u.searchParams.set("bg", v);
-    window.history.replaceState(null, "", u);
+    setParam("bg", v);
   };
   const layer =
-    variant === "none" ? null : variant === "dots" ? <DotField key="dots" /> : variant === "topo" ? <Contours key="topo" /> : <InkWash key="ink" />;
+    variant === "none" ? null : variant === "topo" ? <Contours key="topo" /> : <InkWash key="ink" />;
   return (
     <>
       {layer}
