@@ -159,7 +159,7 @@ export const palettes: Record<PaletteName, { label: string; palette: Palette }> 
   },
 };
 
-const DEFAULT_PALETTE: PaletteName = "dustyPlum";
+const DEFAULT_PALETTE: PaletteName = "plumRefined";
 
 let activeName: PaletteName = DEFAULT_PALETTE;
 let activePalette: Palette = palettes[DEFAULT_PALETTE].palette;
@@ -196,7 +196,5 @@ export const subscribePalette = (fn: () => void) => {
 
 export const initPalette = () => {
   if (typeof window === "undefined") return;
-  // ?theme=<name> previews a scheme (used while choosing).
-  const q = new URLSearchParams(window.location.search).get("theme");
-  setActivePalette(q && q in palettes ? (q as PaletteName) : DEFAULT_PALETTE);
+  setActivePalette(DEFAULT_PALETTE);
 };
