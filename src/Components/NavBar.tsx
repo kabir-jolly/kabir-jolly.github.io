@@ -1,5 +1,7 @@
+import { useSyncExternalStore } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { colors } from "../theme";
+import { Moon, Sun } from "lucide-react";
+import { colors, getMode, subscribePalette, toggleMode } from "../theme";
 
 const isPostPath = (pathname: string) =>
   /^\/(?:writing|project|experience)\/[^/]+\/?$/.test(pathname);
@@ -20,6 +22,7 @@ const navLinks = [
 
 const NavBar = () => {
   const { pathname } = useLocation();
+  const mode = useSyncExternalStore(subscribePalette, getMode, getMode);
 
   return (
     <nav
@@ -60,6 +63,16 @@ const NavBar = () => {
                 </NavLink>
               );
             })}
+            <button
+              type="button"
+              onClick={toggleMode}
+              aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              title={mode === "dark" ? "Light mode" : "Dark mode"}
+              className="p-1 rounded-md transition-opacity hover:opacity-70"
+              style={{ color: colors.navy }}
+            >
+              {mode === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
           </div>
         </div>
       </div>

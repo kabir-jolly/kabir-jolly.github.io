@@ -29,7 +29,11 @@ export type PaletteName =
   | "inkPaper"
   | "plumRefined"
   | "sageStone"
-  | "nightStudy";
+  | "nightStudy"
+  | "inkBlue"
+  | "terracotta"
+  | "graphite"
+  | "plumNight";
 
 type BasePalette = Omit<Palette, "card" | "link" | "muted" | "cardBorder" | "cardBorderWidth" | "cardShadow" | "tagBg" | "tagText" | "globe">;
 
@@ -153,16 +157,36 @@ export const palettes: Record<PaletteName, { label: string; palette: Palette }> 
     label: "Sage & Stone",
     palette: refined({ bg: "#F3F4EF", lightPurple: "#FFFFFF", lavender: "#DEE2D8", periwinkle: "#2F5D4E", navy: "#1D2620", darkBlue: "#343D37", slate: "#6B746D", lightBlue: "#9FB5A5", cream: "#ECF0EA" }),
   },
+  inkBlue: {
+    label: "Ink blue",
+    palette: refined({ bg: "#F8F7F4", lightPurple: "#FFFFFF", lavender: "#E3E1DC", periwinkle: "#2A4A7F", navy: "#16202E", darkBlue: "#33302E", slate: "#6F6A66", lightBlue: "#8FA6C6", cream: "#EDF1F7" }),
+  },
+  terracotta: {
+    label: "Terracotta",
+    palette: refined({ bg: "#FAF7F2", lightPurple: "#FFFFFF", lavender: "#E8E0D4", periwinkle: "#A84B2A", navy: "#2A1E17", darkBlue: "#33302E", slate: "#6F6A66", lightBlue: "#D09B7F", cream: "#F6ECE4" }),
+  },
+  graphite: {
+    label: "Graphite",
+    palette: refined({ bg: "#F7F7F6", lightPurple: "#FFFFFF", lavender: "#E3E3E1", periwinkle: "#111111", navy: "#111111", darkBlue: "#33302E", slate: "#6F6A66", lightBlue: "#A9A9A6", cream: "#F0F0EE" }),
+  },
+  plumNight: {
+    label: "Plum, dark",
+    palette: refined({ bg: "#141113", lightPurple: "#1E191C", lavender: "#352B31", periwinkle: "#D9A2BF", navy: "#F3EDF0", darkBlue: "#D8CFD4", slate: "#9C9096", lightBlue: "#7A4E66", cream: "#2B2228" }, "#1E191C"),
+  },
   nightStudy: {
     label: "Night Study",
     palette: refined({ bg: "#121316", lightPurple: "#1B1D21", lavender: "#2C2F35", periwinkle: "#E3A857", navy: "#F1ECE3", darkBlue: "#CFC9BF", slate: "#8E887F", lightBlue: "#5A5D64", cream: "#25282D" }, "#1B1D21"),
   },
 };
 
-const DEFAULT_PALETTE: PaletteName = "plumRefined";
+const LIGHT_PALETTE: PaletteName = "plumRefined";
+const DARK_PALETTE: PaletteName = "plumNight";
+const MODE_KEY = "theme-mode";
 
-let activeName: PaletteName = DEFAULT_PALETTE;
-let activePalette: Palette = palettes[DEFAULT_PALETTE].palette;
+export type Mode = "light" | "dark";
+
+let activeName: PaletteName = LIGHT_PALETTE;
+let activePalette: Palette = palettes[LIGHT_PALETTE].palette;
 const listeners = new Set<() => void>();
 
 const applyToRoot = (p: Palette) => {
@@ -194,7 +218,39 @@ export const subscribePalette = (fn: () => void) => {
   };
 };
 
+const systemMode = (): Mode =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+const storedMode = (): Mode | null => {
+  try {
+    const v = window.localStorage.getItem(MODE_KEY);
+    return v === "light" || v === "dark" ? v : null;
+  } catch {
+    return null;
+  }
+};
+
+export const getMode = (): Mode => (activeName === DARK_PALETTE ? "dark" : "light");
+
+const applyMode = (m: Mode) => setActivePalette(m === "dark" ? DARK_PALETTE : LIGHT_PALETTE);
+
+// The visitor's own choice (sun/moon button) wins and is remembered;
+// otherwise follow their system's light/dark setting, live.
+export const toggleMode = () => {
+  const next: Mode = getMode() === "dark" ? "light" : "dark";
+  try {
+    if (next === systemMode()) window.localStorage.removeItem(MODE_KEY);
+    else window.localStorage.setItem(MODE_KEY, next);
+  } catch {
+    /* storage blocked: still switch for this visit */
+  }
+  applyMode(next);
+};
+
 export const initPalette = () => {
   if (typeof window === "undefined") return;
-  setActivePalette(DEFAULT_PALETTE);
+  applyMode(storedMode() ?? systemMode());
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+    if (!storedMode()) applyMode(systemMode());
+  });
 };

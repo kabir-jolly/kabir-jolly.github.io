@@ -453,7 +453,7 @@ button:focus-visible {
 }
 
 .post-content a {
-  color: var(--color-navy);
+  color: var(--color-link, var(--color-navy));
   text-decoration: underline;
   text-decoration-color: var(--color-periwinkle);
   text-decoration-thickness: 1px;
