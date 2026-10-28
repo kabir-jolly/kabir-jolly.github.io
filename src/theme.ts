@@ -18,6 +18,7 @@ export type Palette = {
   cardShadow: string;
   tagBg: string;
   tagText: string;
+  globe: string;
 };
 
 export type PaletteName =
@@ -30,7 +31,7 @@ export type PaletteName =
   | "sageStone"
   | "nightStudy";
 
-type BasePalette = Omit<Palette, "card" | "link" | "muted" | "cardBorder" | "cardBorderWidth" | "cardShadow" | "tagBg" | "tagText">;
+type BasePalette = Omit<Palette, "card" | "link" | "muted" | "cardBorder" | "cardBorderWidth" | "cardShadow" | "tagBg" | "tagText" | "globe">;
 
 const LEGACY_SHADOW = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)";
 
@@ -46,6 +47,7 @@ const withLegacySlots = (p: BasePalette): Palette => ({
   cardShadow: LEGACY_SHADOW,
   tagBg: p.lightPurple,
   tagText: p.navy,
+  globe: p.periwinkle,
 });
 
 // Refined look (monet): 1px neutral border, no resting shadow, accent links,
@@ -60,6 +62,8 @@ const refined = (p: BasePalette, card = "#FFFFFF"): Palette => ({
   cardShadow: "none",
   tagBg: p.cream,
   tagText: p.periwinkle,
+  // Accent is now deep; a soft globe keeps it from being the loudest thing.
+  globe: p.lightBlue,
 });
 
 export const colors = {

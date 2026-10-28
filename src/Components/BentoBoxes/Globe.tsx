@@ -64,9 +64,9 @@ const Globe = () => {
       diffuse: 2,
       mapSamples: 8000,
       mapBrightness: 3,
-      baseColor: color(palette.periwinkle),
+      baseColor: color(palette.globe),
       markerColor: color(palette.cream),
-      glowColor: [1, 1, 1] as [number, number, number],
+      glowColor: color(palette.card),
       markers: [
         {
           location: [37.7749, -122.4194],
