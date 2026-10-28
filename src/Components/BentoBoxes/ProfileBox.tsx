@@ -38,7 +38,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 <a
                   href="https://www.openevidence.com"
                   className="underline hover:no-underline"
-                  style={{ color: colors.navy, fontWeight: 600 }}
+                  style={{ color: colors.link, fontWeight: 600 }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -95,7 +95,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.pear.vc"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -105,7 +105,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://web.stanford.edu/class/cs194/"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -115,7 +115,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.dormroomfund.com"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -125,7 +125,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.fieldguide.io"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -135,7 +135,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.getzeal.co"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -145,7 +145,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.valarlabs.com"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -159,7 +159,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://neo.com/scholars"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -169,7 +169,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://stvp.stanford.edu/alp/"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -179,7 +179,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.8vc.com/fellows/kabir-jolly"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -189,7 +189,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <a
               href="https://www.pear.vc/garage"
               className="underline hover:no-underline"
-              style={{ color: colors.navy, fontWeight: 600 }}
+              style={{ color: colors.link, fontWeight: 600 }}
               target="_blank"
               rel="noopener noreferrer"
             >

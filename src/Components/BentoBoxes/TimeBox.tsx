@@ -50,7 +50,7 @@ const TimeBox: React.FC<TimeBoxProps> = ({ borderColorName }) => {
           >
             {formatTime(currentTime)}
           </p>
-          <p className="text-sm" style={{ color: colors.periwinkle }}>
+          <p className="text-sm" style={{ color: colors.muted }}>
             📍 San Francisco, CA
           </p>
         </div>

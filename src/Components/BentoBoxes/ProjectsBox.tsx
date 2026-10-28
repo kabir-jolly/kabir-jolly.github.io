@@ -149,7 +149,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
               {isClickable && (
                 <span
                   className="inline-flex items-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  style={{ color: colors.periwinkle }}
+                  style={{ color: colors.muted }}
                   aria-hidden
                 >
                   {isExternal ? (
