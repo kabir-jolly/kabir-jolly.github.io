@@ -10,7 +10,7 @@
   font-family: "DM Sans", "Inter", system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #213547;
+  color: var(--color-darkBlue, #213547);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -56,41 +56,7 @@ body {
   background-color: var(--color-bg, #fcfcfc);
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  min-height: 100vh;
-  width: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, var(--color-bg), transparent, var(--color-bg)),
-    linear-gradient(to right, var(--color-bg), transparent, var(--color-bg)),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(166, 177, 225, 0.15),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 30% 40%,
-      rgba(220, 214, 247, 0.15),
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 60%,
-      rgba(148, 180, 193, 0.15),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 20% 70%,
-      rgba(244, 238, 255, 0.2),
-      transparent 45%
-    );
-  background-attachment: fixed;
-  background-size: cover;
-}
+
 
 h1,
 h2,
@@ -149,17 +115,17 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-bg, #f1f1f1);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dcd6f7;
+  background: var(--color-lavender, #dcd6f7);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a6b1e1;
+  background: var(--color-slate, #a6b1e1);
 }
 
 /* Page enter / list stagger animations */
@@ -215,9 +181,9 @@ button:focus-visible {
 
 /* Shared pill buttons */
 .pill-button {
-  border: 0;
+  border: 1px solid var(--color-lavender);
   border-radius: 9999px;
-  background: var(--color-lightPurple);
+  background: var(--color-card, var(--color-lightPurple));
   color: var(--color-navy);
   cursor: pointer;
   font-size: 0.73rem;
@@ -550,4 +516,23 @@ button:focus-visible {
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Hover background for list rows (Experience, Posts), from the theme so it
+   works in dark mode: tag-coloured fill plus a thin border instead of a shadow. */
+.theme-hover-row {
+  border: 1px solid transparent;
+}
+.theme-hover-row:hover {
+  background-color: var(--color-cream);
+  border-color: var(--color-lavender);
+}
+
+/* Logo tiles stay white (logos need it); on dark a thin border replaces the shadow. */
+.logo-tile {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+:root[style*="color-scheme: dark"] .logo-tile {
+  box-shadow: none;
+  border: 1px solid var(--color-lavender);
 }

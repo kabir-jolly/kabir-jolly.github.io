@@ -65,7 +65,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 {!isLast && (
                   <div
                     className="w-0.5 flex-grow"
-                    style={{ backgroundColor: "#d1d5db" }}
+                    style={{ backgroundColor: colors.lavender }}
                   />
                 )}
               </div>
@@ -84,7 +84,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className="relative p-2 sm:p-3 rounded-lg transition-all hover:bg-gray-50 hover:shadow-sm"
+                  className="relative p-2 sm:p-3 rounded-lg transition-all theme-hover-row"
                   style={{ marginTop: "-8px" }}
                 >
                   {/* "View" badge - appears on hover for clickable items */}
@@ -101,7 +101,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                   {/* Icon + Company/Title */}
                   <div className="flex gap-2 sm:gap-3">
                     {/* Square icon */}
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0 p-1 sm:p-1.5">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-white logo-tile flex items-center justify-center flex-shrink-0 p-1 sm:p-1.5">
                       <img
                         src={experience.image}
                         alt={experience.company}
@@ -113,7 +113,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                     <div className="flex flex-col justify-center min-w-0">
                       <span
                         className="text-xs sm:text-sm font-semibold experience-company"
-                        style={{ color: colors.lightBlue }}
+                        style={{ color: colors.link }}
                       >
                         {experience.company}
                       </span>

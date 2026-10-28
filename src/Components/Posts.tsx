@@ -26,7 +26,7 @@ const Posts = () => {
 
             const content = (
               <div
-                className="group flex items-center justify-between py-4 border-b transition-colors hover:bg-white/50 -mx-4 px-4"
+                className="group flex items-center justify-between py-4 border-b transition-colors theme-hover-row -mx-4 px-4"
                 style={{ borderColor: colors.lavender }}
               >
                 <div className="flex flex-col gap-1">

@@ -129,7 +129,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
       >
         <div className="flex flex-col items-center text-center gap-2 mb-3">
           <div
-            className="bg-white p-2.5 rounded-xl shadow-sm w-20 h-20 flex items-center justify-center flex-shrink-0 border"
+            className="bg-white logo-tile p-2.5 rounded-xl w-20 h-20 flex items-center justify-center flex-shrink-0 border"
             style={{ borderColor: colors.lavender }}
           >
             <img

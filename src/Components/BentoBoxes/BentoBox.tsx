@@ -39,7 +39,11 @@ const BentoBox: React.FC<BentoBoxProps> = ({
         ...style,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = `0 0 0 1px var(--color-cardBorder, ${borderColor}), 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)`;
+        // On dark a shadow reads as a smudge; lift with the border only.
+        e.currentTarget.style.boxShadow =
+          document.documentElement.style.colorScheme === "dark"
+            ? `0 0 0 1px var(--color-cardBorder, ${borderColor})`
+            : `0 0 0 1px var(--color-cardBorder, ${borderColor}), 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)`;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "var(--card-shadow)";

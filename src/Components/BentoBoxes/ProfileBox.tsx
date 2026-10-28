@@ -49,7 +49,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             <div className="flex space-x-3">
               <a
                 href="https://github.com/kabir-jolly"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="GitHub"
                 target="_blank"
@@ -59,7 +59,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               </a>
               <a
                 href="https://x.com/kabirjolly_"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="X"
                 target="_blank"
@@ -69,7 +69,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               </a>
               <a
                 href="https://linkedin.com/in/kabirjolly"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="LinkedIn"
                 target="_blank"
