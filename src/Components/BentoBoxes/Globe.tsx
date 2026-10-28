@@ -54,19 +54,22 @@ const Globe = () => {
     window.addEventListener("resize", onResize);
     onResize();
 
+    const isDark = palette.bg.toLowerCase() < "#808080";
     const globe = cobe(ref.current!, {
       devicePixelRatio: 2,
       width: width * 2,
       height: width * 2,
       phi: 0,
       theta: 0.3,
-      dark: 0,
-      diffuse: 2,
+      // Dark schemes: cobe's dark mode draws lit (accent) dots on a dim sphere.
+      dark: isDark ? 1 : 0,
+      mapBaseBrightness: isDark ? 0.15 : 0,
+      diffuse: isDark ? 1.1 : 2,
       mapSamples: 8000,
-      mapBrightness: 3,
-      baseColor: color(palette.globe),
+      mapBrightness: isDark ? 10 : 3,
+      baseColor: color(isDark ? palette.periwinkle : palette.globe),
       markerColor: color(palette.cream),
-      glowColor: color(palette.card),
+      glowColor: color(isDark ? palette.lavender : palette.card),
       markers: [
         {
           location: [37.7749, -122.4194],
