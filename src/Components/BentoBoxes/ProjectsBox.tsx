@@ -111,7 +111,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
 
       <div
         key={index}
-        className={`flex-1 flex flex-col justify-center group min-h-0 ${
+        className={`flex-1 flex flex-col justify-center group min-h-[310px] min-[360px]:min-h-[255px] sm:min-h-0 sm:justify-center ${
           isClickable ? "cursor-pointer" : ""
         }`}
         onClick={handleClick}
@@ -139,16 +139,16 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
             />
           </div>
           <div className="flex flex-col items-center gap-0.5">
-            <div className="flex items-center gap-1.5">
+            <div>
               <h3
-                className="text-base font-semibold leading-tight"
+                className="text-base font-semibold leading-tight inline"
                 style={{ color: colors.navy }}
               >
                 {project.title}
               </h3>
               {isClickable && (
                 <span
-                  className="inline-flex items-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="inline-flex items-center ml-1.5 align-middle transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   style={{ color: colors.muted }}
                   aria-hidden
                 >
@@ -181,7 +181,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
       </div>
 
       {/* Navigation: arrows + dot indicators */}
-      <div className="flex items-center justify-center gap-3 mt-3">
+      <div className="flex items-center justify-center gap-1 mt-2">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -190,7 +190,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
           className="carousel-nav-btn carousel-nav-btn-prev"
           aria-label="Previous project"
           style={{
-            padding: 4,
+            padding: 10,
             margin: 0,
             border: "none",
             background: "transparent",
@@ -205,7 +205,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
           <ChevronLeft size={16} />
         </button>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center">
           {projects.map((_, i) => {
             const isActive = i === index;
             return (
@@ -217,10 +217,13 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
                 }}
                 aria-label={`Go to project ${i + 1}`}
                 aria-current={isActive ? "true" : undefined}
+                // 6px dot drawn inside a larger hit area (content-box fill).
                 style={{
-                  width: isActive ? 18 : 6,
-                  height: 6,
-                  padding: 0,
+                  width: (isActive ? 18 : 6) + 10,
+                  height: 6 + 24,
+                  padding: "12px 5px",
+                  backgroundClip: "content-box",
+                  boxSizing: "border-box",
                   margin: 0,
                   border: "none",
                   borderRadius: 9999,
@@ -243,7 +246,7 @@ const ProjectsBox: React.FC<ProjectsBoxProps> = ({
           className="carousel-nav-btn carousel-nav-btn-next"
           aria-label="Next project"
           style={{
-            padding: 4,
+            padding: 10,
             margin: 0,
             border: "none",
             background: "transparent",

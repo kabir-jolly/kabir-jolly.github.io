@@ -53,7 +53,7 @@ export const experiences: ExperienceType[] = [
     subtitle: "Zeal AI (Stealth)",
     date: "6/2023 – 8/2023",
     description:
-      "Built invitations and chatbot for a activity-based relationship building social app",
+      "Built invitations and chatbot for an activity-based relationship building social app",
     image: "/assets/img/zeal/zeal.jpg",
     skills: ["TypeScript", "HTML/CSS/JS", "ReactNative", "Chatbot Development"],
     slug: "zeal",
@@ -105,7 +105,7 @@ export const projects: ProjectType[] = [
     description:
       "Researching ways to improve multi-task performance of MinBERT. Found success with gradient surgery and cosine similarity.",
     image: "/assets/img/224n/224n.jpeg",
-    skills: ["PyTorch", "NLP", "Tranformers"],
+    skills: ["PyTorch", "NLP", "Transformers"],
     slug: "224n",
   },
   {

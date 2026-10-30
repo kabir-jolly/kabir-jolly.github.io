@@ -16,10 +16,12 @@ const Portfolio = () => {
       <main className="pt-8 max-w-6xl mx-auto px-4 pb-12">
         <div className="flex flex-col gap-4">
           <ProfileBox borderColorName="periwinkle" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
             <TimeBox borderColorName="lightBlue" />
             <ProjectsBox projects={projects} borderColorName="lightBlue" />
-            <RecommendationsBox borderColorName="lightBlue" />
+            <div className="md:col-span-2 lg:col-span-1">
+              <RecommendationsBox borderColorName="lightBlue" />
+            </div>
           </div>
           <ExperiencesBox
             experiences={experiences}

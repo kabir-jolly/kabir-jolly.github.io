@@ -36,13 +36,13 @@ const NavBar = () => {
         <div className="flex items-center justify-between h-14">
           <NavLink 
             to="/" 
-            className="text-lg font-semibold tracking-tight"
+            className="tap-target text-lg font-semibold tracking-tight"
             style={{ color: colors.navy }}
           >
             KJ
           </NavLink>
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             {navLinks.map((link) => {
               const isActive = link.isActive(pathname);
 
@@ -51,7 +51,7 @@ const NavBar = () => {
                   key={link.to}
                   to={link.to}
                   aria-current={isActive ? "page" : undefined}
-                  className={`text-sm font-medium transition-colors hover:opacity-70 ${
+                  className={`tap-target text-sm font-medium transition-colors hover:opacity-70 ${
                     isActive ? "border-b-2" : ""
                   }`}
                   style={{
@@ -68,7 +68,7 @@ const NavBar = () => {
               onClick={toggleMode}
               aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               title={mode === "dark" ? "Light mode" : "Dark mode"}
-              className="p-1 rounded-md transition-opacity hover:opacity-70"
+              className="p-2.5 -mr-2.5 rounded-md transition-opacity hover:opacity-70"
               style={{ color: colors.navy }}
             >
               {mode === "dark" ? <Sun size={16} /> : <Moon size={16} />}

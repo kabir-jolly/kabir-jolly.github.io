@@ -17,12 +17,12 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
       borderColorName={borderColorName}
     >
       <div className="flex flex-col gap-6">
-        <div className="flex flex-row gap-6">
+        <div className="flex flex-col min-[360px]:flex-row gap-4 sm:gap-6">
           <div className="flex-shrink-0">
             <img
               src="/assets/img/prof_pic.jpg"
               alt="Kabir Jolly"
-              className="w-32 h-32 rounded-full object-cover shadow-lg"
+              className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover shadow-lg"
             />
           </div>
           <div className="flex flex-col justify-center gap-3">
@@ -46,10 +46,10 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
                 </a>
               </p>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex gap-1 -ml-2">
               <a
                 href="https://github.com/kabir-jolly"
-                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
+                className="inline-flex items-center justify-center w-9 h-9 transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="GitHub"
                 target="_blank"
@@ -59,7 +59,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               </a>
               <a
                 href="https://x.com/kabirjolly_"
-                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
+                className="inline-flex items-center justify-center w-9 h-9 transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="X"
                 target="_blank"
@@ -69,7 +69,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               </a>
               <a
                 href="https://linkedin.com/in/kabirjolly"
-                className="transition-colors hover:!text-[color:var(--color-periwinkle)]"
+                className="inline-flex items-center justify-center w-9 h-9 transition-colors hover:!text-[color:var(--color-periwinkle)]"
                 style={{ color: colors.slate }}
                 aria-label="LinkedIn"
                 target="_blank"

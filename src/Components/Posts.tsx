@@ -30,7 +30,7 @@ const Posts = () => {
                 style={{ borderColor: colors.lavender }}
               >
                 <div className="flex flex-col gap-1">
-                  <span className="flex items-center gap-1.5">
+                  <span>
                     <span
                       className="text-base font-medium group-hover:underline"
                       style={{ color: colors.navy }}
@@ -39,6 +39,7 @@ const Posts = () => {
                     </span>
                     {post.featured && (
                       <Star
+                        className="inline ml-1.5 align-[-1px]"
                         size={14}
                         strokeWidth={1.8}
                         fill={colors.periwinkle}
