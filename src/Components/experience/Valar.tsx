@@ -16,11 +16,10 @@ const Valar = () => {
           >
             Valar Labs
           </a>
-          , I worked in a fast-paced startup environment shortly after their
+          , I worked in a fast-paced startup environment shortly after their{" "}
           <a
             href="https://valarlabs.medium.com/valar-labs-reimagining-cancer-treatment-decisions-with-artificial-intelligence-b9edb6c12243"
           >
-            {" "}
             seed round led by a16z
           </a>
           . While primarily focused on Machine Learning Engineering, the

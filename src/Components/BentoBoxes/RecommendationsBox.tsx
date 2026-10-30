@@ -24,11 +24,11 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
             Reading Recs
           </h2>
         </div>
-        <ul className="list-disc list-inside space-y-2">
+        <ul className="list-disc pl-5 space-y-2">
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
             <span>Factfulness</span>
             <div
-              className="ml-5 mt-0.5 text-xs"
+              className="mt-0.5 text-xs"
               style={{ color: colors.muted }}
             >
               Hans Rosling
@@ -37,7 +37,7 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
             <span>The Art of Learning</span>
             <div
-              className="ml-5 mt-0.5 text-xs"
+              className="mt-0.5 text-xs"
               style={{ color: colors.muted }}
             >
               Joshua Waitzkin
@@ -46,7 +46,7 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
             <span>The Stormlight Archive Series</span>
             <div
-              className="ml-5 mt-0.5 text-xs"
+              className="mt-0.5 text-xs"
               style={{ color: colors.muted }}
             >
               Brandon Sanderson
@@ -55,7 +55,7 @@ const RecommendationsBox: React.FC<RecommendationsBoxProps> = ({
           <li className="text-sm leading-tight" style={{ color: colors.slate }}>
             <span>"Surely You're Joking, Mr. Feynman!"</span>
             <div
-              className="ml-5 mt-0.5 text-xs"
+              className="mt-0.5 text-xs"
               style={{ color: colors.muted }}
             >
               Richard P. Feynman

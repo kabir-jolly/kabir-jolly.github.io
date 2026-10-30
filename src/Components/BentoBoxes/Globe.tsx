@@ -63,12 +63,12 @@ const Globe = () => {
       theta: 0.3,
       // Dark schemes: cobe's dark mode draws lit (accent) dots on a dim sphere.
       dark: isDark ? 1 : 0,
-      mapBaseBrightness: isDark ? 0.15 : 0,
+      mapBaseBrightness: isDark ? 0.25 : 0,
       diffuse: isDark ? 1.1 : 2,
       mapSamples: 8000,
-      mapBrightness: isDark ? 10 : 3,
+      mapBrightness: isDark ? 14 : 3,
       baseColor: color(isDark ? palette.periwinkle : palette.globe),
-      markerColor: color(palette.cream),
+      markerColor: color(isDark ? palette.periwinkle : palette.cream),
       glowColor: color(isDark ? palette.lavender : palette.card),
       markers: [
         {

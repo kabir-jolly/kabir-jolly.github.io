@@ -41,7 +41,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
           return (
             <div key={index} className="relative flex">
               {/* Left side: Date */}
-              <div className="w-20 sm:w-28 md:w-36 flex-shrink-0 pr-2 sm:pr-3 md:pr-4 text-right">
+              <div className="hidden sm:block sm:w-28 md:w-36 flex-shrink-0 sm:pr-3 md:pr-4 text-right">
                 <div
                   className="text-[10px] sm:text-xs md:text-sm font-medium leading-tight pt-1 sm:whitespace-nowrap experience-period"
                   style={{ color: colors.slate }}
@@ -72,7 +72,7 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
 
               {/* Right side: Experience Card */}
               <div
-                className={`flex-1 min-w-0 pb-4 sm:pb-6 pl-2 sm:pl-3 md:pl-4 ${
+                className={`flex-1 min-w-0 pb-4 sm:pb-6 pl-3 md:pl-4 ${
                   isClickable ? "cursor-pointer" : ""
                 }`}
                 onClick={() => {
@@ -84,13 +84,13 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className="relative p-2 sm:p-3 rounded-lg transition-all theme-hover-row"
+                  className={`relative p-2 sm:p-3 rounded-lg transition-all theme-hover-row ${isClickable ? "exp-has-pill" : ""}`}
                   style={{ marginTop: "-8px" }}
                 >
                   {/* "View" badge - appears on hover for clickable items */}
                   {isClickable && isHovered && (
                     <PillButton
-                      className="absolute top-2 right-2"
+                      className="exp-pill absolute top-2 right-2"
                       trailingIcon={<ArrowRight size={14} />}
                       mode="presentational"
                     >
@@ -111,6 +111,12 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
 
                     {/* Company + Title stacked */}
                     <div className="flex flex-col justify-center min-w-0">
+                      <span
+                        className="sm:hidden text-[10px] font-medium experience-period"
+                        style={{ color: colors.slate }}
+                      >
+                        {experience.date}
+                      </span>
                       <span
                         className="text-xs sm:text-sm font-semibold experience-company"
                         style={{ color: colors.link }}
@@ -133,6 +139,16 @@ const ExperiencesBox: React.FC<ExperiencesBoxProps> = ({
                   >
                     {experience.description}
                   </p>
+
+                  {/* Touch screens have no hover, so say plainly that the row opens a post. */}
+                  {isClickable && (
+                    <span
+                      className="exp-more items-center gap-1 text-xs font-medium"
+                      style={{ color: colors.link }}
+                    >
+                      Read more <ArrowRight size={12} />
+                    </span>
+                  )}
 
                   {/* Skills */}
                   {SHOW_EXPERIENCE_SKILLS &&
