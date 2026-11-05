@@ -16,7 +16,15 @@ const ListRow = ({ date, title, href, label }: ListRowProps) => {
     main = (
       <a className="row-title" href={href} target="_blank" rel="noopener noreferrer">
         {title}
-        <span aria-hidden="true"> ↗</span>
+        <svg
+          className="ext-arrow"
+          viewBox="0 0 10 10"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M1.5 8.5l7-7M3 1.5h5.5V7" />
+        </svg>
+        <span className="sr-only"> (opens in a new tab)</span>
       </a>
     );
   } else if (href) {
