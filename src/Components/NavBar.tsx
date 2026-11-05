@@ -12,12 +12,7 @@ const NavBar = () => {
       <Link to="/" className="site-nav-name">
         Kabir Jolly
       </Link>
-      <div className="site-nav-links">
-        <Link to="/posts" aria-current={pathname === "/posts" ? "page" : undefined}>
-          Posts
-        </Link>
-        <ThemeToggle />
-      </div>
+      <ThemeToggle />
     </nav>
   );
 };

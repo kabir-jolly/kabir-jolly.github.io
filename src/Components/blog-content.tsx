@@ -11,7 +11,6 @@ export const writingContent: ContentRegistryType = {
   "fde-manual": {
     component: FDEManual,
     postTitle: "The FDE Manual",
-    subtitle: "What is it? How does it create value?",
     date: "2026",
     featured: true,
     links: [

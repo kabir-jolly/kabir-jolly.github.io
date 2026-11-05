@@ -70,7 +70,7 @@ a:hover {
 
 /* One column for every page. */
 .page {
-  max-width: 660px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 32px 24px 96px;
 }
@@ -79,8 +79,6 @@ a:hover {
 }
 
 /* Small sans labels: nav, toggle, section heads, post meta. */
-.site-nav-links,
-.theme-toggle,
 .section-head,
 .post-meta {
   font-family: "Inter", system-ui, sans-serif;
@@ -89,12 +87,12 @@ a:hover {
 }
 
 .site-nav {
-  max-width: 660px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 32px 24px 0;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
 }
 .site-nav-name {
@@ -103,26 +101,19 @@ a:hover {
   font-weight: 600;
   text-decoration: none;
 }
-.site-nav-links {
-  display: flex;
-  gap: 16px;
-  align-items: baseline;
-}
-.site-nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-}
-.site-nav-links a:hover,
-.site-nav-links a[aria-current="page"] {
-  color: var(--ink);
-}
 .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: -8px -10px -8px 0;
   color: var(--muted);
   background: none;
   border: 0;
+  border-radius: 6px;
   padding: 0;
   cursor: pointer;
-  white-space: nowrap;
 }
 .theme-toggle:hover {
   color: var(--ink);
@@ -143,7 +134,7 @@ a:hover {
   letter-spacing: -0.01em;
 }
 .home-header .theme-toggle {
-  padding-top: 8px;
+  margin-top: -4px;
 }
 .home-role {
   margin-top: 2px;
@@ -151,8 +142,8 @@ a:hover {
   font-size: 17px;
   font-style: italic;
 }
-.home-role a {
-  color: inherit;
+.home-bio {
+  font-size: 17px;
 }
 .home-bio p {
   margin: 0 0 14px;
@@ -160,7 +151,7 @@ a:hover {
 
 /* Dated lists: Work, Writing, Projects, Posts */
 .list-section {
-  margin-top: 48px;
+  margin-top: 60px;
 }
 .section-head {
   display: flex;
@@ -170,16 +161,12 @@ a:hover {
 }
 .section-head h2 {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink);
 }
 .section-head-link {
-  color: var(--muted);
-  text-decoration: none;
-}
-.section-head-link:hover {
   color: var(--link);
 }
 .row {
@@ -226,7 +213,14 @@ a.row-title:hover {
 
 /* Post page */
 .post-header {
-  margin: 48px 0 40px;
+  margin: 40px 0 40px;
+}
+.post-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
 }
 .post-header h1 {
   font-size: 36px;
@@ -249,7 +243,7 @@ a.row-title:hover {
   color: var(--muted);
 }
 .post-content {
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.7;
 }
 .post-content p {
@@ -369,8 +363,9 @@ a.row-title:hover {
   .post-header h1 {
     font-size: 28px;
   }
+  .home-bio,
   .post-content {
-    font-size: 17.5px;
+    font-size: 16px;
   }
   .post-image-grid-2 .post-image-grid-images,
   .post-image-grid-3 .post-image-grid-images {

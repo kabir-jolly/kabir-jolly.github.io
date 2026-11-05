@@ -39,6 +39,9 @@ const BlogPost = () => {
   return (
     <div className="page">
       <header className="post-header">
+        <Link to="/posts" className="post-back">
+          ← All posts
+        </Link>
         <h1>{content.postTitle}</h1>
         {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
         <p className="post-meta">
