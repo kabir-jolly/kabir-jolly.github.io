@@ -95,7 +95,6 @@ specific change, and only once the PR check is green.
 - `npm ci`: 16 audit vulnerabilities reported (1 low, 10 moderate, 5 high) in dependencies.
 - The `gh-pages` branch and the `deploy`/`predeploy` scripts remain from the old manual flow; the
   branch is no longer served unless the Pages source is switched back.
-- `public/assets/files/kabirjolly_resume_1-2-25.pdf` is not linked from the source but is still published.
 - `src/theme.ts` keeps 12 palettes; only `plumRefined` and `plumNight` are used.
 - About 13 stale remote branches (e.g. `devin/*`, `dark-mode`, `mobile-fixes`) remain on GitHub.
 - README says `npm install` (prefer `npm ci`); package name is the template's `my-portfolio`;
