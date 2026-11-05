@@ -49,7 +49,7 @@ const FDEManual = () => {
       <p>
         Ted Mabrey, Head of Commercial at Palantir, and Bob McGrew, former
         Director at Palantir and CRO at OpenAI, have both said that if the FDE
-        team isn't honed in on one of the top 5 problems for the CEO, then the
+        team isn't homed in on one of the top 5 problems for the CEO, then the
         FDE model will not work. You have to start here first; only then can you
         branch out to problems that may ultimately prove even more valuable,
         building on the foundation laid during the initial engagement.
@@ -68,7 +68,10 @@ const FDEManual = () => {
         unique tech stack and possesses their own custom set of engineering
         practices. To adapt to this, you should be a fast learner, but
         comfortable with a wide variety of primitives that make you valuable to
-        the discussions you have with your client. Beyond engineering, since you
+        the discussions you have with your client.
+      </p>
+      <p>
+        Beyond engineering, since you
         are "forward deployed," it is highly regarded to possess strong
         communication and collaboration skills. As you deploy to different
         settings, you quickly escape a comfort and homogeneity that builds
@@ -120,7 +123,7 @@ const FDEManual = () => {
         This is not to say that there is a compromise in soundness of the
         technical delivery. At Palantir, in addition to Forward Deployed
         Engineers (Deltas), we also place key importance in Deployment
-        Strategists (Echos). I often inquired about what creates a mutually
+        Strategists (Echos). I often inquired about what creates a
         symbiotic relationship within pods composed of Echos and Deltas. After
         much discussion, my conclusion was simple: there is an ever-present
         tension between the Echo wanting to drive the business value as fast as
@@ -225,7 +228,7 @@ const FDEManual = () => {
         same ideas are being planned beforehand. Shyam Sankar, CTO at Palantir,
         describes the job of the FDE as "metabolizing pain and excreting
         product"—the ethos that comes alive when you're absorbing the frictions
-        your customer faces daily and converting it into something tangible,
+        your customer faces daily and converting them into something tangible,
         repeatable, and scalable.
       </p>
 
@@ -241,7 +244,7 @@ const FDEManual = () => {
         patterns that may be extensible to other deployments. The feature you
         hacked together at 2am for a manufacturing plant to solve their
         mission-critical defective part response nightmare becomes the seed of a
-        core product capability that serves hundreds of more similar scenarios
+        core product capability that serves hundreds more similar scenarios
         down the line.
       </p>
       <p>
@@ -249,9 +252,9 @@ const FDEManual = () => {
         years of building end-to-end solutions for customers helps future FDE
         engagements shine. You get to stand on the shoulders of giants and
         deliver value even faster than your predecessors, kicking off the
-        feedback loop once more. It's what enables the scale at which you see a
-        company operate—despite when drilling down to a particular engagement
-        you would be baffled as to how any of this could possibly be extensible.
+        feedback loop once more. It's what lets a company operate at this
+        scale, even though, zoomed in on any single engagement, you'd be
+        baffled that any of it could ever be extensible.
         The trick is that extensibility isn't designed upfront; it's discovered
         through hard-earned truths from repeated exposure to variations of the
         same underlying pain.
@@ -324,7 +327,7 @@ const FDEManual = () => {
       </p>
       <p>
         Forward Deployed Engineering was one of the most sought-after roles in
-        Silicon Valley this past year. YCombinator's Jared Friedman mentions
+        Silicon Valley this past year. Y Combinator's Jared Friedman mentions
         that well over 100 companies were hiring for the role this year, up from
         basically zero just a few years back. However, I see this time and time
         again: companies are simply doing it wrong. Especially at early stages,

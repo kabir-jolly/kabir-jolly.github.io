@@ -28,12 +28,13 @@ const Wehab = () => {
         frequency analyses using the collected nasal exhalation data.
       </p>
 
-      {/* Technologies */}
-      <h2>Technologies Used</h2>
-      <ul>
-        <li>Arduino</li>
-        <li>Python (numpy, scipy, matplotlib, pandas, sklearn)</li>
-      </ul>
+      <p>
+        For the record, research is not always glamorous. The initial mold was
+        made of pizza dough from Trader Joe's. Testing the prototypes meant
+        sitting in my freshman dorm with wires running out of my mouth. And the experiments themselves had me breathing out of
+        a single nostril for hours on end (in the name of science, of course).
+      </p>
+
 
       {/* Background */}
       <h2>Background</h2>
@@ -57,7 +58,7 @@ const Wehab = () => {
 
       <PostFigure
         src="/assets/img/wehab/wehab1.png"
-        alt="Nasal Cycle"
+        alt="Chart of the classical nasal cycle: airflow through each nostril alternating over eight hours (Flanagan and Eccles, 1997)"
       />
 
       <p>
@@ -76,7 +77,7 @@ const Wehab = () => {
 
       <PostFigure
         src="/assets/img/wehab/wehab2.png"
-        alt="Current Methods"
+        alt="Current nasal cycle detection methods: nasal endoscopy, rhinomanometry and rhinoflowmetry, and peak nasal expiratory flow"
       />
 
       <p>
@@ -99,7 +100,7 @@ const Wehab = () => {
 
       <PostFigure
         src="/assets/img/wehab/wehab3.png"
-        alt="Placement Diagram"
+        alt="Diagram of the roof of the mouth showing sensor placement on the palatine arteries"
         size="half"
       />
 
@@ -125,8 +126,8 @@ const Wehab = () => {
       <PostImageGrid
         stacked
         images={[
-          { src: "/assets/img/wehab/wehab4.png", alt: "Prototypes" },
-          { src: "/assets/img/wehab/wehab5.png", alt: "PPG Data" },
+          { src: "/assets/img/wehab/wehab4.png", alt: "Wax prototype and retainer prototype, each with two PPG sensors" },
+          { src: "/assets/img/wehab/wehab5.png", alt: "PPG readings: a greater amplitude from the right sensor, then from the left sensor, each labeled with a guess at the dominant nostril" },
         ]}
       />
 
@@ -135,7 +136,7 @@ const Wehab = () => {
       </h3>
       <PostFigure
         src="/assets/img/wehab/wehab6.png"
-        alt="Demo"
+        alt="Side and front view of the microphone apparatus worn on a sleep apnea chin strap"
       />
 
       <ul>
@@ -159,8 +160,8 @@ const Wehab = () => {
       <PostImageGrid
         stacked
         images={[
-          { src: "/assets/img/wehab/wehab7.png", alt: "Microphone Readings" },
-          { src: "/assets/img/wehab/wehab8.png", alt: "Pipeline" },
+          { src: "/assets/img/wehab/wehab7.png", alt: "Right and left nostril microphone readings, shown as original data, after high-pass filtering, and after inhalation removal" },
+          { src: "/assets/img/wehab/wehab8.png", alt: "Audio pipeline: audio file, K-filtering, thresholding, summation, loudness in LUFS" },
         ]}
       />
 
@@ -248,7 +249,7 @@ const Wehab = () => {
       {/* Final Poster */}
       <PostFigure
         src="/assets/img/wehab/curis_poster.png"
-        alt="CURIS Poster"
+        alt="CURIS research poster: Constructing, Testing, and Evaluating PPG and Microphone Based Methods for Nasal Cycle Detection"
         caption="Research poster presented at the end of the summer CURIS symposium."
       />
     </article>

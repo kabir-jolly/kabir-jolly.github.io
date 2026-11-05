@@ -8,7 +8,7 @@ const DepthAwarePixel2Mesh = () => {
         <a
           href="http://cs231n.stanford.edu/"
         >
-          CS 231 (Deep Learning for Computer Vision)
+          CS 231N (Deep Learning for Computer Vision)
         </a>{" "}
         has probably been my favorite class at Stanford so far. It was
         incredibly well taught and also dove deeper into many of the topics I
@@ -39,43 +39,39 @@ const DepthAwarePixel2Mesh = () => {
       {/* Background */}
       <h2>Background</h2>
       <p>
-        Current advances in the computer vision space have become increasingly
-        accurate in object detection when given 2D inputs.
+        Computer vision has become increasingly accurate at detecting objects
+        in 2D inputs, from models like Mask R-CNN to instance and semantic
+        segmentation.
       </p>
-      <ul>
-        <li>Models like Mask R-CNN</li>
-        <li>Instance and semantic segmentation</li>
-      </ul>
 
       <PostFigure
         src="/assets/img/231n/231n1.png"
-        alt="Overview"
+        alt="Overview diagram of Mesh R-CNN: a voxel branch cubifies a chair image into a coarse mesh, which a three-stage mesh refinement branch turns into the final mesh"
       />
 
-      <p>Mesh R-CNN is one major advancement in this space</p>
-      <ul>
-        <li>
-          Constructs topologically accurate 3D meshes given a 2D RGB image using
-          voxel representations
-        </li>
-        <li>
-          Translates these voxel representations into a mesh using a GNN-based
-          approach
-        </li>
-      </ul>
+      <p>
+        Mesh R-CNN is one major advancement in this space. From a single 2D RGB
+        image, it builds a voxel representation of the object, then uses a
+        GNN-based approach to translate those voxels into a topologically
+        accurate 3D mesh.
+      </p>
 
       {/* Proposed Solution */}
       <h2>Proposed Solution</h2>
       <p>
         Current systems lack a major component of object recognition that we as
-        humans use to perceive the world around us - <i>depth</i>.
+        humans use to perceive the world around us: <i>depth</i>. So we fed it
+        to them. We used MiDaS to predict a depth map for every image, stacked
+        it on as a fourth channel, and adapted the models to take RGB-D input.
+        The short version: adding depth gave Pixel2Mesh a clear improvement, but
+        seemed to make little difference for Mesh R-CNN.
       </p>
 
       <PostImageGrid
         stacked
         images={[
-          { src: "/assets/img/231n/231n2.png", alt: "Current Methods" },
-          { src: "/assets/img/231n/231n3.png", alt: "Depth" },
+          { src: "/assets/img/231n/231n2.png", alt: "Airplane reconstructions from three existing methods: volume as output, point cloud as output, and Pixel2Mesh" },
+          { src: "/assets/img/231n/231n3.png", alt: "MiDaS depth maps predicted from single-view photos" },
         ]}
       />
 
@@ -83,73 +79,18 @@ const DepthAwarePixel2Mesh = () => {
       <h2>Methodology and Results</h2>
 
       <h3>
-        Phase 1: Differentiable Rendering
-      </h3>
-      <p>
-        In order to provide further supervision on our generated meshes, we
-        considered augmenting the loss with differentiable rendering.
-      </p>
-      <ul>
-        <li>
-          Utilize a differentiable rasterizer to render a depth map of it the
-          generated mesh
-        </li>
-        <li>
-          Error between the rendered depth map and the "ground-truth" depth
-          channel can be measured
-        </li>
-      </ul>
-
-      <p>
-        This would allow our model to take further advantage of the RGB-D images
-        by creating a mesh that has the same depth characteristics as the input
-        depth map. In order to meaningfully compare the rendered depth maps with
-        the ones from the input images we need the following:
-      </p>
-      <ul>
-        <li>The loss must be scale-invariant.</li>
-        <li>
-          Rendered depth maps must be from the same camera positions as the
-          input images.
-        </li>
-      </ul>
-
-      <p>
-        We discovered more difficulties and were unable to fully implement the
-        scale-invariant depth loss.
-      </p>
-      <ul>
-        <li>
-          MiDaS hallucinates a ground plane beneath the ShapeNet renderings.
-        </li>
-        <li>
-          The differentiable renderer simply marks all background points as −1
-        </li>
-        <li>MiDaS outputs an inverse depth map</li>
-      </ul>
-      <p>
-        We hope to investigate solving both these problems simultanoeously in
-        future work.
-      </p>
-
-      <PostFigure
-        src="/assets/img/231n/231n4.png"
-        alt="Meshes"
-      />
-
-      <h3>
         RGB-D Backbone and Mesh Refinement Head
       </h3>
       <p>
         To allow Mesh R-CNN to take RGB-D images as input, we changed the first
         ResNet layer to learn four-channel filters instead of three-channel
-        filters. We take advantage of pretraining by copying over the weights of
+        filters. We take advantage of pretraining by copying over the weights
         for the first three channels and only train the fourth from scratch.
       </p>
 
       <PostFigure
         src="/assets/img/231n/231n5.png"
-        alt="Architecture"
+        alt="Architecture table: an image input passes through ResNet-50 stages, bilinear interpolation, the voxel branch, cubify, and three mesh refinement stages"
       />
 
       <p>
@@ -160,7 +101,35 @@ const DepthAwarePixel2Mesh = () => {
 
       <PostFigure
         src="/assets/img/231n/231n6.png"
-        alt="Losses"
+        alt="Loss equations for Chamfer distance and normal distance between point clouds P and Q"
+      />
+
+      <h3>
+        Differentiable Rendering (Unfinished)
+      </h3>
+      <p>
+        We also tried to supervise the generated meshes more directly by
+        augmenting the loss with differentiable rendering: use a differentiable
+        rasterizer to render a depth map of the generated mesh, then measure the
+        error between that rendered depth map and the "ground-truth" depth
+        channel. This would let the model take further advantage of the RGB-D
+        images, producing meshes with the same depth characteristics as the
+        input depth map. For the comparison to mean anything, the loss must be
+        scale-invariant, and the rendered depth maps must come from the same
+        camera positions as the input images.
+      </p>
+
+      <p>
+        We hit three snags and were unable to fully implement the
+        scale-invariant depth loss: MiDaS hallucinates a ground plane beneath the
+        ShapeNet renderings, MiDaS outputs an <i>inverse</i> depth map, and the
+        differentiable renderer simply marks all background points as −1. We
+        hope to investigate solving these problems together in future work.
+      </p>
+
+      <PostFigure
+        src="/assets/img/231n/231n4.png"
+        alt="Side by side: a MiDaS depth estimation of an object and the resulting noisy mesh reconstruction"
       />
 
       {/* Dataset and Features */}
@@ -173,7 +142,7 @@ const DepthAwarePixel2Mesh = () => {
 
       <PostFigure
         src="/assets/img/231n/231n7.png"
-        alt="ShapeNet"
+        alt="Grid of ShapeNet renderings: chairs, laptops, benches and airplanes"
       />
 
       <p>
@@ -190,35 +159,19 @@ const DepthAwarePixel2Mesh = () => {
 
       <PostFigure
         src="/assets/img/231n/231n8.png"
-        alt="Results Table"
+        alt="Results table of Chamfer distance with RGB and RGB-D input: Pixel2Mesh improves from 4.915 to 3.707; Mesh R-CNN goes from 4.729 to 4.791"
       />
 
       <p>
-        A possible extension is to construct colored meshes
+        A possible extension is to construct colored meshes that accurately
+        represent the textures and materials that appear in images. Since we
+        represent meshes as graphs, our idea is to incorporate color as an
+        additional node feature: instead of predicting 3-dimensional features
+        in the mesh refinement stage, Mesh R-CNN would predict 6-dimensional
+        ones, the first three for the vertex coordinate and the second three
+        for RGB values. As supervision, the meshes in the datasets would need
+        vertex colorings.
       </p>
-      <ul>
-        <li>
-          Accurately represent textures and materials that appear in images
-        </li>
-        <li>
-          Since we represent the meshes as graphs, our idea is to incorporate
-          color information as an additional node feature
-        </li>
-        <li>
-          Thus, as supervision for our color predictions, we need the meshes in
-          the datasets to have vertex colorings
-        </li>
-        <li>
-          To enable Mesh R-CNN to predict the color of each vertex, we plan to
-          increase the dimension of the node features predicted by the mesh
-          refinement stage
-        </li>
-        <li>
-          Instead of predicting 3-dimensional features, we will predict
-          6-dimensional features, where the first three correspond to the vertex
-          coordinate and the second three correspond to RGB values
-        </li>
-      </ul>
 
       <p>
         We also plan to continue the unfinished work on using differentiable
