@@ -1,15 +1,17 @@
-import { useParams } from "react-router-dom";
-import { ChevronLeft, Linkedin } from "lucide-react";
+import { Fragment } from "react";
+import { Link, useParams } from "react-router-dom";
 import { getPost } from "../data/posts";
 import { usePageMeta } from "../hooks/usePageMeta";
-import PillButton from "./PillButton";
-import XLogo from "./XLogo";
+
+const typeLabel: Record<string, string> = {
+  writing: "Writing",
+  project: "Project",
+  experience: "Work",
+};
+const linkLabel = { x: "X", linkedin: "LinkedIn" } as const;
 
 const BlogPost = () => {
-  const { type, slug } = useParams<{
-    type: "experience" | "project" | "writing";
-    slug: string;
-  }>();
+  const { type, slug } = useParams<{ type: string; slug: string }>();
   const content = getPost(type, slug);
 
   // Called before the early return below to keep hook order stable.
@@ -22,82 +24,48 @@ const BlogPost = () => {
 
   if (!content) {
     return (
-      <div
-        className="min-h-screen page-enter"
-        style={{ backgroundColor: "var(--color-bg)" }}
-      >
-        <div className="post-shell">
-          <PillButton
-            to="/posts"
-            className="post-back"
-            leadingIcon={<ChevronLeft size={14} />}
-          >
-            Posts
-          </PillButton>
-          <header className="post-header">
-            <h1>Coming soon!</h1>
-            <div className="post-header-rule" />
-          </header>
-        </div>
+      <div className="page">
+        <h1 className="page-title">Coming soon!</h1>
+        <p>
+          <Link to="/posts">← All posts</Link>
+        </p>
       </div>
     );
   }
 
   const ContentComponent = content.component;
-  const postType = type ?? "project";
+  const links = content.links ?? [];
 
   return (
-    <div
-      className="min-h-screen page-enter"
-      style={{ backgroundColor: "var(--color-bg)" }}
-    >
-      <div className="post-shell">
-        <PillButton
-          to="/posts"
-          className="post-back"
-          leadingIcon={<ChevronLeft size={14} />}
-        >
-          Posts
-        </PillButton>
-
-        <header className="post-header">
-          <h1>{content.postTitle}</h1>
-          {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
-          <div className="post-meta">
-            <p className="post-date">{content.date}</p>
-            <span className="post-type-tag">{postType}</span>
-          </div>
-          <div className="post-header-rule" />
-        </header>
-
-        <main className="post-content">
-          <ContentComponent />
-        </main>
-
-        {content.links && content.links.length > 0 && (
-          <footer className="post-external-footer">
-            <span className="post-external-label">
-              You can also view this post on other platforms:
-            </span>
-            <div className="post-external-links">
-              {content.links.map((link) => (
-                <a
-                  key={link.type}
-                  href={link.url}
-                  className="post-external-link"
-                  aria-label={
-                    link.type === "x" ? "View post on X" : "View post on LinkedIn"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.type === "x" ? <XLogo size={14} /> : <Linkedin size={15} />}
-                </a>
+    <div className="page">
+      <header className="post-header">
+        <h1>{content.postTitle}</h1>
+        {content.subtitle && <p className="post-subtitle">{content.subtitle}</p>}
+        <p className="post-meta">
+          {content.date} · {typeLabel[type ?? ""] ?? "Post"}
+          {links.length > 0 && (
+            <>
+              {" · also on "}
+              {links.map((link, i) => (
+                <Fragment key={link.type}>
+                  {i > 0 && (i === links.length - 1 ? " and " : ", ")}
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {linkLabel[link.type]}
+                  </a>
+                </Fragment>
               ))}
-            </div>
-          </footer>
-        )}
-      </div>
+            </>
+          )}
+        </p>
+      </header>
+
+      <main className="post-content">
+        <ContentComponent />
+      </main>
+
+      <footer className="site-footer">
+        <Link to="/posts">← All posts</Link>
+      </footer>
     </div>
   );
 };

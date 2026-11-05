@@ -22,8 +22,9 @@ GitHub Pages is published by GitHub Actions (Pages source "GitHub Actions", no c
 ## File map
 - `src/App.tsx`: routes: `/` (Portfolio), `/posts` (Posts list), `/:type/:slug` (BlogPost), where
   type is `writing`, `project` or `experience`.
-- `src/data/content.ts`: homepage cards: `experiences` and `projects` arrays (types in `src/types.ts`).
-  A card with `slug` opens `/experience/<slug>` or `/project/<slug>`; `externalUrl` opens a new tab.
+- `src/data/content.ts`: homepage Work and Projects rows: `experiences` and `projects` arrays (types in
+  `src/types.ts`). A row with `slug` opens `/experience/<slug>` or `/project/<slug>`; `externalUrl` opens a new
+  tab. Row years come from `date` via `src/data/format.ts` (`yearLabel`; a project's place is the text before `•`).
 - `src/Components/blog-content.tsx`: the post registry (`writingContent`, `projectContent`,
   `experienceContent`): slug -> component, `postTitle`, `subtitle?`, `date`, `featured?`, `links?`
   (x/linkedin), `ogImage?` (link-preview image).
@@ -31,11 +32,12 @@ GitHub Pages is published by GitHub Actions (Pages source "GitHub Actions", no c
   images via `PostFigure` (`size` full|medium|half) and `PostImageGrid`).
 - `src/data/posts.ts`: flattens the registry into `postEntries` (sorted by the latest year in `date`);
   used by the Posts page and the prerender script.
-- `src/Components/BentoBoxes/*`: homepage tiles (profile, experiences, projects, recommendations,
-  time, globe). `src/Components/NavBar.tsx`, `Posts.tsx`, `BlogPost.tsx`.
-- `src/theme.ts`: palettes as CSS variables; light = `plumRefined`, dark = `plumNight`; follows the
-  visitor's system setting, sun/moon toggle remembered in localStorage. Use `colors.*` (CSS vars),
-  never fixed hex in components, or dark mode breaks. `src/index.css`: global and post styles.
+- `src/Components/Portfolio.tsx`: the home page (header, bio, Work / Writing / Projects lists, footer links);
+  `ListRow.tsx` is the one dated row used by every list. `NavBar.tsx` (hidden on `/`), `ThemeToggle.tsx`,
+  `Posts.tsx`, `BlogPost.tsx`.
+- `src/index.css`: all styles and the colour variables (`--bg`, `--ink`, `--muted`, `--rule`, `--link`,
+  `--link-line`) for light and dark; use the variables, never fixed hex, or dark mode breaks. `src/theme.ts`
+  only picks the mode: system setting by default, the Light/Dark toggle's choice remembered in localStorage.
 - `src/hooks/usePageMeta.ts`: per-page title/description/og tags at runtime.
 - `scripts/generate-site-files.mjs` (runs at the end of `npm run build`): writes `dist/404.html`
   (SPA fallback), `dist/posts.html` + `posts/index.html`, and for every post both
@@ -56,7 +58,7 @@ GitHub Pages is published by GitHub Actions (Pages source "GitHub Actions", no c
 ```
 npm ci
 npm run build    # tsc -b && vite build && prerender; must exit 0
-npm run lint     # must exit 0 (one known warning in Globe.tsx, see below)
+npm run lint     # must exit 0
 npx vite preview --port 4173 --strictPort    # serves dist/ like Pages does
 ```
 Open http://localhost:4173/ and each changed route (e.g. `/writing/<slug>`, `/posts`) in the browser
@@ -91,13 +93,9 @@ specific change, and only once the PR check is green.
   which serves the last `npm run deploy` output. `npm run deploy` is not used otherwise.
 
 ## Known repo hygiene issues (not fixed)
-- `npm run lint`: 1 warning, `src/Components/BentoBoxes/Globe.tsx:92` missing useEffect dependency `r`.
 - `npm ci`: 16 audit vulnerabilities reported (1 low, 10 moderate, 5 high) in dependencies.
 - The `gh-pages` branch and the `deploy`/`predeploy` scripts remain from the old manual flow; the
   branch is no longer served unless the Pages source is switched back.
-- `src/theme.ts` keeps 12 palettes; only `plumRefined` and `plumNight` are used.
 - About 13 stale remote branches (e.g. `devin/*`, `dark-mode`, `mobile-fixes`) remain on GitHub.
 - README says `npm install` (prefer `npm ci`); package name is the template's `my-portfolio`;
   `.claude/launch.json` is an editor-specific file in the repo.
-- Card clicks use `window.location.href` (full page load) rather than router links; works because every
-  post route is prerendered.
