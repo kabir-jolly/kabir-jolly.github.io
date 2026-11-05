@@ -63,7 +63,7 @@ export const experiences: ExperienceType[] = [
 
 export const projects: ProjectType[] = [
   {
-    title: "Creative Writing Verification",
+    title: "LitBench: Creative Writing Verification",
     date: "Autonomous Agents Lab • 2025",
     description:
       "Building a dataset and benchmark for evaluating creative writing models, and training reward models and LLM judges to generate and evaluate better creative writing.",
