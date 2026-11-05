@@ -29,10 +29,9 @@ const Wehab = () => {
       </p>
 
       <p>
-        For the record, research is not always glamorous. The initial mold was
-        made of pizza dough from Trader Joe's. Testing the prototypes meant
-        sitting in my freshman dorm with wires running out of my mouth. And the experiments themselves had me breathing out of
-        a single nostril for hours on end (in the name of science, of course).
+        The initial mold was made from Trader Joe's pizza dough. I also ran
+        wires out of my mouth in my freshman dorm and had to breathe out of a
+        single nostril for hours on end.
       </p>
 
 
@@ -168,7 +167,7 @@ const Wehab = () => {
       {/* Discussion */}
       <h2>Discussion</h2>
       <p>
-        We conducted experimentation by blocking a nostril or laying sideways,
+        We conducted experimentation by blocking a nostril or lying sideways,
         thus forcing one nostril to dominate breathing over the other. Trials
         from both PPG-based prototypes were inconclusive.
       </p>
@@ -179,7 +178,7 @@ const Wehab = () => {
           readings and nostril airflow
         </li>
         <li>
-          Laying on one side to force blood flow did not result in a shift
+          Lying on one side to force blood flow did not result in a shift
           between the amplitudes in the readings
         </li>
         <li>
