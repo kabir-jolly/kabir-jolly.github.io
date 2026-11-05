@@ -1,4 +1,3 @@
-import Zeal from "./experience/Zeal";
 import Valar from "./experience/Valar";
 import ModifyingMinBERT from "./projects/ModifyingMinBERT";
 import StanfordMedicalCenter from "./projects/StanfordMedicalCenter";
@@ -12,7 +11,7 @@ export const writingContent: ContentRegistryType = {
   "fde-manual": {
     component: FDEManual,
     postTitle: "The FDE Manual",
-    subtitle: "What is it? How does it Create Value?",
+    subtitle: "What is it? How does it create value?",
     date: "2026",
     featured: true,
     links: [
@@ -30,11 +29,6 @@ export const writingContent: ContentRegistryType = {
 };
 
 export const experienceContent: ContentRegistryType = {
-  zeal: {
-    component: Zeal,
-    postTitle: "Brief recap of a summer spent connecting people at Zeal AI",
-    date: "Summer 2023",
-  },
   valar: {
     component: Valar,
     postTitle: "Engineering tools to help decision-making for oncologists at Valar Labs",

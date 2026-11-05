@@ -11,16 +11,12 @@ const ModifyingMinBERT = () => {
           CS 224N (Natural Language Processing with Deep Learning)
         </a>{" "}
         was a wonderful class I took during the winter quarter of my junior
-        year. Prior to taking 224N, I had already taken a bunch of other
-        AI/ML/DL classes and this one is known to be one of the more
-        approachable courses to begin with, so I did not find the class to be
-        too challenging at all. It was extremely well taught and I really
-        appreciated how the course staff modified much of the material to remain
-        fairly topical (side note: this definitely one of Stanford's greatest
-        strengths as an academic institution). Much of the final portion of the
-        class was entirely devoted to covering the cutting-edge (especially with
-        ChatGPT released only a few months prior to this offering) - a large
-        reason why this class had over 650 students enrolled.
+        year. It was extremely well taught, and the course staff kept much of
+        the material remarkably topical (side note: this is definitely one of
+        Stanford's greatest strengths as an academic institution). With ChatGPT
+        released only a few months before this offering, the final portion of
+        the class was devoted entirely to the cutting edge. That's a big part of
+        why over 650 students enrolled.
       </p>
 
       <p>
@@ -39,8 +35,8 @@ const ModifyingMinBERT = () => {
       {/* Background */}
       <h2>Background</h2>
       <p>
-        BERT, or Bidirectional Encoder Representations from Transformers, is an
-        LLM based on the transformer architecture.
+        BERT, or Bidirectional Encoder Representations from Transformers, is a
+        language model built on the transformer architecture.
       </p>
       <ul>
         <li>Especially powerful when it comes to sequential textual data</li>
@@ -52,7 +48,7 @@ const ModifyingMinBERT = () => {
 
       <PostFigure
         src="/assets/img/224n/224n1.png"
-        alt="Overview"
+        alt="Overview diagram of BERT pre-training and fine-tuning (Devlin et al.)"
       />
 
       <p>
@@ -139,7 +135,7 @@ const ModifyingMinBERT = () => {
 
       <PostFigure
         src="/assets/img/224n/224n2.png"
-        alt="Phase 1 Architecture"
+        alt="Phase 1 architecture: one BERT encoder feeding separate heads for SST, paraphrase, and STS (cosine similarity scaled by 5)"
       />
 
       <h3>
@@ -154,51 +150,38 @@ const ModifyingMinBERT = () => {
           Average outputs to be used as a stronger initialization for multitask
           finetuning
         </li>
+        <li>
+          Finetune the averaged model on all three tasks with gradient surgery
+        </li>
       </ul>
 
       <PostImageGrid
         stacked
         images={[
-          { src: "/assets/img/224n/224n3.png", alt: "Phase 2 Training" },
-          { src: "/assets/img/224n/224n4.png", alt: "Results" },
+          { src: "/assets/img/224n/224n3.png", alt: "Phase 2 training: three single-task BERTs for one epoch, averaged into one model, then multitask training with gradient surgery, unfrozen for three epochs and frozen for one" },
+          { src: "/assets/img/224n/224n4.png", alt: "Bar chart of dev scores on SST, paraphrase, STS and overall for the baseline and each cosine similarity plus gradient surgery variant" },
         ]}
       />
 
       {/* Analysis */}
       <h2>Analysis</h2>
       <p>
-        We found the best performing model consists of our training method in
-        combination with gradient surgery and cosine similarity:
+        Our best model combined our training scheme with gradient surgery and
+        cosine similarity. Applied naively, gradient surgery actually hurt
+        results: the gradients between the tasks conflicted too strongly. Cosine
+        similarity brought the tasks more in line with each other and allowed
+        for better multitask performance (it also constrains the head's output
+        to be between 0 and 5, rather than letting the model learn this). Using
+        both together boosted overall performance across the tasks, and adding
+        our training scheme pushed it further still.
       </p>
-      <ul>
-        <li>
-          Naively applying gradient surgery negatively impacts results due to
-          strongly conflicting gradients between the tasks
-        </li>
-        <li>
-          Cosine similarity brings the tasks more in line with each other and
-          allows for better multitask model performance
-        </li>
-        <li>
-          This also constrains the output of the head to be between 0 and 5,
-          rather than letting the model learn this
-        </li>
-        <li>
-          Using both gradient surgery and cosine similarity together boosts
-          overall performance across the tasks, and combining this with our
-          training scheme allows for even greater performance
-        </li>
-        <li>
-          This shows the importance of a good initialization point to begin
-          finetuning from and an even more efficient pretraining process could
-          probably improve the results further
-        </li>
-        <li>
-          We also found that the model begins to overfit after only a few epochs
-          of finetuning but, removing dropout led to improved performance on the
-          dev data
-        </li>
-      </ul>
+      <p>
+        This shows the importance of a good initialization point to begin
+        finetuning from, and an even more efficient pretraining process could
+        probably improve the results further. We also found that the model
+        begins to overfit after only a few epochs of finetuning, but removing
+        dropout led to improved performance on the dev data.
+      </p>
 
       {/* Conclusion */}
       <h2>Conclusion</h2>
@@ -225,7 +208,7 @@ const ModifyingMinBERT = () => {
       </ul>
 
       <p>
-        One future step in involves trying an optimization based meta-learning
+        One future step involves trying an optimization based meta-learning
         approach such as MAML. We saw having a good initialization point before
         finetuning improved downstream task performance, so with the
         construction of more related tasks for meta-training, we hypothesize

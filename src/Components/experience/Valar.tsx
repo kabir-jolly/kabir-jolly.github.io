@@ -6,34 +6,31 @@ const Valar = () => {
       <div>
         <PostFigure
           src="/assets/img/valar/valar1.png"
-          alt="Valar Labs Overview"
+          alt="Valar Labs logo with the tagline AI to Make Oncologists Smarter"
         />
 
         <p>
-          At{" "}
+          I joined{" "}
           <a
             href="https://www.valarlabs.com/"
           >
             Valar Labs
-          </a>
-          , I worked in a fast-paced startup environment shortly after their{" "}
+          </a>{" "}
+          shortly after their{" "}
           <a
             href="https://valarlabs.medium.com/valar-labs-reimagining-cancer-treatment-decisions-with-artificial-intelligence-b9edb6c12243"
           >
             seed round led by a16z
           </a>
-          . While primarily focused on Machine Learning Engineering, the
-          early-stage nature of the company allowed me to contribute across
-          multiple areas including product, research, pathology, and software
-          development.
+          , back when co-founders, engineers, and everyone else worked together
+          at one table. My focus was Machine Learning Engineering, but at that
+          stage you go where you're needed, so I also got to contribute to
+          product, research, pathology, and software development.
         </p>
 
         <p>
-          The collaborative environment, where company co-founders, engineers,
-          and team members worked together at one table, fostered a culture
-          where everyone had input on ongoing projects. The healthtech focus
-          provided an excellent blend of research lab work with rapid
-          user-focused deployment.
+          Everyone had input on ongoing projects, and the work sat right between
+          a research lab and rapid, user-focused deployment.
         </p>
       </div>
 
@@ -43,7 +40,7 @@ const Valar = () => {
         <div>
           <PostFigure
             src="/assets/img/valar/valar2.png"
-            alt="Tissue WSI"
+            alt="Two stained whole-slide tissue image patches, labeled a and b"
           />
 
           <h3>
@@ -68,19 +65,12 @@ const Valar = () => {
             Model Evaluation Framework
           </h3>
           <p>
-            Created data science utilities for comprehensive model evaluation,
-            enabling better understanding of model performance and identifying
-            areas for improvement.
+            Created data science utilities for evaluating our models and finding
+            where they fell short.
           </p>
         </div>
       </div>
 
-      {/* Technical Environment */}
-      <h2>Technical Environment</h2>
-      <ul>
-        <li>PyTorch and TensorFlow for in-house model development</li>
-        <li>Labelbox for data annotation</li>
-      </ul>
 
       <p>
         <em>

@@ -35,9 +35,9 @@ const ScrAPPS = () => {
       <PostImageGrid
         columns={3}
         images={[
-          { src: "/assets/img/scrapps/scrapps1.jpeg", alt: "Whiteboard 1" },
-          { src: "/assets/img/scrapps/scrapps2.jpeg", alt: "Whiteboard 2" },
-          { src: "/assets/img/scrapps/scrapps3.jpeg", alt: "Whiteboard 3" },
+          { src: "/assets/img/scrapps/scrapps1.jpeg", alt: "Whiteboard sketch of the ScrAPPS sign-up screens" },
+          { src: "/assets/img/scrapps/scrapps2.jpeg", alt: "Whiteboard sketch of the flow for requesting a haul" },
+          { src: "/assets/img/scrapps/scrapps3.jpeg", alt: "Whiteboard sketch of the hauler's pickup and drop-off screens" },
         ]}
         caption="Our high-fidelity Starbucks-cake-pop-fueled app wireframes."
       />
@@ -52,8 +52,8 @@ const ScrAPPS = () => {
       <PostImageGrid
         stacked
         images={[
-          { src: "/assets/img/scrapps/scrapps4.png", alt: "ScrAPPS App" },
-          { src: "/assets/img/scrapps/scrapps5.png", alt: "ScrAPPS Flow" },
+          { src: "/assets/img/scrapps/scrapps4.png", alt: "Four ScrAPPS app screens: welcome, account sign-up, upcoming hauls, and adding a haul" },
+          { src: "/assets/img/scrapps/scrapps5.png", alt: "How ScrAPPS works: a food waste producer requests a haul, a truck driver transports it, and a compost facility confirms and composts it" },
         ]}
       />
 
@@ -77,22 +77,12 @@ const ScrAPPS = () => {
 
       <PostImageGrid
         images={[
-          { src: "/assets/img/scrapps/scrapps6.jpeg", alt: "First Haul" },
-          { src: "/assets/img/scrapps/scrapps7.jpeg", alt: "First Haul 2" },
+          { src: "/assets/img/scrapps/scrapps6.jpeg", alt: "Two people standing beside a large compost pile on the first haul" },
+          { src: "/assets/img/scrapps/scrapps7.jpeg", alt: "A pile of food scraps on compost from the first haul" },
         ]}
         caption="Pictures from our very first haul. Why did I wear a white shirt for a composting job?"
       />
 
-      {/* Technologies */}
-      <h2>Technologies Used</h2>
-      <ul>
-        <li>Swift and Objective-C for iOS app development</li>
-        <li>Firebase for backend and database</li>
-        <li>
-          APIs: Google Maps (location and mapping), Stripe (payment processing)
-        </li>
-        <li>Sketch and Figma for UI designing</li>
-      </ul>
     </article>
   );
 };

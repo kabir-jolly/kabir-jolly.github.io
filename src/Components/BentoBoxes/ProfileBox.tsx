@@ -89,9 +89,11 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
             I was formerly on the healthcare team at Palantir, where I built
             agentic software and decision support systems for hospitals. Before
-            that, I received my B.S. in Computer Science and M.S. in Management
-            Science and Engineering from Stanford University. Outside of
-            coursework, I built internal tools at{" "}
+            that, I earned my B.S. in Computer Science and M.S. in Management
+            Science and Engineering at Stanford.
+          </p>
+          <p className="text-sm mb-3" style={{ color: colors.navy }}>
+            Along the way, I built internal tools at{" "}
             <a
               href="https://www.pear.vc"
               className="underline hover:no-underline"
@@ -99,19 +101,9 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pear VC,
-            </a>{" "}
-            was a Course Assistant for Stanford's{" "}
-            <a
-              href="https://web.stanford.edu/class/cs194/"
-              className="underline hover:no-underline"
-              style={{ color: colors.link, fontWeight: 600 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CS Senior Capstone Project
-            </a>{" "}
-            class, was the Head of Product and Engineering at{" "}
+              Pear VC
+            </a>
+            , led product and engineering at{" "}
             <a
               href="https://www.dormroomfund.com"
               className="underline hover:no-underline"
@@ -121,7 +113,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             >
               Dorm Room Fund
             </a>
-            , built software at{" "}
+            , and built software at{" "}
             <a
               href="https://www.fieldguide.io"
               className="underline hover:no-underline"
@@ -130,18 +122,8 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
               rel="noopener noreferrer"
             >
               Fieldguide
-            </a>
-            ,{" "}
-            <a
-              href="https://www.getzeal.co"
-              className="underline hover:no-underline"
-              style={{ color: colors.link, fontWeight: 600 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Zeal
-            </a>
-            , and{" "}
+            </a>{" "}
+            and{" "}
             <a
               href="https://www.valarlabs.com"
               className="underline hover:no-underline"
@@ -151,7 +133,17 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({ borderColorName }) => {
             >
               Valar Labs
             </a>
-            , and worked on interpretable AI research at the Stanford Medical
+            . I was also a Course Assistant for Stanford's{" "}
+            <a
+              href="https://web.stanford.edu/class/cs194/"
+              className="underline hover:no-underline"
+              style={{ color: colors.link, fontWeight: 600 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CS Senior Capstone Project
+            </a>{" "}
+            class and did interpretable AI research at the Stanford Medical
             Center.
           </p>
           <p className="text-sm mb-3" style={{ color: colors.navy }}>
