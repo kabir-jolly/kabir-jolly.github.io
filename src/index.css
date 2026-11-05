@@ -189,6 +189,20 @@ a:hover {
   color: var(--ink);
   text-decoration: none;
 }
+/* External-link mark: about the text's x-height, on the baseline. */
+.ext-arrow {
+  display: inline-block;
+  width: 0.46em;
+  height: 0.46em;
+  margin-left: 0.3em;
+  vertical-align: baseline;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
 a.row-title:hover {
   color: var(--link);
 }
