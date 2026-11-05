@@ -12,10 +12,12 @@ changes (branches, PRs, merges, deploys); Kabir only says yes or no to each chan
 - Never write in Kabir's own working copy on his machine; use your own clone/checkout.
 
 ## Stack
-React 18 + TypeScript + Vite 6 + Tailwind 3, react-router 7 (client routing). Node 22 works
-(on this machine Node comes from nvm: `. ~/.nvm/nvm.sh && nvm use 22`; there is no `.nvmrc`).
-GitHub Pages serves the `gh-pages` branch (legacy "deploy from branch", root `/`, no custom domain).
-Merging to `master` does NOT deploy anything by itself.
+React 18 + TypeScript + Vite 6 + Tailwind 3, react-router 7 (client routing). Node 22, pinned by
+`.nvmrc` and `engines` (on this machine Node comes from nvm: `. ~/.nvm/nvm.sh && nvm use`).
+`browserslist` in `package.json` keeps Safari/iOS 15+ prefixes (e.g. `-webkit-backdrop-filter`).
+GitHub Pages is published by GitHub Actions (Pages source "GitHub Actions", no custom domain):
+`.github/workflows/deploy.yml` builds and deploys on every push to `master`, so merging IS releasing.
+`.github/workflows/pr-check.yml` runs `npm ci`, lint and build on every PR.
 
 ## File map
 - `src/App.tsx`: routes: `/` (Portfolio), `/posts` (Posts list), `/:type/:slug` (BlogPost), where
@@ -70,25 +72,29 @@ screenshots in the PR.
    visitor, the build/lint results and screenshots. Do not merge until Kabir says yes.
 
 ## Release (only after Kabir's explicit yes for that change)
-1. Merge the PR: `gh pr merge <n> --squash` (the repo's recent history uses squash merges).
-2. Build from the merged master in a clean tree:
-   `git fetch origin && git switch --detach origin/master && npm ci && npm run deploy`
-   (`predeploy` runs the build; `gh-pages -d dist` pushes `dist/` to the `gh-pages` branch).
-   Never deploy from a feature branch or a tree with uncommitted changes.
-3. Verify: `git ls-remote origin gh-pages` shows the new commit;
-   `gh api repos/kabir-jolly/kabir-jolly.github.io/pages/builds/latest --jq .status` reaches `built`;
-   `curl -s https://kabir-jolly.github.io/ | grep -o 'assets/index-[^"]*'` matches the hashes in
-   `dist/index.html`; load the changed routes on the live site and screenshot them.
-- Dry run without touching live: `npx gh-pages -d dist --no-push` commits only in the local cache
-  (`node_modules/.cache/gh-pages/`; it still prints "Published"); then `npx gh-pages-clean`.
-- Rollback: redeploy from the previous good master commit the same way (detach, `npm ci`, deploy).
+Merging a PR into `master` publishes it within a few minutes. Merge only after Kabir's yes for that
+specific change, and only once the PR check is green.
+1. `gh pr checks <n> --watch` passes, then `gh pr merge <n> --squash --match-head-commit <head sha>`.
+2. Watch the deploy: `gh run list --workflow deploy.yml --branch master -L 1` then
+   `gh run watch <run id> --exit-status` (must exit 0).
+3. Verify live: `curl -s https://kabir-jolly.github.io/ | grep -o 'assets/index-[^"]*'` matches the
+   hashes of a clean local build of the same master (`dist/index.html`; builds are reproducible:
+   same Node, `npm ci`, pinned browserslist); load each changed route on the live site, wait ~2 s,
+   screenshot light and dark.
+- Redeploy without a change: `gh workflow run deploy.yml --ref master`.
+- Rollback: open a revert PR (`git revert <merge sha>`) and merge it after Kabir's yes (urgent: say
+  so to him); or re-run an older green deploy run (`gh run rerun <run id>`), which republishes that
+  run's commit until the next merge.
+- If a deploy fails, the previous version stays live; fix forward in a PR. Emergency fallback to the
+  old manual flow: Pages source back to branch `gh-pages`
+  (`gh api -X PUT repos/kabir-jolly/kabir-jolly.github.io/pages -f build_type=legacy -f 'source[branch]=gh-pages' -f 'source[path]=/'`),
+  which serves the last `npm run deploy` output. `npm run deploy` is not used otherwise.
 
 ## Known repo hygiene issues (not fixed)
 - `npm run lint`: 1 warning, `src/Components/BentoBoxes/Globe.tsx:92` missing useEffect dependency `r`.
 - `npm ci`: 16 audit vulnerabilities reported (1 low, 10 moderate, 5 high) in dependencies.
-- Builds are not byte-identical across machines: the live CSS (deployed from Kabir's machine) has
-  `-webkit-backdrop-filter` prefixes that a clean `npm ci` build of the same master lacks (autoprefixer
-  /browser data differs). No `browserslist`, `.nvmrc` or `engines` field pins this.
+- The `gh-pages` branch and the `deploy`/`predeploy` scripts remain from the old manual flow; the
+  branch is no longer served unless the Pages source is switched back.
 - `public/assets/files/kabirjolly_resume_1-2-25.pdf` is not linked from the source but is still published.
 - `src/theme.ts` keeps 12 palettes; only `plumRefined` and `plumNight` are used.
 - About 13 stale remote branches (e.g. `devin/*`, `dark-mode`, `mobile-fixes`) remain on GitHub.
