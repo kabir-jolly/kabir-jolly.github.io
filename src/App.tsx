@@ -22,16 +22,12 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col">
-        <NavBar />
-        <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/:type/:slug" element={<BlogPost />} />
-          </Routes>
-        </div>
-      </div>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/:type/:slug" element={<BlogPost />} />
+      </Routes>
     </Router>
   );
 }

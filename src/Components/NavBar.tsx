@@ -1,80 +1,22 @@
-import { useSyncExternalStore } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { Moon, Sun } from "lucide-react";
-import { colors, getMode, subscribePalette, toggleMode } from "../theme";
+import { Link, useLocation } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
-const isPostPath = (pathname: string) =>
-  /^\/(?:writing|project|experience)\/[^/]+\/?$/.test(pathname);
-
-const navLinks = [
-  {
-    label: "Home",
-    to: "/",
-    isActive: (pathname: string) => pathname === "/",
-  },
-  {
-    label: "Posts",
-    to: "/posts",
-    isActive: (pathname: string) =>
-      pathname === "/posts" || isPostPath(pathname),
-  },
-] as const;
-
+// The home page carries its own header (name, role, toggle); every other page
+// gets this one line.
 const NavBar = () => {
   const { pathname } = useLocation();
-  const mode = useSyncExternalStore(subscribePalette, getMode, getMode);
+  if (pathname === "/") return null;
 
   return (
-    <nav
-      className="sticky top-0 z-50 backdrop-blur-md border-b"
-      style={{
-        backgroundColor: "color-mix(in srgb, var(--color-bg) 80%, transparent)",
-        borderColor: colors.lavender,
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
-          <NavLink 
-            to="/" 
-            className="tap-target text-lg font-semibold tracking-tight"
-            style={{ color: colors.navy }}
-          >
-            KJ
-          </NavLink>
-          
-          <div className="flex items-center gap-4 sm:gap-6">
-            {navLinks.map((link) => {
-              const isActive = link.isActive(pathname);
-
-              return (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`tap-target text-sm font-medium transition-colors hover:opacity-70 ${
-                    isActive ? "border-b-2" : ""
-                  }`}
-                  style={{
-                    color: colors.navy,
-                    borderColor: isActive ? colors.periwinkle : "transparent",
-                  }}
-                >
-                  {link.label}
-                </NavLink>
-              );
-            })}
-            <button
-              type="button"
-              onClick={toggleMode}
-              aria-label={mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              title={mode === "dark" ? "Light mode" : "Dark mode"}
-              className="p-2.5 -mr-2.5 rounded-md transition-opacity hover:opacity-70"
-              style={{ color: colors.navy }}
-            >
-              {mode === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-          </div>
-        </div>
+    <nav className="site-nav">
+      <Link to="/" className="site-nav-name">
+        Kabir Jolly
+      </Link>
+      <div className="site-nav-links">
+        <Link to="/posts" aria-current={pathname === "/posts" ? "page" : undefined}>
+          Posts
+        </Link>
+        <ThemeToggle />
       </div>
     </nav>
   );
