@@ -33,23 +33,22 @@ const Portfolio = () => {
         <p>
           I was formerly on the healthcare team at Palantir, where I built
           agentic software and decision support systems for hospitals. Before
-          that, I earned my B.S. in Computer Science and M.S. in Management
-          Science and Engineering at Stanford.
+          that, I received my B.S. in Computer Science and M.S. in Management
+          Science and Engineering from Stanford University.
         </p>
         <p>
-          Along the way, I built internal tools at{" "}
-          <a href="https://www.pear.vc" {...ext}>Pear VC</a>, led product and
-          engineering at{" "}
-          <a href="https://www.dormroomfund.com" {...ext}>Dorm Room Fund</a>,
-          and built software at{" "}
-          <a href="https://www.fieldguide.io" {...ext}>Fieldguide</a> and{" "}
-          <a href="https://www.valarlabs.com" {...ext}>Valar Labs</a>. I was
-          also a Course Assistant for Stanford's{" "}
+          Outside of coursework, I built internal tools at{" "}
+          <a href="https://www.pear.vc" {...ext}>Pear VC</a>, was a Course
+          Assistant for Stanford's{" "}
           <a href="https://web.stanford.edu/class/cs194/" {...ext}>
             CS Senior Capstone Project
           </a>{" "}
-          class and did interpretable AI research at the Stanford Medical
-          Center.
+          class, was the Head of Product and Engineering at{" "}
+          <a href="https://www.dormroomfund.com" {...ext}>Dorm Room Fund</a>,
+          built software at{" "}
+          <a href="https://www.fieldguide.io" {...ext}>Fieldguide</a> and{" "}
+          <a href="https://www.valarlabs.com" {...ext}>Valar Labs</a>, and
+          worked on interpretable AI research at the Stanford Medical Center.
         </p>
         <p className="muted">
           I am also a{" "}

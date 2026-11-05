@@ -10,27 +10,30 @@ const Valar = () => {
         />
 
         <p>
-          I joined{" "}
+          At{" "}
           <a
             href="https://www.valarlabs.com/"
           >
             Valar Labs
-          </a>{" "}
-          shortly after their{" "}
+          </a>
+          , I worked in a fast-paced startup environment shortly after their{" "}
           <a
             href="https://valarlabs.medium.com/valar-labs-reimagining-cancer-treatment-decisions-with-artificial-intelligence-b9edb6c12243"
           >
             seed round led by a16z
           </a>
-          , back when co-founders, engineers, and everyone else worked together
-          at one table. My focus was Machine Learning Engineering, but at that
-          stage you go where you're needed, so I also got to contribute to
-          product, research, pathology, and software development.
+          . While primarily focused on Machine Learning Engineering, the
+          early-stage nature of the company allowed me to contribute across
+          multiple areas including product, research, pathology, and software
+          development.
         </p>
 
         <p>
-          Everyone had input on ongoing projects, and the work sat right between
-          a research lab and rapid, user-focused deployment.
+          The collaborative environment, where company co-founders, engineers,
+          and team members worked together at one table, fostered a culture
+          where everyone had input on ongoing projects. The healthtech focus
+          provided an excellent blend of research lab work with rapid
+          user-focused deployment.
         </p>
       </div>
 
@@ -65,8 +68,9 @@ const Valar = () => {
             Model Evaluation Framework
           </h3>
           <p>
-            Created data science utilities for evaluating our models and finding
-            where they fell short.
+            Created data science utilities for comprehensive model evaluation,
+            enabling better understanding of model performance and identifying
+            areas for improvement.
           </p>
         </div>
       </div>

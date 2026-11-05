@@ -13,7 +13,7 @@ export const experiences: ExperienceType[] = [
     title: "Forward Deployed Engineer",
     subtitle: "Palantir",
     date: "8/2025 – 4/2026",
-    description: "Built agentic software and decision support systems for hospitals.",
+    description: "Built at Palantir for hospitals.",
     image: "/assets/img/palantir/palantir.jpg",
     skills: ["TypeScript", "PySpark", "Foundry"],
     company: "Palantir",
@@ -33,7 +33,7 @@ export const experiences: ExperienceType[] = [
     subtitle: "Fieldguide (backed by YC, Bessemer, 8VC)",
     date: "6/2024 – 9/2024",
     description:
-      "Built full-stack tooling for Fieldguide's newest offering: financial audits.",
+      "Built full-stack tooling for Fieldguide's newest platform offering: financial audits.",
     image: "/assets/img/fieldguide/fieldguide.png",
     skills: ["GraphQL", "TypeScript", "React", "PostgreSQL"],
     company: "Fieldguide",
@@ -66,7 +66,7 @@ export const projects: ProjectType[] = [
     title: "LitBench: Creative Writing Verification",
     date: "Autonomous Agents Lab • 2025",
     description:
-      "Building a dataset and benchmark for evaluating creative writing models, and training reward models and LLM judges to generate and evaluate better creative writing.",
+      "Building a dataset and benchmark for evaluating creative writing models. Training reward models and LLM judges to generate and evaluate better creative writing tasks.",
     image: "/assets/img/creative-writing/pencil.png",
     skills: ["RL", "Dataset Creation", "LLM-as-Judge"],
     externalUrl: "https://litbench.vercel.app/",
@@ -84,7 +84,7 @@ export const projects: ProjectType[] = [
     title: "Private Equity Compensation Dashboard",
     date: "2024",
     description:
-      "Built analytics tooling that helps a consulting firm manage compensation data for over 100 top PE firms.",
+      "Built analytics tooling for a consulting firm to manage portfolio compensation information for over 100 top PE firms.",
     image: "/assets/img/peecs/insightory.jpeg",
     skills: ["React", "FastAPI", "GCP"],
   },
@@ -92,7 +92,7 @@ export const projects: ProjectType[] = [
     title: "Modifying MinBERT",
     date: "Stanford CS 224N • 2023",
     description:
-      "Improved multi-task performance of MinBERT with gradient surgery and cosine similarity.",
+      "Researching ways to improve multi-task performance of MinBERT. Found success with gradient surgery and cosine similarity.",
     image: "/assets/img/224n/224n.jpeg",
     skills: ["PyTorch", "NLP", "Transformers"],
     slug: "224n",
@@ -110,7 +110,7 @@ export const projects: ProjectType[] = [
     title: "Depth Aware Pixel2Mesh",
     date: "Stanford CS 231N • 2022",
     description:
-      "Improved object mesh reconstruction with depth-aware inputs.",
+      "Improving object mesh reconstruction using depth-aware inputs.",
     image: "/assets/img/231n/231n.jpeg",
     skills: ["PyTorch", "Computer Vision", "Segmentation Models"],
     slug: "231n",

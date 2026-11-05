@@ -11,8 +11,9 @@ const StanfordMedicalCenter = () => {
         deep learning models on electronic health record data to predict
         hospital readmission due to chronic disease exacerbation during periods
         of bad air quality. This was especially relevant given the recent
-        prevalence of wildfires in California, and our data covered every
-        hospital admission in the state from 2015–2019.
+        prevalence of wildfires in California, and worked well with the fact
+        that our data consisted of every hospital admission from 2015-2019 in
+        the state of California.
       </p>
 
       <PostImageGrid
@@ -31,13 +32,13 @@ const StanfordMedicalCenter = () => {
       </ol>
 
       <p>
-        For the first year or so, I mostly worked on the first stage, leading
-        exploratory data analyses to validate that hospital admissions for
-        asthma and COPD rise with spikes in particulate matter (PM2.5)
-        concentration. That stage had the shortest timeline, so once it wrapped
-        up, I moved on to help with the other two. We built a range of models,
-        from non-recurrent baselines to more nuanced models such as LSTMs and
-        hierarchical attention networks (HANs).
+        For the first year or so, I predominantly worked on the first stage,
+        leading exploratory data analyses to validate increased hospital
+        admissions due to asthma and COPD with spikes in particulate matter (PM
+        2.5) concentration. Later on, I expanded to assist with the other two
+        stages since the first part had the shortest timeline. We built a
+        variety of models, including non-recurrent baselines as well as more
+        nuanced models such as LSTMs and hierarchical attention networks (HANs).
       </p>
 
       <PostImageGrid

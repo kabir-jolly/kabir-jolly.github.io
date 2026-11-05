@@ -68,10 +68,7 @@ const FDEManual = () => {
         unique tech stack and possesses their own custom set of engineering
         practices. To adapt to this, you should be a fast learner, but
         comfortable with a wide variety of primitives that make you valuable to
-        the discussions you have with your client.
-      </p>
-      <p>
-        Beyond engineering, since you
+        the discussions you have with your client. Beyond engineering, since you
         are "forward deployed," it is highly regarded to possess strong
         communication and collaboration skills. As you deploy to different
         settings, you quickly escape a comfort and homogeneity that builds
@@ -123,7 +120,7 @@ const FDEManual = () => {
         This is not to say that there is a compromise in soundness of the
         technical delivery. At Palantir, in addition to Forward Deployed
         Engineers (Deltas), we also place key importance in Deployment
-        Strategists (Echos). I often inquired about what creates a
+        Strategists (Echos). I often inquired about what creates a mutually
         symbiotic relationship within pods composed of Echos and Deltas. After
         much discussion, my conclusion was simple: there is an ever-present
         tension between the Echo wanting to drive the business value as fast as
@@ -252,9 +249,10 @@ const FDEManual = () => {
         years of building end-to-end solutions for customers helps future FDE
         engagements shine. You get to stand on the shoulders of giants and
         deliver value even faster than your predecessors, kicking off the
-        feedback loop once more. It's what lets a company operate at this
-        scale, even though, zoomed in on any single engagement, you'd be
-        baffled that any of it could ever be extensible.
+        feedback loop once more. It's what enables the scale at which you see a
+        company operate—even though, when drilling down to a particular
+        engagement, you would be baffled as to how any of this could possibly be
+        extensible.
         The trick is that extensibility isn't designed upfront; it's discovered
         through hard-earned truths from repeated exposure to variations of the
         same underlying pain.

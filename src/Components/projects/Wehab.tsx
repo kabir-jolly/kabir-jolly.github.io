@@ -29,10 +29,9 @@ const Wehab = () => {
       </p>
 
       <p>
-        For the record, research is not always glamorous. The initial mold was
-        made of pizza dough from Trader Joe's. Testing the prototypes meant
-        sitting in my freshman dorm with wires running out of my mouth. And the experiments themselves had me breathing out of
-        a single nostril for hours on end (in the name of science, of course).
+        The initial mold was made from Trader Joe's pizza dough. I also ran
+        wires out of my mouth in my freshman dorm and had to breathe out of a
+        single nostril for hours on end.
       </p>
 
 
