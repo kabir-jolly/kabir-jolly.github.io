@@ -35,7 +35,7 @@
     --rule: #2a2826;
     --link: #d9897c;
     --link-line: #5a3530;
-  --harbour-opacity: 0.38;
+    --harbour-opacity: 0.38;
     color-scheme: dark;
   }
 }
@@ -228,9 +228,22 @@ a.row-title:hover {
   font-size: 15px;
 }
 
+/* Home: a column at least the window's height, so on screens taller than the
+   page the painting still ends at the bottom of the window. */
+.home {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.home > .page {
+  flex: 1 0 auto;
+}
+
 /* Home: the harbour painting fades in from the page colour below the footer.
    No text sits on it; strength is --harbour-opacity (stronger in dark). */
 .harbour-fade {
+  flex: none;
   height: 400px;
   margin-top: -56px;
   overflow: hidden;

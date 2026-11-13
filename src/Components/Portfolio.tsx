@@ -12,7 +12,7 @@ const Portfolio = () => {
   const writing = postEntries.filter((post) => post.type === "writing");
 
   return (
-    <>
+    <div className="home">
       <div className="page">
         <header className="home-header">
           <div>
@@ -126,7 +126,7 @@ const Portfolio = () => {
         </footer>
       </div>
       <HarbourFade />
-    </>
+    </div>
   );
 };
 
