@@ -14,6 +14,7 @@
   --rule: #eeebe6;
   --link: #8c2f2b;
   --link-line: #e6cfcb;
+  --harbour-opacity: 0.22;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
@@ -23,6 +24,7 @@
   --rule: #2a2826;
   --link: #d9897c;
   --link-line: #5a3530;
+  --harbour-opacity: 0.38;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -33,6 +35,7 @@
     --rule: #2a2826;
     --link: #d9897c;
     --link-line: #5a3530;
+  --harbour-opacity: 0.38;
     color-scheme: dark;
   }
 }
@@ -225,6 +228,25 @@ a.row-title:hover {
   font-size: 15px;
 }
 
+/* Home: the harbour painting fades in from the page colour below the footer.
+   No text sits on it; strength is --harbour-opacity (stronger in dark). */
+.harbour-fade {
+  height: 400px;
+  margin-top: -56px;
+  overflow: hidden;
+  opacity: var(--harbour-opacity);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 75%);
+  mask-image: linear-gradient(to bottom, transparent, #000 75%);
+}
+.harbour-fade img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 75%;
+}
+
 /* Post page */
 .post-header {
   margin: 40px 0 40px;
@@ -358,6 +380,10 @@ a.row-title:hover {
   }
   .home-header {
     margin-top: 24px;
+  }
+  .harbour-fade {
+    height: 240px;
+    margin-top: -40px;
   }
   .home-header h1,
   .page-title {
